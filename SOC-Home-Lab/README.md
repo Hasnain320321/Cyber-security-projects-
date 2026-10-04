@@ -8,7 +8,7 @@ The purpose of this project is to build a small Security Operations Centre style
 
 The project is designed to demonstrate practical skills relevant to junior SOC Analyst and Cyber Security Analyst roles.
 
-## Planned Architecture
+## Current Architecture
 
 ```text
                  SOC HOME LAB
@@ -37,7 +37,7 @@ The project is designed to demonstrate practical skills relevant to junior SOC A
           +-----------------------+
 ```
 
-An Ubuntu/Linux VM may be used for the Wazuh server depending on the final lab configuration.
+The current lab uses the official Wazuh 4.14.8 appliance in Oracle VirtualBox. The Wazuh VM uses NAT for outbound internet access and a Host-Only adapter for isolated communication with the Windows host.
 
 ## What This Project Will Demonstrate
 
@@ -171,9 +171,9 @@ This confirms that the Windows endpoint is registered with the Wazuh manager and
 
 The first version of this project will be considered complete when:
 
-- [ ] Windows VM is running
+- [x] Windows host is connected to the isolated lab network
 - [ ] Kali Linux can communicate with the lab endpoint
-- [ ] Wazuh is operational
+- [x] Wazuh is operational
 - [x] Wazuh agent is connected to Windows
 - [ ] Windows Event Logs are visible in the SIEM
 - [ ] Sysmon is installed and generating telemetry
