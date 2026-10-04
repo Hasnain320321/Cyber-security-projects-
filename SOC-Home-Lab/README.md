@@ -153,6 +153,20 @@ SOC-Home-Lab/
 
 Additional files will be added as the lab is built.
 
+## Verified Progress Evidence
+
+### Windows endpoint enrolled in Wazuh
+
+The Windows host has been successfully enrolled as a Wazuh agent over the isolated Host-Only network.
+
+- **Agent name:** `Windows-Host`
+- **Endpoint IP:** `192.168.56.1`
+- **Wazuh manager:** `192.168.56.101`
+- **Agent version:** `4.14.8`
+- **Status:** **Active**
+
+This confirms that the Windows endpoint is registered with the Wazuh manager and the agent is actively communicating with the SIEM. Sysmon installation and telemetry validation are the next steps.
+
 ## Success Criteria
 
 The first version of this project will be considered complete when:
@@ -160,7 +174,7 @@ The first version of this project will be considered complete when:
 - [ ] Windows VM is running
 - [ ] Kali Linux can communicate with the lab endpoint
 - [ ] Wazuh is operational
-- [ ] Wazuh agent is connected to Windows
+- [x] Wazuh agent is connected to Windows
 - [ ] Windows Event Logs are visible in the SIEM
 - [ ] Sysmon is installed and generating telemetry
 - [ ] At least three controlled security scenarios are generated
