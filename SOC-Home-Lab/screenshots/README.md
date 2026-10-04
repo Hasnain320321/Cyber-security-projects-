@@ -12,22 +12,19 @@ This folder stores screenshots used as evidence for the SOC Home Lab.
 ## Suggested Naming
 
 ```text
-01-lab-network.png
-02-wazuh-dashboard.png
-03-agent-connected.png
-04-sysmon-event.png
-05-failed-login-alert.png
-06-investigation-search.png
+01-host-only-network.png
+02-wazuh-ip-addresses.png
+03-connectivity-test.png
+04-wazuh-agent-active.png
+05-sysmon-event.png
+06-failed-login-alert.png
+07-investigation-search.png
 ```
 
 ## Current Evidence
 
-> Note: the current image is temporarily stored at the repository root as `04 wazuh agent active.png`. The intended final path is `SOC-Home-Lab/screenshots/04-wazuh-agent-active.png`.
+### 04 - Wazuh agent active
 
-- `04 wazuh agent active.png` — Wazuh dashboard showing the `Windows-Host` endpoint at `192.168.56.1` with agent version `4.14.8` and **Active** status. This proves the Windows endpoint successfully enrolled with and is communicating with the Wazuh manager.
+![Wazuh agent active](./04-wazuh-agent-active.png)
 
-### Wazuh agent active
-
-![Wazuh agent active](../../04%20wazuh%20agent%20active.png)
-
-The Wazuh dashboard shows the `Windows-Host` endpoint at `192.168.56.1` running agent version `4.14.8` with **Active** status.
+The Wazuh dashboard shows the `Windows-Host` endpoint at `192.168.56.1` running Wazuh agent version `4.14.8` with **Active** status. This confirms that the Windows endpoint has successfully enrolled with and is communicating with the Wazuh manager over the isolated lab network.
