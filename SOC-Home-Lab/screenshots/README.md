@@ -22,10 +22,12 @@ This folder stores screenshots used as evidence for the SOC Home Lab.
 
 ## Current Evidence
 
-- `5C5B67F3-EA97-4684-9DAD-E3C30866D0D5.png` — Wazuh dashboard showing the `Windows-Host` endpoint at `192.168.56.1` with agent version `4.14.8` and **Active** status. This proves the Windows endpoint successfully enrolled with and is communicating with the Wazuh manager.
+> Note: the current image is temporarily stored at the repository root as `04 wazuh agent active.png`. The intended final path is `SOC-Home-Lab/screenshots/04-wazuh-agent-active.png`.
+
+- `04 wazuh agent active.png` — Wazuh dashboard showing the `Windows-Host` endpoint at `192.168.56.1` with agent version `4.14.8` and **Active** status. This proves the Windows endpoint successfully enrolled with and is communicating with the Wazuh manager.
 
 ### Wazuh agent active
 
-![Wazuh agent active](./5C5B67F3-EA97-4684-9DAD-E3C30866D0D5.png)
+![Wazuh agent active](../../04%20wazuh%20agent%20active.png)
 
 The Wazuh dashboard shows the `Windows-Host` endpoint at `192.168.56.1` running agent version `4.14.8` with **Active** status.
