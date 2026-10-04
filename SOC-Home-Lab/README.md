@@ -167,6 +167,10 @@ The Windows host has been successfully enrolled as a Wazuh agent over the isolat
 
 This confirms that the Windows endpoint is registered with the Wazuh manager and the agent is actively communicating with the SIEM. Sysmon installation and telemetry validation are the next steps.
 
+### Sysmon installed and generating events
+
+Sysmon was installed on the Windows host with a configuration file and the `Microsoft-Windows-Sysmon/Operational` channel was verified in Event Viewer. A real **Event ID 1 (Process Create)** event was observed, confirming that Sysmon is generating endpoint telemetry locally.
+
 ## Success Criteria
 
 The first version of this project will be considered complete when:
@@ -176,7 +180,7 @@ The first version of this project will be considered complete when:
 - [x] Wazuh is operational
 - [x] Wazuh agent is connected to Windows
 - [ ] Windows Event Logs are visible in the SIEM
-- [ ] Sysmon is installed and generating telemetry
+- [x] Sysmon is installed and generating telemetry
 - [ ] At least three controlled security scenarios are generated
 - [ ] At least three detections are documented
 - [ ] At least two investigations are completed
