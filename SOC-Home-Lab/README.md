@@ -171,6 +171,12 @@ This confirms that the Windows endpoint is registered with the Wazuh manager and
 
 Sysmon was installed on the Windows host with a configuration file and the `Microsoft-Windows-Sysmon/Operational` channel was verified in Event Viewer. A real **Event ID 1 (Process Create)** event was observed, confirming that Sysmon is generating endpoint telemetry locally.
 
+### Sysmon telemetry ingested by Wazuh
+
+Wazuh Threat Hunting was filtered to `agent.name: Windows-Host`, `data.win.system.channel: Microsoft-Windows-Sysmon/Operational`, and `data.win.system.eventID: 1`. The dashboard returned **22 hits**, confirming that Sysmon **Process Create** events from the Windows host are being ingested and searchable in Wazuh.
+
+This verifies the endpoint telemetry path: **Windows host -> Sysmon -> Wazuh agent -> Wazuh manager/dashboard**.
+
 ## Success Criteria
 
 The first version of this project will be considered complete when:
