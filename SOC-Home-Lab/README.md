@@ -24,8 +24,8 @@ The project is designed to demonstrate practical skills relevant to junior SOC A
           |     Windows 10/11     |
           |                       |
           | Windows Event Logs    |
-          | Sysmon                |
-          | Wazuh Agent           |
+          | Sysmon (next step)    |
+          | Wazuh Agent (Active)  |
           +-----------+-----------+
                       ^
                       |
