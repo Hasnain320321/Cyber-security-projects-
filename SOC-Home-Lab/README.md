@@ -24,7 +24,7 @@ The project is designed to demonstrate practical skills relevant to junior SOC A
           |     Windows 10/11     |
           |                       |
           | Windows Event Logs    |
-          | Sysmon (next step)    |
+          | Sysmon (Active)       |
           | Wazuh Agent (Active)  |
           +-----------+-----------+
                       ^
@@ -165,7 +165,7 @@ The Windows host has been successfully enrolled as a Wazuh agent over the isolat
 - **Agent version:** `4.14.8`
 - **Status:** **Active**
 
-This confirms that the Windows endpoint is registered with the Wazuh manager and the agent is actively communicating with the SIEM. Sysmon installation and telemetry validation are the next steps.
+This confirms that the Windows endpoint is registered with the Wazuh manager and the agent is actively communicating with the SIEM. Sysmon is installed and its telemetry path into Wazuh has been validated.
 
 ### Sysmon installed and generating events
 
@@ -177,15 +177,25 @@ Wazuh Threat Hunting was filtered to `agent.name: Windows-Host`, `data.win.syste
 
 This verifies the endpoint telemetry path: **Windows host -> Sysmon -> Wazuh agent -> Wazuh manager/dashboard**.
 
+### Windows Security authentication events validated
+
+The Windows Security log is being collected by Wazuh. A controlled local sign-in failure generated **Windows Event ID 4625**, which was ingested by Wazuh and matched **rule 60122** at **level 5**.
+
+The failed event was correlated with a **Windows Event ID 4624** successful workstation unlock a few seconds later. The scenario was investigated and classified as a **Benign Positive** because it was a single expected local failure followed by a successful unlock, with no evidence of repeated credential guessing or remote activity.
+
+- [Detection 01 - Windows Failed Logon](./detections/01-windows-failed-logon.md)
+- [Investigation 01 - Failed Local Authentication](./investigations/01-failed-local-authentication.md)
+
 ## Success Criteria
 
 The first version of this project will be considered complete when:
 
 - [x] Windows host is connected to the isolated lab network
-- [ ] Kali Linux can communicate with the lab endpoint
+- [ ] Kali Linux can communicate with the Windows endpoint
+- [x] Kali Linux can communicate with the Wazuh manager
 - [x] Wazuh is operational
 - [x] Wazuh agent is connected to Windows
-- [ ] Windows Event Logs are visible in the SIEM
+- [x] Windows Event Logs are visible in the SIEM
 - [x] Sysmon is installed and generating telemetry
 - [ ] At least three controlled security scenarios are generated
 - [ ] At least three detections are documented
