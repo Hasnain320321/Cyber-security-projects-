@@ -1,101 +1,147 @@
-# SOC Home Lab — Build Plan
+# SOC Home Lab — Build and Completion Record
 
-## Stage 1 — Confirm Host Capacity
+## Final Lab Design
 
-Before assigning resources, record the host system:
+| System | Purpose | Current state |
+| --- | --- | --- |
+| Windows 10/11 host | Monitored endpoint | Active |
+| Wazuh 4.14.8 appliance | SIEM / event collection / alerting | Active |
+| Kali Linux VM | Controlled test machine for later lab expansion | Present |
 
-- CPU:
-- RAM:
-- Free storage:
-- Hypervisor:
-- Kali installation type: bare metal / VM / other
+## Networking
 
-Resource allocations will be chosen after confirming these values.
+The lab uses Oracle VirtualBox.
 
-## Stage 2 — Create the Lab Network
+The Wazuh VM has:
 
-The environment should be isolated from unrelated systems.
+- NAT for outbound internet access.
+- A Host-Only adapter for isolated communication with the Windows host.
 
-Planned systems:
+Verified host-only addresses:
 
-| System | Purpose |
-| --- | --- |
-| Kali Linux | Controlled security testing |
-| Windows 10/11 | Monitored endpoint |
-| Wazuh server | SIEM / event collection |
+- **Windows host:** `192.168.56.1`
+- **Wazuh manager:** `192.168.56.101`
 
-The exact virtual-network mode will be documented once the hypervisor is confirmed.
+Windows-to-Wazuh connectivity was verified successfully.
 
-## Stage 3 — Prepare Windows Endpoint
+Kali-to-Wazuh communication was also verified earlier in the build. Kali-to-Windows communication is still left as a final optional validation item because it was not required for the three completed scenarios.
 
-Tasks:
+## Windows Endpoint
 
-- Create Windows VM
-- Apply normal updates
-- Create a dedicated lab user
-- Verify networking
-- Enable / review Windows Event Logs
-- Install Sysmon
-- Install Wazuh agent
-- Confirm endpoint appears in Wazuh
+The original plan used a dedicated Windows VM, but the working lab uses the real Windows host as the monitored endpoint.
 
-## Stage 4 — Verify Telemetry
+Completed tasks:
 
-Before generating attack-like behaviour, confirm normal telemetry first.
+- [x] Windows endpoint available
+- [x] Host-only networking configured
+- [x] Windows Event Logs reviewed
+- [x] Sysmon installed
+- [x] Wazuh agent installed
+- [x] Endpoint appears in Wazuh as `Windows-Host`
+- [x] Wazuh agent status verified as Active
 
-Evidence to capture:
+## Telemetry Verification
 
-- Wazuh agent online
-- Windows hostname
-- Endpoint IP address
-- Windows Event Logs arriving
-- Sysmon events arriving
-- Dashboard / event search
+Completed:
 
-## Stage 5 — Controlled Test Scenarios
+- [x] Wazuh agent online
+- [x] Windows hostname identified
+- [x] Endpoint IP identified
+- [x] Windows Security events visible in Wazuh
+- [x] Sysmon Event ID 1 generated locally
+- [x] Sysmon Event ID 1 searchable in Wazuh
+- [x] Sysmon Event ID 3 generated locally
+- [x] Custom Wazuh detection rule validated
 
-Only after logging is confirmed:
-
-1. Failed login activity
-2. Network scanning from Kali
-3. Safe suspicious-looking PowerShell activity
-
-Each scenario should be followed by a documented investigation.
-
-## Stage 6 — Documentation
-
-For every major step:
-
-- Explain what was configured
-- Save commands used
-- Save screenshots
-- Record problems encountered
-- Explain how the problem was resolved
-- Avoid including passwords, API keys, tokens, or personal information
-
-## Evidence Naming Convention
-
-Use descriptive filenames, for example:
+The verified telemetry path is:
 
 ```text
-01-wazuh-agent-connected.png
-02-windows-event-log.png
-03-sysmon-events.png
-04-failed-login-alert.png
-05-investigation-timeline.png
+Windows activity
+      |
+      v
+Windows Event Logs / Sysmon
+      |
+      v
+Wazuh agent
+      |
+      v
+Wazuh manager
+      |
+      v
+Wazuh Threat Hunting / alerts
 ```
+
+## Controlled Test Scenarios
+
+### Scenario 1 — Failed Local Authentication
+
+- [x] Generated controlled authentication failure
+- [x] Investigated Windows Event ID 4625
+- [x] Correlated nearby Event ID 4624 success
+- [x] Documented Detection 01
+- [x] Documented Investigation 01
+- [x] Classified as Benign Positive
+
+### Scenario 2 — PowerShell Process Spawn
+
+- [x] Generated safe PowerShell child process
+- [x] Investigated Sysmon Event ID 1
+- [x] Reviewed command line and process lineage
+- [x] Scoped for child-process activity
+- [x] Documented Detection 02
+- [x] Documented Investigation 02
+- [x] Mapped T1059.001 where supported
+- [x] Classified as Benign Positive
+
+### Scenario 3 — Custom Test-NetConnection Detection
+
+The original draft plan mentioned network scanning from Kali. The completed third scenario was changed to a safer and more useful detection-engineering exercise using a controlled PowerShell connectivity test.
+
+- [x] Generated `Test-NetConnection` activity
+- [x] Verified Sysmon Event ID 3 locally
+- [x] Created custom Wazuh rule 100100
+- [x] Triggered and validated the custom alert
+- [x] Investigated Sysmon Event ID 1 process telemetry
+- [x] Correlated PID 15676 with Sysmon Event ID 3
+- [x] Scoped network activity in a 30-minute window
+- [x] Scoped for child-process creation
+- [x] Documented Detection 03
+- [x] Documented Investigation 03
+- [x] Classified as Benign Positive
+
+## Documentation and Evidence
+
+Completed:
+
+- [x] Three detection write-ups
+- [x] Three investigation write-ups
+- [x] Screenshots organised and captioned
+- [x] Main SOC Home Lab README updated
+- [x] Learning log and troubleshooting notes written
+- [x] Evidence-based MITRE ATT&CK mapping used
+- [x] Interview-ready project summary created
 
 ## Completion Checklist
 
-- [ ] Host specifications recorded
-- [ ] Hypervisor confirmed
-- [ ] Windows VM created
-- [ ] Lab networking configured
-- [ ] Wazuh installed
-- [ ] Wazuh agent installed
-- [ ] Sysmon installed
-- [ ] Normal events confirmed
-- [ ] Failed-login scenario completed
-- [ ] Network-scan scenario completed
-- [ ] PowerShell scenario completed
-- [ ] Investigations documented
+- [x] Hypervisor confirmed
+- [x] Lab networking configured
+- [x] Wazuh installed and operational
+- [x] Wazuh agent installed
+- [x] Sysmon installed
+- [x] Normal telemetry confirmed
+- [x] Failed-login scenario completed
+- [x] PowerShell scenario completed
+- [x] Custom network-related detection scenario completed
+- [x] Three detections documented
+- [x] Three investigations documented
+- [x] Evidence organised
+- [x] Lessons learned written
+- [ ] Optional final check: Kali Linux can communicate directly with the Windows endpoint
+
+## Evidence Naming Convention
+
+The evidence folder currently uses numbered filenames from `04` through `18`, with each screenshot documented in `screenshots/README.md`.
+
+## Safety
+
+All testing is limited to systems and virtual machines owned or controlled by the lab operator. The scenarios are designed for defensive monitoring, detection, investigation, and SOC practice.
