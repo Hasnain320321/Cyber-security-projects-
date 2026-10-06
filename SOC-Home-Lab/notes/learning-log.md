@@ -276,3 +276,36 @@ Sysmon significantly improves endpoint visibility by providing detailed process 
 I also learned that documentation must distinguish what the evidence proves from what I assume. Statements such as **"no child process creation was found in the reviewed data"** are more accurate than broad claims such as **"nothing else happened."**
 
 Three controlled scenarios were completed, three detections were documented, and three investigations were written with evidence and final classifications.
+
+
+---
+
+## 7 October 2026 — Final Kali-to-Windows Connectivity Validation
+
+### Work Completed
+
+The final lab-network check tested direct connectivity from the Kali Linux VM to the monitored Windows host:
+
+```bash
+ping -c 4 192.168.56.1
+```
+
+The first test returned 100% packet loss. The issue was the Windows host firewall, not the VirtualBox route.
+
+A narrowly scoped Windows firewall rule was used to allow inbound ICMPv4 echo requests only on the Host-Only lab interface and only from the `192.168.56.0/24` lab subnet.
+
+The test was repeated and returned:
+
+- 4 packets transmitted
+- 4 packets received
+- 0% packet loss
+
+### What I Learned
+
+- A failed ping does not automatically mean the network path is broken; an endpoint firewall may be dropping ICMP.
+- Firewall changes should be scoped to the required interface, protocol, and lab subnet instead of disabling protection broadly.
+- Network connectivity should be verified with evidence rather than assumed.
+
+### Project 1 Completion
+
+With Kali-to-Windows communication verified, the first version of the SOC Home Lab is complete.
