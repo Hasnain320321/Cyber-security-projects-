@@ -4,7 +4,7 @@ This roadmap keeps the portfolio focused on the practical skills expected from j
 
 ## Phase 1 — SOC Home Lab
 
-**Status:** Near complete — 3/3 controlled scenarios, 3 detections, 3 investigations, evidence, lessons learned, and interview summary completed. Direct Kali-to-Windows connectivity remains an optional final validation.
+**Status:** Complete — 3/3 controlled scenarios, 3 detections, 3 investigations, evidence, lessons learned, interview summary, and Kali-to-Windows connectivity validation completed.
 
 **Goal:** Build a small security monitoring environment and prove that endpoint activity can be collected, detected, and investigated.
 
