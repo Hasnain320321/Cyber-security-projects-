@@ -18,8 +18,8 @@ This folder stores screenshots used as evidence for the SOC Home Lab.
 04-wazuh-agent-active.png
 05-sysmon-event.png
 06-wazuh-sysmon-ingestion.png
-07-failed-login-alert.png
-08-investigation-search.png
+07-failed-login-event-details.png
+08-failed-login-wazuh-rule.png
 ```
 
 ## Current Evidence
@@ -41,3 +41,15 @@ Windows Event Viewer shows the `Microsoft-Windows-Sysmon/Operational` log genera
 ![Wazuh Sysmon ingestion](./06-wazuh-sysmon-ingestion.png)
 
 Wazuh Threat Hunting was filtered to `Windows-Host`, the `Microsoft-Windows-Sysmon/Operational` channel, and **Event ID 1**. The returned events confirm that Sysmon process-creation telemetry from the Windows host is being ingested and is searchable in Wazuh.
+
+### 07 - Failed login event details
+
+![Failed login event details](./07-failed-login-event-details.png)
+
+Wazuh event details show Windows Security **Event ID 4625**, confirming that the monitored Windows endpoint recorded an account logon failure.
+
+### 08 - Wazuh failed-login rule
+
+![Wazuh failed-login rule](./08-failed-login-wazuh-rule.png)
+
+Wazuh matched the failed-authentication event to **rule 60122** at **level 5**. This provides SIEM-side evidence that the Windows authentication failure was collected and detected.
