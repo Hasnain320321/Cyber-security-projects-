@@ -4,6 +4,8 @@ This roadmap keeps the portfolio focused on the practical skills expected from j
 
 ## Phase 1 — SOC Home Lab
 
+**Status:** Near complete — 3/3 controlled scenarios, 3 detections, 3 investigations, evidence, lessons learned, and interview summary completed. Direct Kali-to-Windows connectivity remains an optional final validation.
+
 **Goal:** Build a small security monitoring environment and prove that endpoint activity can be collected, detected, and investigated.
 
 ### Core components
@@ -22,10 +24,10 @@ This roadmap keeps the portfolio focused on the practical skills expected from j
 - Sysmon configuration evidence
 - Wazuh agent connected to Windows
 - SIEM dashboard showing events
-- At least three security detections
-- At least two full incident investigations
-- MITRE ATT&CK mappings
-- Final project summary
+- At least three security detections — **completed**
+- At least two full incident investigations — **completed (three written)**
+- MITRE ATT&CK mappings — **completed where evidence supports them**
+- Final project summary — **completed**
 
 ## Phase 2 — Windows Authentication Investigation
 
