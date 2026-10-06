@@ -130,13 +130,11 @@ In a real SOC environment, an analyst should examine the full command line, proc
 
 Evidence reviewed during the lab includes:
 
-- Sysmon Event ID 1 showing the child PowerShell process.
-- Full command line containing `-NoProfile`, `-ExecutionPolicy Bypass`, and `Get-Process | Select-Object -First 5`.
-- Parent image and parent PID showing PowerShell PID 1296 spawning PowerShell PID 6880.
-- Wazuh rule 92027, level 4, mapped to T1059.001 PowerShell.
-- Scope query showing no Sysmon Event ID 1 results with `parentProcessId = 6880`.
+- [Screenshot 09 - PowerShell command and process details](../screenshots/09-powershell-command-details.png)
+- [Screenshot 10 - Wazuh rule 92027 and T1059.001 mapping](../screenshots/10-powershell-rule-92027.png)
+- [Screenshot 11 - Scope check: no child process results](../screenshots/11-powershell-no-child-processes.png)
 
-Clean screenshots will be linked here after they are committed to the repository.
+The screenshots document Sysmon Event ID 1, the PowerShell command line, process and parent-process details, Wazuh rule 92027 at level 4, the T1059.001 mapping, and the scope query showing no Event ID 1 results with `parentProcessId = 6880`.
 
 ## Lessons Learned
 
