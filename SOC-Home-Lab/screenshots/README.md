@@ -30,6 +30,7 @@ This folder stores screenshots used as evidence for the SOC Home Lab.
 16-event3-pid-correlation.png
 17-network-scope-count.png
 18-no-child-processes-found.png
+19-kali-windows-ping-success.png
 ```
 
 ## Current Evidence
@@ -123,3 +124,10 @@ A 30-minute Sysmon Event ID 3 query for PID `15676` returned **Count = 1**. The 
 ![Child-process scope check](./18-no-child-processes-found.png)
 
 A 30-minute Sysmon Event ID 1 query for `ParentProcessId: 15676` returned no matching output. This supports the limited conclusion that no child process creation from PID `15676` was found in the Sysmon data reviewed.
+
+
+### 19 - Kali to Windows connectivity success
+
+![Kali to Windows connectivity success](./19-kali-windows-ping-success.png)
+
+Kali Linux successfully pinged the Windows host at `192.168.56.1` with **4 packets transmitted, 4 received, and 0% packet loss**. This confirms direct lab-network communication from Kali to the monitored Windows endpoint after the Windows firewall was configured to allow ICMP echo requests on the Host-Only lab interface/subnet.
