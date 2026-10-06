@@ -110,6 +110,9 @@ In a real SOC environment, an analyst should compare the event with surrounding 
 
 Evidence captured during the lab includes:
 
+- [Screenshot 07 - Failed login event details](../screenshots/07-failed-login-event-details.png)
+- [Screenshot 08 - Wazuh rule 60122 / level 5](../screenshots/08-failed-login-wazuh-rule.png)
+
 - Windows Event Viewer showing Security Event ID 4625.
 - Wazuh Threat Hunting showing rule 60122, level 5, for the failed authentication.
 - Wazuh event details showing local source `127.0.0.1`, logon type 2, status/substatus values, and the Windows Security channel.
