@@ -15,13 +15,13 @@ My target roles are:
 
 ## Current Focus
 
-The first major project is a **SOC Home Lab** using a Windows endpoint, Linux, Kali Linux, Sysmon, and a SIEM platform. The goal is to generate realistic security events in an isolated lab, collect the telemetry, detect suspicious behaviour, and investigate alerts like a junior SOC analyst.
+The first major project is a **SOC Home Lab** using a Windows endpoint, Kali Linux, Sysmon, Wazuh, and VirtualBox networking. Three controlled scenarios are now documented: failed authentication, PowerShell process investigation, and a custom Wazuh detection for PowerShell `Test-NetConnection` activity. The project includes three detection write-ups, three investigation reports, evidence screenshots, troubleshooting notes, and an interview-ready summary.
 
 ## Portfolio Projects
 
 | Project | Main Skills | Status |
 | --- | --- | --- |
-| [SOC Home Lab](./SOC-Home-Lab/) | SIEM, Windows logs, Sysmon, alert triage, MITRE ATT&CK | In progress |
+| [SOC Home Lab](./SOC-Home-Lab/) | Wazuh SIEM, Windows logs, Sysmon, custom detection engineering, alert triage, event correlation, MITRE ATT&CK | Near complete |
 | Windows Authentication Investigation | Event logs, brute-force analysis, account activity | Planned |
 | Phishing Email Investigation | Email headers, IOCs, threat intelligence, incident reporting | Planned |
 | Network PCAP Investigation | Wireshark, TCP/IP, packet analysis, network threats | Planned |
@@ -71,4 +71,4 @@ All attack simulations and testing documented here are performed only in systems
 
 ---
 
-**Portfolio status:** actively being built.
+**Portfolio status:** actively being built. Project 1 (SOC Home Lab) is in final cleanup with its three core scenarios completed.
