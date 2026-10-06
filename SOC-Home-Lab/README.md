@@ -1,6 +1,6 @@
 # SOC Home Lab
 
-**Status:** In progress - three controlled detection scenarios completed
+**Status:** Near complete - three controlled detection scenarios and investigations completed
 
 ## Objective
 
@@ -134,6 +134,7 @@ The analyst validates the underlying telemetry, identifies the affected user/hos
 SOC-Home-Lab/
 |
 |-- README.md
+|-- INTERVIEW-SUMMARY.md
 |-- setup/
 |   |-- lab-plan.md
 |
@@ -243,7 +244,15 @@ The first version of this project will be considered complete when:
 - [x] At least two investigations are completed
 - [x] MITRE ATT&CK techniques are mapped where supported by evidence
 - [x] Screenshots and evidence are organised
-- [ ] Final lessons learned are written
+- [x] Final lessons learned are written
+
+## Final Project Notes
+
+- [Learning log and lessons learned](./notes/learning-log.md)
+- [Interview-ready project summary](./INTERVIEW-SUMMARY.md)
+- [Screenshot evidence index](./screenshots/README.md)
+
+The only remaining optional technical validation is direct Kali-to-Windows communication. The three planned portfolio-quality detection/investigation scenarios are complete.
 
 ## Safety and Scope
 
