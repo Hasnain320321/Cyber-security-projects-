@@ -24,7 +24,7 @@ Verified host-only addresses:
 
 Windows-to-Wazuh connectivity was verified successfully.
 
-Kali-to-Wazuh communication was also verified earlier in the build. Kali-to-Windows communication is still left as a final optional validation item because it was not required for the three completed scenarios.
+Kali-to-Wazuh communication was verified earlier in the build. Kali-to-Windows communication was also verified successfully: `ping -c 4 192.168.56.1` returned 4/4 replies with 0% packet loss after a narrowly scoped Windows firewall rule allowed ICMP echo on the Host-Only lab interface/subnet.
 
 ## Windows Endpoint
 
@@ -136,11 +136,11 @@ Completed:
 - [x] Three investigations documented
 - [x] Evidence organised
 - [x] Lessons learned written
-- [ ] Optional final check: Kali Linux can communicate directly with the Windows endpoint
+- [x] Kali Linux can communicate directly with the Windows endpoint
 
 ## Evidence Naming Convention
 
-The evidence folder currently uses numbered filenames from `04` through `18`, with each screenshot documented in `screenshots/README.md`.
+The evidence folder currently uses numbered filenames from `04` through `19`, with each screenshot documented in `screenshots/README.md`.
 
 ## Safety
 
