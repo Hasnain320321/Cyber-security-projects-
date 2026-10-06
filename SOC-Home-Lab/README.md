@@ -1,6 +1,6 @@
 # SOC Home Lab
 
-**Status:** Near complete - three controlled detection scenarios and investigations completed
+**Status:** Complete - first portfolio version
 
 ## Objective
 
@@ -152,7 +152,7 @@ SOC-Home-Lab/
 |
 |-- screenshots/
 |   |-- README.md
-|   |-- 04 through 18 evidence screenshots
+|   |-- 04 through 19 evidence screenshots
 |
 |-- notes/
     |-- learning-log.md
@@ -233,7 +233,7 @@ The activity was classified as a **Benign Positive** because the detection was a
 The first version of this project will be considered complete when:
 
 - [x] Windows host is connected to the isolated lab network
-- [ ] Kali Linux can communicate with the Windows endpoint
+- [x] Kali Linux can communicate with the Windows endpoint
 - [x] Kali Linux can communicate with the Wazuh manager
 - [x] Wazuh is operational
 - [x] Wazuh agent is connected to Windows
@@ -252,7 +252,7 @@ The first version of this project will be considered complete when:
 - [Interview-ready project summary](./INTERVIEW-SUMMARY.md)
 - [Screenshot evidence index](./screenshots/README.md)
 
-The only remaining optional technical validation is direct Kali-to-Windows communication. The three planned portfolio-quality detection/investigation scenarios are complete.
+Direct Kali-to-Windows communication was verified successfully with 4/4 ICMP replies and 0% packet loss. The first version of Project 1 is complete: three controlled scenarios, three detections, three investigations, organised evidence, lessons learned, troubleshooting notes, and an interview-ready summary.
 
 ## Safety and Scope
 
