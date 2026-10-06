@@ -21,7 +21,7 @@ The first major project is a **SOC Home Lab** using a Windows endpoint, Kali Lin
 
 | Project | Main Skills | Status |
 | --- | --- | --- |
-| [SOC Home Lab](./SOC-Home-Lab/) | Wazuh SIEM, Windows logs, Sysmon, custom detection engineering, alert triage, event correlation, MITRE ATT&CK | Near complete |
+| [SOC Home Lab](./SOC-Home-Lab/) | Wazuh SIEM, Windows logs, Sysmon, custom detection engineering, alert triage, event correlation, MITRE ATT&CK | Complete |
 | Windows Authentication Investigation | Event logs, brute-force analysis, account activity | Planned |
 | Phishing Email Investigation | Email headers, IOCs, threat intelligence, incident reporting | Planned |
 | Network PCAP Investigation | Wireshark, TCP/IP, packet analysis, network threats | Planned |
@@ -71,4 +71,4 @@ All attack simulations and testing documented here are performed only in systems
 
 ---
 
-**Portfolio status:** actively being built. Project 1 (SOC Home Lab) is in final cleanup with its three core scenarios completed.
+**Portfolio status:** actively being built. Project 1 (SOC Home Lab) is complete; the remaining roadmap projects are planned/in progress.
