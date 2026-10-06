@@ -1,6 +1,6 @@
 # SOC Home Lab
 
-**Status:** In progress
+**Status:** In progress - three controlled detection scenarios completed
 
 ## Objective
 
@@ -39,7 +39,7 @@ The project is designed to demonstrate practical skills relevant to junior SOC A
 
 The current lab uses the official Wazuh 4.14.8 appliance in Oracle VirtualBox. The Wazuh VM uses NAT for outbound internet access and a Host-Only adapter for isolated communication with the Windows host.
 
-## What This Project Will Demonstrate
+## What This Project Demonstrates
 
 - Building an isolated cyber security lab
 - Windows endpoint monitoring
@@ -47,87 +47,86 @@ The current lab uses the official Wazuh 4.14.8 appliance in Oracle VirtualBox. T
 - Sysmon telemetry
 - SIEM ingestion and alerting
 - Basic detection engineering
+- Custom Wazuh rule creation
 - Alert triage
 - Incident investigation
+- Process-to-network event correlation
 - MITRE ATT&CK mapping
 - Security report writing
-- False-positive analysis
+- Benign-positive analysis
 - Defensive recommendations
 
-## Planned Detection Scenarios
+## Detection Scenarios
 
-### 1. Failed Login / Brute-Force Activity
+### 1. Failed Local Authentication
 
-Generate repeated failed login events against a lab account and investigate:
+A controlled local sign-in failure was generated and investigated using Windows Security telemetry in Wazuh.
 
-- Username
-- Source
-- Timestamp
-- Number of attempts
-- Successful logins after failures
-- Event IDs
-- Severity
-- Recommended response
+Investigation focused on:
 
-### 2. Suspicious PowerShell Activity
+- Account and host
+- Event ID 4625
+- Source and logon context
+- Nearby successful authentication
+- Number and pattern of attempts
+- Wazuh rule and severity
+- Final classification
 
-Generate safe PowerShell activity in the lab and identify the related telemetry.
+### 2. PowerShell Process Spawning PowerShell
 
-Investigation will focus on:
+A safe PowerShell child process was deliberately generated and investigated using Sysmon Event ID 1 and Wazuh.
 
-- Parent and child processes
-- Command line
+Investigation focused on:
+
+- Process image
+- Full command line
+- Parent and child process relationship
 - User
-- Timestamp
-- Sysmon events
-- Reason the activity may be suspicious
-- Possible legitimate explanations
+- PID and parent PID
+- Integrity level
+- Follow-on child-process activity
+- MITRE ATT&CK T1059.001 - PowerShell
 
-### 3. Network Scanning
+### 3. Custom PowerShell Test-NetConnection Detection
 
-Use Kali Linux against the lab Windows machine to generate controlled scan activity.
+A controlled PowerShell connectivity test was generated against the lab Wazuh manager at `192.168.56.101:443`.
 
-Investigation will focus on:
+A custom Wazuh rule was created to detect process-creation events whose command line contains `Test-NetConnection`.
 
-- Source IP
-- Destination IP
-- Ports
-- Scan pattern
-- SIEM alerts
-- Endpoint/network evidence
-- MITRE ATT&CK mapping
+Investigation focused on:
+
+- Custom Wazuh rule ID 100100
+- Sysmon Event ID 1 process telemetry
+- Full PowerShell command line
+- User, PID, parent PID, and integrity level
+- Sysmon Event ID 3 network telemetry
+- Correlation using PID 15676
+- Source and destination IP/port
+- Network and child-process scope checks
+- Evidence-based MITRE ATT&CK mapping
+- Benign Positive classification
 
 ## Investigation Workflow
 
-For each incident:
+The workflow used during the investigations is:
 
 ```text
-Alert
+Validate
   |
   v
-Validate telemetry
+Identify
   |
   v
-Identify user / host / source
+Correlate
   |
   v
-Build timeline
+Scope
   |
   v
-Check related events
-  |
-  v
-Classify true positive / false positive
-  |
-  v
-Map to MITRE ATT&CK
-  |
-  v
-Recommend response
-  |
-  v
-Document evidence
+Classify
 ```
+
+The analyst validates the underlying telemetry, identifies the affected user/host/process, correlates related events, scopes the activity, and then classifies it based on the evidence.
 
 ## Repository Structure
 
@@ -139,19 +138,24 @@ SOC-Home-Lab/
 |   |-- lab-plan.md
 |
 |-- detections/
+|   |-- 01-windows-failed-logon.md
+|   |-- 02-powershell-process-spawn.md
+|   |-- 03-powershell-test-netconnection.md
 |   |-- detection-template.md
 |
 |-- investigations/
+|   |-- 01-failed-local-authentication.md
+|   |-- 02-powershell-process-spawn.md
+|   |-- 03-test-netconnection-network-activity.md
 |   |-- investigation-template.md
 |
 |-- screenshots/
 |   |-- README.md
+|   |-- 04 through 18 evidence screenshots
 |
 |-- notes/
     |-- learning-log.md
 ```
-
-Additional files will be added as the lab is built.
 
 ## Verified Progress Evidence
 
@@ -165,26 +169,63 @@ The Windows host has been successfully enrolled as a Wazuh agent over the isolat
 - **Agent version:** `4.14.8`
 - **Status:** **Active**
 
-This confirms that the Windows endpoint is registered with the Wazuh manager and the agent is actively communicating with the SIEM. Sysmon is installed and its telemetry path into Wazuh has been validated.
+This confirms that the Windows endpoint is registered with the Wazuh manager and the agent is actively communicating with the SIEM.
 
 ### Sysmon installed and generating events
 
-Sysmon was installed on the Windows host with a configuration file and the `Microsoft-Windows-Sysmon/Operational` channel was verified in Event Viewer. A real **Event ID 1 (Process Create)** event was observed, confirming that Sysmon is generating endpoint telemetry locally.
+Sysmon was installed on the Windows host and the `Microsoft-Windows-Sysmon/Operational` channel was verified. Sysmon **Event ID 1 (Process Create)** and **Event ID 3 (Network Connection)** telemetry were observed during the lab.
 
 ### Sysmon telemetry ingested by Wazuh
 
-Wazuh Threat Hunting was filtered to `agent.name: Windows-Host`, `data.win.system.channel: Microsoft-Windows-Sysmon/Operational`, and `data.win.system.eventID: 1`. The dashboard returned **22 hits**, confirming that Sysmon **Process Create** events from the Windows host are being ingested and searchable in Wazuh.
+Wazuh Threat Hunting confirmed that Sysmon process-creation telemetry from `Windows-Host` is being ingested and is searchable.
 
-This verifies the endpoint telemetry path: **Windows host -> Sysmon -> Wazuh agent -> Wazuh manager/dashboard**.
+This verifies the endpoint telemetry path:
 
-### Windows Security authentication events validated
+**Windows host -> Sysmon -> Wazuh agent -> Wazuh manager/dashboard**
 
-The Windows Security log is being collected by Wazuh. A controlled local sign-in failure generated **Windows Event ID 4625**, which was ingested by Wazuh and matched **rule 60122** at **level 5**.
+### Scenario 1 - Failed local authentication
 
-The failed event was correlated with a **Windows Event ID 4624** successful workstation unlock a few seconds later. The scenario was investigated and classified as a **Benign Positive** because it was a single expected local failure followed by a successful unlock, with no evidence of repeated credential guessing or remote activity.
+A controlled local sign-in failure generated **Windows Event ID 4625**, which was ingested by Wazuh and matched **rule 60122** at **level 5**.
+
+The failed event was correlated with a **Windows Event ID 4624** successful workstation unlock a few seconds later. The activity was classified as a **Benign Positive** because it was a single expected local failure followed by a successful unlock, with no evidence of repeated credential guessing or remote activity in the data reviewed.
 
 - [Detection 01 - Windows Failed Logon](./detections/01-windows-failed-logon.md)
 - [Investigation 01 - Failed Local Authentication](./investigations/01-failed-local-authentication.md)
+
+### Scenario 2 - PowerShell process creation
+
+A controlled PowerShell process was generated using:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Get-Process | Select-Object -First 5"
+```
+
+Sysmon Event ID 1 recorded the process and Wazuh raised **rule 92027** at **level 4**, describing a PowerShell process spawning another PowerShell instance.
+
+The command line, process lineage, user, PID, parent PID, and integrity level were investigated. The activity was classified as a **Benign Positive**. MITRE ATT&CK **T1059.001 - PowerShell** was retained because the telemetry directly demonstrated PowerShell execution.
+
+- [Detection 02 - PowerShell Process Spawn](./detections/02-powershell-process-spawn.md)
+- [Investigation 02 - PowerShell Process Spawn](./investigations/02-powershell-process-spawn.md)
+
+### Scenario 3 - Custom Test-NetConnection detection
+
+A custom Wazuh rule was created in `local_rules.xml` to alert on Sysmon Event ID 1 process creation when the command line contains `Test-NetConnection`.
+
+The controlled test launched:
+
+```powershell
+powershell.exe -NoProfile -Command "Test-NetConnection 192.168.56.101 -Port 443"
+```
+
+Wazuh raised custom **rule 100100** at **level 6**. The detected PowerShell process had PID `15676`.
+
+Sysmon Event ID 3 telemetry for the same PID confirmed a TCP connection from `192.168.56.1:58463` to `192.168.56.101:443`. A 30-minute network scope query found one matching Event ID 3 record for PID `15676`, and a child-process query found no Event ID 1 events with `ParentProcessId = 15676` in the reviewed period.
+
+The activity was classified as a **Benign Positive** because the detection was accurate but the activity was deliberately generated and expected in the controlled lab.
+
+- [Detection 03 - PowerShell Test-NetConnection](./detections/03-powershell-test-netconnection.md)
+- [Investigation 03 - Test-NetConnection Network Activity](./investigations/03-test-netconnection-network-activity.md)
+- [Scenario evidence screenshots](./screenshots/README.md)
 
 ## Success Criteria
 
@@ -197,11 +238,11 @@ The first version of this project will be considered complete when:
 - [x] Wazuh agent is connected to Windows
 - [x] Windows Event Logs are visible in the SIEM
 - [x] Sysmon is installed and generating telemetry
-- [ ] At least three controlled security scenarios are generated
-- [ ] At least three detections are documented
-- [ ] At least two investigations are completed
-- [ ] MITRE ATT&CK techniques are mapped
-- [ ] Screenshots and evidence are organised
+- [x] At least three controlled security scenarios are generated
+- [x] At least three detections are documented
+- [x] At least two investigations are completed
+- [x] MITRE ATT&CK techniques are mapped where supported by evidence
+- [x] Screenshots and evidence are organised
 - [ ] Final lessons learned are written
 
 ## Safety and Scope
