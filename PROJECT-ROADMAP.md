@@ -31,7 +31,7 @@ This roadmap keeps the portfolio focused on the practical skills expected from j
 
 ## Phase 2 — Wazuh Brute-Force Detection & Windows Authentication Investigation
 
-**Status:** **Complete — first portfolio version (8 October 2026).** Custom Wazuh brute-force detection rule 100101 (three failed logins per account within 60 seconds) was tested in four controlled scenarios. Two Windows authentication investigations, 26 curated screenshots (19 for the first and seven for the second), an evidence timeline with documented limits, response guidance and interview summary are documented. Further remote/production rule tuning is optional future work.
+**Status:** **Complete (8 October 2026).** Custom Wazuh brute-force detection rule 100101 (three failed logins per account within 60 seconds) was tested in four controlled scenarios. Two Windows authentication investigations, 26 curated screenshots (19 for the first and seven for the second), an evidence timeline with documented limits, response guidance and interview summary are documented. Further remote/production rule tuning is optional future work.
 
 **Evidence and reports:** [Windows Authentication Investigation](./Windows-Authentication-Investigation/) · [Final summary](./Windows-Authentication-Investigation/FINAL-PROJECT-SUMMARY.md)
 
