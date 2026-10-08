@@ -2,7 +2,7 @@
 
 **Date:** 8 October 2026  
 **Affected host:** `Windows-Host`  
-**Tested account:** `SOC-Lab-Test`  
+**Tested accounts:** `SOC-Lab-Test`, `SOC-Lab-Test2` (mixed-account test)  
 **Disposition:** Benign Positive (authorised lab test)
 
 ## Alert and scope
@@ -29,6 +29,7 @@ The earlier standalone Wazuh rule `60122` detects individual failures. It was us
 - Three closely spaced failures were intentionally generated in the lab.
 - A custom pattern alert appeared after Wazuh Manager was restarted to load the new rule.
 - Later, a single isolated failed login at **16:55:28** triggered `60122`; no new `100101` appeared in the reviewed time range.
+- **Mixed-account test (17:18):** `60122` events at `17:18:01.232` and `17:18:03.330` were verified as targeting `SOC-Lab-Test`. The third `60122` event at `17:18:07.360` targeted `SOC-Lab-Test2`. All three were interactive (Type 2), source `127.0.0.1`, substatus `0xC000006A`, and occurred within about six seconds. A `rule.id:100101` search returned no results in the relevant 15-minute window.
 
 ### Scope
 No external source or compromise was established by the reviewed local interactive login evidence. A network/RDP brute-force scenario was **not** tested. No successful compromised login or malicious post-authentication activity was demonstrated.
@@ -51,7 +52,7 @@ No external source or compromise was established by the reviewed local interacti
 ## Remaining tasks
 
 - Commit labelled Wazuh screenshot evidence.
-- Test edge cases including more than one account/source.
+- Mixed-account 2+1 case tested; next test three consecutive failures for `SOC-Lab-Test2` and additional source-IP/timing edge cases.
 - Review whether the rule threshold/source grouping should be tuned.
 - Finalize interview-style narrative and project summary.
 
