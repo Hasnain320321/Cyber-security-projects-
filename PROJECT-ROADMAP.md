@@ -46,6 +46,22 @@ Skills demonstrated:
 - True-positive / false-positive classification
 - Escalation and remediation recommendations
 
+## Supplemental Hunt — Windows Privilege Escalation (new, separate)
+
+**Status:** In progress — documentation/setup only; no new lab events or detection results yet.
+
+**Goal:** Hunt changes to the built-in local Administrators group; determine the actor, added account, authorisation and related process/logon context without mistaking all admin actions for attacks.
+
+**Core events:** Windows Security 4732 (added to local group), 4733 (removed), 4672 (privileged logon context), 4624 (logon), Sysmon 1 (process creation). Target the privileged group identity rather than treating every group change as malicious.
+
+**MITRE ATT&CK:** T1098.007 — Additional Local or Domain Groups (Persistence / Privilege Escalation).
+
+**Planned outcomes:** Read-only auditing check; controlled positive + nonprivileged negative test on a machine owned by the learner; reversible membership change; custom Wazuh detection; rollback proof; investigation report, curated screenshots and interview notes. The tests are **not yet completed**.
+
+**Repository:** [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/).
+
+The existing **Phase 3 — Phishing Email Investigation** remains planned for later; this supplemental project does not erase or renumber it.
+
 ## Phase 3 — Phishing Email Investigation
 
 **Scenario:** Analyse a suspicious email and decide whether it is benign, suspicious, or malicious.
