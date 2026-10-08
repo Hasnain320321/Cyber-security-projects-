@@ -31,6 +31,10 @@ This roadmap keeps the portfolio focused on the practical skills expected from j
 
 ## Phase 2 — Windows Authentication Investigation
 
+**Status:** In progress — custom Wazuh rule 100101 created, service restarted, controlled positive test passed, single-failure negative test passed in reviewed period; documentation drafted, screenshots and additional tuning pending.
+
+**Evidence and reports:** [Windows Authentication Investigation](./Windows-Authentication-Investigation/)
+
 **Scenario:** Multiple failed Windows logins, followed by investigation of the source and account activity.
 
 Skills demonstrated:
