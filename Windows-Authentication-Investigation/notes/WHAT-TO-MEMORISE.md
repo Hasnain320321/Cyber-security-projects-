@@ -111,7 +111,7 @@ Escalate according to policy when evidence suggests unauthorised activity, such 
 ## Daily 10-Minute Study Routine
 
 1. **2 minutes:** Recite the five anchors without notes.
-2. **5 minutes:** Answer the [combined Project 1 + Project 2 twenty-card deck](../../study/SOC-FLASHCARDS-PROJECTS-1-2.md).
+2. **5 minutes:** Answer the [combined Project 1 + Project 2 forty-card deck](../../study/SOC-FLASHCARDS-PROJECTS-1-2.md).
 3. **3 minutes:** Explain one real investigation out loud: detection, fields checked, correlation and final classification.
 
 Don't just repeat a definition. Say **why** it matters for investigation. If you miss a card, review it and try again the next day.
@@ -125,4 +125,4 @@ Don't just repeat a definition. Say **why** it matters for investigation. If you
 - [Project 2 interview guide](../INTERVIEW-SUMMARY.md)
 - [Investigation 02](../investigations/02-failed-then-successful-login.md)
 - [Response playbook](../response/01-authentication-alert-triage-playbook.md)
-- [Combined 20-card deck](../../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
+- [Combined 40-card deck](../../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
