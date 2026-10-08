@@ -30,6 +30,7 @@ The earlier standalone Wazuh rule `60122` detects individual failures. It was us
 - A custom pattern alert appeared after Wazuh Manager was restarted to load the new rule.
 - Later, a single isolated failed login at **16:55:28** triggered `60122`; no new `100101` appeared in the reviewed time range.
 - **Mixed-account test (17:18):** `60122` events at `17:18:01.232` and `17:18:03.330` were verified as targeting `SOC-Lab-Test`. The third `60122` event at `17:18:07.360` targeted `SOC-Lab-Test2`. All three were interactive (Type 2), source `127.0.0.1`, substatus `0xC000006A`, and occurred within about six seconds. A `rule.id:100101` search returned no results in the relevant 15-minute window.
+- **Second-account positive test (17:30):** a fresh level-10 `100101` alert was observed at `17:30:13.110`. Its expanded event showed Windows Event ID `4625`, target account `SOC-Lab-Test2` and incorrect-password substatus `0xC000006A`. This supports successful account-independent correlation; the screenshot of this expanded event did not independently show all three source-event rows.
 
 ### Scope
 No external source or compromise was established by the reviewed local interactive login evidence. A network/RDP brute-force scenario was **not** tested. No successful compromised login or malicious post-authentication activity was demonstrated.
@@ -52,7 +53,7 @@ No external source or compromise was established by the reviewed local interacti
 ## Remaining tasks
 
 - Commit labelled Wazuh screenshot evidence.
-- Mixed-account 2+1 case tested; next test three consecutive failures for `SOC-Lab-Test2` and additional source-IP/timing edge cases.
+- Both three-failure positive cases and the mixed-account 2+1 case are tested; additional source-IP/timing edge cases are outside current scope.
 - Review whether the rule threshold/source grouping should be tuned.
 - Finalize interview-style narrative and project summary.
 
