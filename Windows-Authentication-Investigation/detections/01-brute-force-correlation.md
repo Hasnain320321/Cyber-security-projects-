@@ -65,6 +65,20 @@ The Wazuh manager restarted successfully and was reported `active (running)` pri
 
 Confirm the target username, source, originating device, logon type, counts and time distribution; correlate with successful logins and follow-on account activity. Escalate only when evidence supports an unauthorised attempt or compromise; otherwise document benign findings.
 
-## Evidence status
+## Evidence — direct links to screenshots
 
-Screenshots were reviewed in the learning session, but the corresponding image files have **not yet been committed** to this project folder. See [screenshots/README.md](../screenshots/README.md).
+All screenshots are committed under this project's [19-image evidence index](../screenshots/README.md).
+
+| Purpose | Evidence |
+| --- | --- |
+| Rule configuration | [Custom XML rule 100101](../screenshots/04-custom-rule-100101.png) |
+| Manager status after restart | [Wazuh service active](../screenshots/05-manager-active.png) |
+| Initial telemetry | [Three individual 60122 events](../screenshots/03-three-individual-failures.png) |
+| First positive test | [Level-10 100101 alert](../screenshots/06-positive-100101-alert.png), [correlation details](../screenshots/07-positive-alert-details.png), [T1110 mapping](../screenshots/07a-positive-mitre-mapping.png) |
+| Single-failure negative | [Individual 60122 alert](../screenshots/08-negative-60122-alert.png), [target account](../screenshots/09-negative-test-account.png) |
+| Mixed-username negative | [Three individual failures](../screenshots/10-mixed-account-three-failures.png), [first username](../screenshots/11-mixed-account-user-one-first.png), [second account](../screenshots/12-mixed-account-user-two.png), [no new 100101](../screenshots/13-mixed-account-no-correlation.png) |
+| Second-account positive | [Fresh 100101 alert](../screenshots/14-second-account-positive-alert.png), [target username](../screenshots/15-second-account-alert-user.png) |
+
+![Custom rule 100101 generates a high-severity correlated alert for the controlled positive test](../screenshots/06-positive-100101-alert.png)
+
+The visual results confirm how the rule behaved in these four lab scenarios. They do not prove production readiness or actual malicious activity.
