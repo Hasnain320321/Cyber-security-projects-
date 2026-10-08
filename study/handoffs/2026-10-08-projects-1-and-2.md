@@ -18,10 +18,10 @@ Project 1 lives in `SOC-Home-Lab/`. The Wazuh/Sysmon home lab, three controlled 
 
 ## Evidence verification and remaining optional upload
 
-- **19 screenshots verified on GitHub** for Investigation 01, organised by scenario and linked through the [evidence index](../../Windows-Authentication-Investigation/screenshots/README.md).
+- **26 screenshots now verified on GitHub**: the original 19 for Investigation 01 plus seven curated Investigation 02 exhibits. See the [evidence index](../../Windows-Authentication-Investigation/screenshots/README.md).
 - Six key GitHub PNGs were checked against local original Git blob hashes and matched byte-for-byte.
-- **Ten additional original Investigation 02 PNGs (numbered 16–25) are prepared in a separate downloadable ZIP in the 8 Oct 2026 conversation, but are NOT uploaded to GitHub yet.** See [Investigation 02 upload checklist](../../Windows-Authentication-Investigation/evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md).
-- Do not claim a 29-image GitHub evidence set unless those ten are actually uploaded and links verified.
+- **Of the ten originally prepared Investigation 02 PNGs, seven are retained in GitHub, two low-value fragments (22 and 23) were removed, and image 25 (McAfee process details) remains absent.** See the [Investigation 02 evidence audit](../../Windows-Authentication-Investigation/evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md).
+- Do not claim 29 uploaded images: current total is 26 (19 + 7); uploading missing image 25 would make 27.
 
 ## Five daily anchors
 
@@ -34,6 +34,6 @@ Project 1 lives in `SOC-Home-Lab/`. The Wazuh/Sysmon home lab, three controlled 
 ## Next session
 
 - First do the [40 daily flashcards](../SOC-FLASHCARDS-PROJECTS-1-2.md) and five anchors.
-- If the learner wants perfect original-evidence coverage, verify the ten pending screenshot uploads for Investigation 02 and activate evidence links.
+- If the learner wants one further relevant visual exhibit, upload only image 25 and verify it; ideally also capture an uncropped 4625 account-filter screenshot if another lab session is undertaken.
 - Do not rebuild or modify Project 1. Project 3 begins only when specifically requested.
 - Portfolio repo: https://github.com/Hasnain320321/Cyber-security-projects-
