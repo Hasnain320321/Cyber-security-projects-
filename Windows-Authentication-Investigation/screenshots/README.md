@@ -1,8 +1,8 @@
 # Project 2 — Wazuh Evidence Index
 
-**Status:** All **19 PNG screenshots uploaded to this directory** and verified against the Project 2 GitHub upload commit of 8 October 2026. Every image belongs to `Windows-Authentication-Investigation/screenshots/`; **Project 1 (`SOC-Home-Lab/`) is unchanged**.
+**Status:** **26 original PNG screenshots verified on GitHub:** 19 for Investigation 01 and 7 relevant screenshots for Investigation 02. Two low-value cropped side-event files (22 and 23) were removed during review. The key McAfee process-detail screenshot `25-mcafee-webadvisor-process-details.png` has **not** been uploaded. Every retained image belongs to Project 2; Project 1 is untouched.
 
-These 19 screenshots support **Investigation 01** (custom brute-force detection tests). The additional Investigation 02 evidence is [listed separately as pending upload](../evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md); do not interpret its checklist as confirmation those ten PNGs exist in GitHub. They are stored together in one dedicated evidence folder, but organised **by investigation phase below**. The detection and investigation reports link directly to the relevant images so reviewers do not need to browse them in filename order.
+All images live together in the dedicated Project 2 evidence directory and are grouped below by investigation and purpose. The original 19 files support Investigation 01. Seven newly uploaded files support Investigation 02, although the McAfee process-detail image is still missing. The investigation reports link directly to the corresponding images.
 
 ## 1. Lab setup and rule configuration (4 images)
 
@@ -60,13 +60,37 @@ These 19 screenshots support **Investigation 01** (custom brute-force detection 
 
 ![Custom rule 100101 triggered again for a different test account](./14-second-account-positive-alert.png)
 
+## 6. Investigation 02 — Failed logins followed by a successful login (7 images)
+
+These images support the [separate second investigation](../investigations/02-failed-then-successful-login.md). Files 22 and 23 were deliberately removed after review because they were cropped fragments of a separate failure that added little evidence and risked confusion. No file numbered 25 is present on GitHub yet.
+
+| Evidence | What it actually shows | Use |
+| --- | --- | --- |
+| [16 — Wider failure alert list](./16-failed-logins-overview.png) | Multiple Wazuh 60122 failures around 18:01, including unrelated adjacent failures | Starting context only; usernames not shown |
+| [17 — Successful login alert list](./17-test-account-success-list.png) | Wazuh rule 60118 at 18:01:33 and another earlier success | Identify relevant 4624 success |
+| [18 — Source and Logon Type](./18-success-logon-type-and-ip.png) | The expanded success event has source IP 127.0.0.1 and Logon Type 2 | Local interactive context |
+| [19 — Successful login username](./19-success-target-username.png) | `targetUserName: SOC-Lab-Test2` | Identify account (must be read with image 18) |
+| [20 — Two failed login alerts](./20-two-failures-targeted-account.png) | Wazuh 60122 failures at 18:01:21 and 18:01:26 | Correlate timeline; the crop does *not* show the username filter |
+| [21 — Separate failure process details](./21-separate-webview-failure-process.png) | A later 4625 event's WebView2 process and bad-password substatus | Separate event, target account not established |
+| [24 — Nearby process alert list](./24-nearby-sysmon-process-alerts.png) | Wazuh 92052 and 92032 around 18:01:47 and other unrelated alerts | Scope potentially related activity; user/session not established |
+
+**Representative login timeline evidence**
+
+![Two Windows 4625 failures at 18:01:21 and 18:01:26](./20-two-failures-targeted-account.png)
+
+![Wazuh 60118 successful login at 18:01:33](./17-test-account-success-list.png)
+
+**Still missing:** `25-mcafee-webadvisor-process-details.png`, which would document the McAfee WebAdvisor BrowserHost.exe process discussed in the report. Until it is uploaded, that observation is sourced to the screenshots reviewed in conversation and the written investigation, *not* to a GitHub-hosted process-detail image.
+
+**Evidence limitation:** The cropped rows in image 20 do not display the `targetUserName` filter. The account correlation was verified interactively during the lab and is recorded in the [transcribed timeline](../evidence/02-authentication-timeline.md), but these PNGs alone are not a full export of the original event records.
+
 ## How to interpret the evidence
 
-Four controlled validation scenarios were completed on 8 October 2026: **two positive tests** against separate accounts, **one isolated negative**, and **one mixed-account 2+1 negative**. These demonstrate initial rule behaviour in the local lab, not production readiness or a real compromise.
+Four controlled detection-validation scenarios were completed in Investigation 01. Investigation 02 then correlated two observed Windows 4625 failures with a 4624 successful sign-in to the same test account, while documenting limitations on surrounding alerts. Both investigations used authorised local activity, not production-ready detections or evidence of an attacker.
 
 - [Detection design and validation](../detections/01-brute-force-correlation.md)
 - [Investigation 01 — detection validation](../investigations/01-controlled-login-attempts.md)
-- [Investigation 02 — failed-to-successful login](../investigations/02-failed-then-successful-login.md), with [textual evidence timeline](../evidence/02-authentication-timeline.md) (separate screenshots not yet uploaded)
+- [Investigation 02 — failed-to-successful login](../investigations/02-failed-then-successful-login.md), with [textual evidence timeline](../evidence/02-authentication-timeline.md) and seven uploaded visual exhibits.
 - [Project 2 overview](../README.md)
 - [Interview summary](../INTERVIEW-SUMMARY.md)
 - [Project 2 memory notes](../notes/WHAT-TO-MEMORISE.md)
