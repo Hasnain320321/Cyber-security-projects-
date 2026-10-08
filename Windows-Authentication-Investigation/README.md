@@ -1,6 +1,6 @@
 # Project 2 — Windows Authentication Investigation
 
-**Status:** In progress — initial detection, positive/negative and mixed-account tests completed on 8 October 2026.
+**Status:** **Complete — first portfolio version (8 October 2026).** Four correlation-rule tests and a separate failed-to-successful authentication investigation documented. Advanced detection tuning is future work.
 
 ## Objective
 
@@ -28,6 +28,7 @@ This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Ho
 7. **Negative test:** one later failed logon at **2026-10-08 16:55:28** produced a `60122` alert for `SOC-Lab-Test`, with no new `100101` alert observed in the inspected event window.
 8. **Mixed-account test:** at **17:18:01.232** and **17:18:03.330**, two rule `60122` events had target `SOC-Lab-Test`; at **17:18:07.360**, a third rule `60122` event had target `SOC-Lab-Test2`. No new `100101` alert appeared in the test window. This supports username-specific correlation.
 9. **Second-account positive test:** a level-10 `100101` alert appeared at **17:30:13.110**. The expanded alert showed Windows Event ID `4625`, `targetUserName: SOC-Lab-Test2`, and incorrect-password substatus `0xC000006A`, confirming that the custom rule can fire on another account independently.
+10. **Investigation 02:** two `4625` failures for `SOC-Lab-Test2` at 18:01:21 and 18:01:26 were correlated with a `4624` successful interactive login at 18:01:33. Nearby command-shell-related alerts were reviewed but not conclusively attributed to this session. The sign-in was an authorised local test.
 
 ## Key evidence
 
@@ -40,7 +41,7 @@ This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Ho
 
 ## Evidence at a glance
 
-All 19 screenshots live in the dedicated [Project 2 visual evidence index](./screenshots/README.md), grouped into lab setup, initial positive, isolated negative, mixed-account negative, and second-account positive tests.
+All 19 uploaded screenshots support the **first detection-testing investigation** in the dedicated [Project 2 visual evidence index](./screenshots/README.md). Investigation 02 additionally has a [separate reconstructed evidence timeline](./evidence/02-authentication-timeline.md), transcribed from screenshots shown during the lab session; those later PNGs have not been uploaded to GitHub.
 
 | Scenario | Direct evidence | Outcome |
 | --- | --- | --- |
@@ -49,6 +50,7 @@ All 19 screenshots live in the dedicated [Project 2 visual evidence index](./scr
 | Single-failure negative | [Failure alert](./screenshots/08-negative-60122-alert.png) · [Username](./screenshots/09-negative-test-account.png) | Passed in reviewed window |
 | Mixed-account negative (2+1) | [Individual failures](./screenshots/10-mixed-account-three-failures.png) · [No correlated alert](./screenshots/13-mixed-account-no-correlation.png) | Passed in reviewed window |
 | Second-account positive | [Alert](./screenshots/14-second-account-positive-alert.png) · [Username](./screenshots/15-second-account-alert-user.png) | Passed |
+| Failed → successful authentication | [Investigation 02](./investigations/02-failed-then-successful-login.md) · [Timeline transcript](./evidence/02-authentication-timeline.md) | Authorised sequence documented |
 
 ![Custom Wazuh rule 100101 successfully detected a controlled burst of failures](./screenshots/06-positive-100101-alert.png)
 
@@ -58,7 +60,7 @@ The rule correctly detected the controlled repeated-failure pattern, did not fir
 
 Because the activity was authorised, its operational classification is **Benign Positive**; as a rule-validation test, it demonstrated a true-positive match for the intentionally generated pattern. The MITRE T1110 label reflects the detection's intended behaviour, **not proof that a real attacker was present**.
 
-**Current limitations / follow-up tests:**
+**Scope limitations and optional future improvements:**
 
 - Three mistyped passwords by a real employee could also trigger the rule.
 - Matching on username alone can combine attempts from different source IPs; investigate source separately.
@@ -69,8 +71,12 @@ Because the activity was authorised, its operational classification is **Benign 
 ## Documentation
 
 - [Detection design and test](./detections/01-brute-force-correlation.md)
-- [SOC investigation report](./investigations/01-controlled-login-attempts.md)
-- [Evidence checklist](./screenshots/README.md)
+- [Investigation 01 — controlled failure detection](./investigations/01-controlled-login-attempts.md)
+- [Investigation 02 — failed then successful login](./investigations/02-failed-then-successful-login.md)
+- [Investigation 02 evidence timeline (transcribed)](./evidence/02-authentication-timeline.md)
+- [SOC triage and response playbook](./response/01-authentication-alert-triage-playbook.md)
+- [Final project summary](./FINAL-PROJECT-SUMMARY.md)
+- [Evidence index — 19 uploaded screenshots](./screenshots/README.md)
 - [Interview summary](./INTERVIEW-SUMMARY.md)
 
 ## Analyst approach
@@ -78,3 +84,5 @@ Because the activity was authorised, its operational classification is **Benign 
 Validate -> Identify -> Correlate -> Scope -> Classify.
 
 In a genuine incident, review account identity, source IP/device, logon type, failure count/time distribution, related successful logins (4624), and actions after any success before escalating or containing.
+
+**First-version completion note:** Core planned local authentication detection, validation, investigation and reporting are complete. This status does **not** certify production readiness or comprehensive post-login forensic coverage.
