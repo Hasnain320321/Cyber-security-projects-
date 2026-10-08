@@ -31,7 +31,7 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 
 ## Evidence
 
-- [All 19 uploaded screenshots from the initial detection-testing investigation](./screenshots/README.md)
+- [All 26 curated screenshots — 19 from Investigation 01 and 7 from Investigation 02](./screenshots/README.md)
 - [Investigation 01](./investigations/01-controlled-login-attempts.md)
 - [Investigation 02](./investigations/02-failed-then-successful-login.md) and [transcribed timeline](./evidence/02-authentication-timeline.md)
 - [Custom rule XML and validation table](./detections/01-brute-force-correlation.md)
@@ -39,7 +39,7 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 - [Expanded interview summary, including a 60-second explanation and 12 interview questions](./INTERVIEW-SUMMARY.md)
 - [Project 2 memorisation notes](./notes/WHAT-TO-MEMORISE.md)
 - [Combined 40-card revision deck: 20 per project](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
-- [Investigation 02 screenshot upload checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
+- [Investigation 02 screenshot audit and missing-image checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
 - [Learning review: five anchors and 20 flashcards](./notes/LEARNING-REVIEW.md)
 
 **Evidence boundary:** All 19 screenshots in GitHub belong to the first investigation. The second investigation's screenshots were reviewed in the session but are currently represented in the repository only by a clearly-labelled reconstructed timeline and write-up.
@@ -53,7 +53,7 @@ The project successfully demonstrates entry-level SOC skills in Windows log anal
 - Correlation threshold is low for production and can fire for an employee mistyping a password.
 - Tests were local interactive logons (Type 2); network/RDP attacks and distributed sources were not validated.
 - Usernames were used for grouping; source-IP independence, window boundaries, and lockouts deserve additional testing.
-- Supplemental original PNG evidence for the second investigation would strengthen the portfolio.
+- Uploading the missing `25-mcafee-webadvisor-process-details.png` and an uncropped failure-query screenshot showing the `targetUserName` filter would strengthen proof of Investigation 02, but these are outside the completed first-version scope.
 - Expand follow-on process/user correlation and adopt an incident ticket format for a future iteration.
 
 This is a **completed first portfolio version**, not a claim that the detection is production-ready.
