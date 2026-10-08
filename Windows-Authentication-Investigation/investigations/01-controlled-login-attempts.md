@@ -42,6 +42,19 @@ No external source or compromise was established by the reviewed local interacti
 
 **T1110 — Brute Force** is the mapping configured in the detection rule, reflecting repeated credential guesses. This mapping is not an assertion that an actual adversary was present.
 
+## Evidence trail
+
+The [Project 2 evidence index](../screenshots/README.md) contains all 19 screenshots organised by test phase. Key investigation artefacts:
+
+- **Identify:** [Failed logon and target account](../screenshots/03a-target-username-event4625.png), [source IP / Logon Type 2](../screenshots/03b-source-and-logontype.png).
+- **Validate:** [Individual 60122 failures](../screenshots/03-three-individual-failures.png), [custom correlation rule](../screenshots/04-custom-rule-100101.png), [manager running](../screenshots/05-manager-active.png).
+- **Correlate positive:** [100101 alert](../screenshots/06-positive-100101-alert.png), [frequency and earlier events](../screenshots/07-positive-alert-details.png), [MITRE T1110](../screenshots/07a-positive-mitre-mapping.png).
+- **Check isolated negative:** [Single 60122 failure](../screenshots/08-negative-60122-alert.png) and [targeted account](../screenshots/09-negative-test-account.png).
+- **Check mixed-account negative:** [Three failure timestamps](../screenshots/10-mixed-account-three-failures.png), [first account](../screenshots/11-mixed-account-user-one-first.png), [second failure for first account](../screenshots/11a-mixed-account-user-one-second.png), [second account](../screenshots/12-mixed-account-user-two.png), [no new correlation alert](../screenshots/13-mixed-account-no-correlation.png).
+- **Validate second-account positive:** [New 100101 alert](../screenshots/14-second-account-positive-alert.png), [SOC-Lab-Test2 identified](../screenshots/15-second-account-alert-user.png).
+
+![Custom rule triggering after controlled failed authentication attempts](../screenshots/06-positive-100101-alert.png)
+
 ## Lessons learned
 
 1. Event ID `4625` indicates failure; the status/substatus explain why.
@@ -52,9 +65,9 @@ No external source or compromise was established by the reviewed local interacti
 
 ## Remaining tasks
 
-- Commit labelled Wazuh screenshot evidence.
+- All 19 labelled evidence PNGs committed under this project's screenshots folder and indexed above.
 - Both three-failure positive cases and the mixed-account 2+1 case are tested; additional source-IP/timing edge cases are outside current scope.
 - Review whether the rule threshold/source grouping should be tuned.
-- Finalize interview-style narrative and project summary.
+- [Interview summary](../INTERVIEW-SUMMARY.md) is available; periodically review evidence quality and technical limitations.
 
 This report is deliberately limited to the evidence actually observed in the lab.
