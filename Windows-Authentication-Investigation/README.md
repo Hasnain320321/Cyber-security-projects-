@@ -1,6 +1,6 @@
 # Project 2 — Windows Authentication Investigation
 
-**Status:** In progress — initial detection and controlled positive/negative tests completed on 8 October 2026.
+**Status:** In progress — initial detection, positive/negative and mixed-account tests completed on 8 October 2026.
 
 ## Objective
 
@@ -13,7 +13,7 @@ This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Ho
 - Wazuh 4.14.8 manager in VirtualBox and a Windows endpoint with active Wazuh agent (`Windows-Host`)
 - Windows Security Event ID **4625** (failed logon)
 - Existing Wazuh rule **60122** (individual login failure)
-- Dedicated local, non-administrator test account **SOC-Lab-Test**
+- Two dedicated local, non-administrator test accounts **SOC-Lab-Test** and **SOC-Lab-Test2**
 - Wazuh custom rule **100101**, stored in `local_rules.xml`
 - Host-only lab network; `192.168.56.1` is the Wazuh agent's IP address, not necessarily the authentication source
 
@@ -26,6 +26,7 @@ This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Ho
 5. Restarted Wazuh Manager and confirmed the service was active.
 6. **Positive test:** custom rule `100101` generated a level-10 alert at **2026-10-08 16:47:18** (dashboard local time). The expanded record showed `rule.frequency: 3` and `previous_output`.
 7. **Negative test:** one later failed logon at **2026-10-08 16:55:28** produced a `60122` alert for `SOC-Lab-Test`, with no new `100101` alert observed in the inspected event window.
+8. **Mixed-account test:** at **17:18:01.232** and **17:18:03.330**, two rule `60122` events had target `SOC-Lab-Test`; at **17:18:07.360**, a third rule `60122` event had target `SOC-Lab-Test2`. No new `100101` alert appeared in the test window. This supports username-specific correlation.
 
 ## Key evidence
 
@@ -38,7 +39,7 @@ This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Ho
 
 ## Interpretation and limitations
 
-The rule correctly detected the controlled repeated-failure pattern and did not fire on the single-failure negative test observed. This is **initial lab validation**, not proof of a production-ready detection.
+The rule correctly detected the controlled repeated-failure pattern, did not fire on the single-failure negative test observed, and did not combine two failures for one test account with one failure for a different test account. This is **initial lab validation**, not proof of a production-ready detection.
 
 Because the activity was authorised, its operational classification is **Benign Positive**; as a rule-validation test, it demonstrated a true-positive match for the intentionally generated pattern. The MITRE T1110 label reflects the detection's intended behaviour, **not proof that a real attacker was present**.
 
@@ -46,7 +47,7 @@ Because the activity was authorised, its operational classification is **Benign 
 
 - Three mistyped passwords by a real employee could also trigger the rule.
 - Matching on username alone can combine attempts from different source IPs; investigate source separately.
-- Test mixed accounts, boundary timing, repeated bursts and real remote authentication telemetry before production use.
+- Mixed-account test (2 + 1) is complete; still test three failures against the *second* account, boundary timing, repeated bursts and real remote authentication telemetry before production use.
 - Verify alert counts, time windows and Wazuh correlation behaviour under additional scenarios.
 - Save and label screenshots from the lab in the evidence folder. Screenshots are **not yet uploaded** in this project folder.
 
