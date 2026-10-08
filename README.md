@@ -17,14 +17,14 @@ My target roles are:
 
 **Project 1 — SOC Home Lab** is complete, including three controlled scenarios, three detection write-ups, three investigation reports, screenshots, and an interview summary.
 
-**Project 2 — Windows Authentication Investigation** is **complete (first portfolio version)**. The project built and validated Wazuh correlation rule `100101` using four controlled positive/negative scenarios across two accounts and investigated Event ID 4625 failures followed by an Event ID 4624 successful login. It includes two investigation reports, 26 curated screenshots (19 from the first investigation and seven from the second), an evidence timeline with limitations, a response playbook and an interview summary. Detection tuning for remote/production use remains optional future work.
+**Project 2 — Wazuh Brute-Force Detection & Authentication Investigation** is **complete (first portfolio version)**. The project built and validated Wazuh brute-force detection rule `100101` (three failures against the same account within 60 seconds) using four controlled positive/negative scenarios across two accounts and investigated Event ID 4625 failures followed by an Event ID 4624 successful login. It includes two investigation reports, 26 curated screenshots (19 from the first investigation and seven from the second), an evidence timeline with limitations, a response playbook and an interview summary. Detection tuning for remote/production use remains optional future work.
 
 ## Portfolio Projects
 
 | Project | Main Skills | Status |
 | --- | --- | --- |
 | [SOC Home Lab](./SOC-Home-Lab/) | Wazuh SIEM, Windows logs, Sysmon, custom detection engineering, alert triage, event correlation, MITRE ATT&CK | Complete |
-| [Windows Authentication Investigation](./Windows-Authentication-Investigation/) | Windows 4625/4624 investigation, Wazuh correlation rule, four validation scenarios, response playbook | Complete — portfolio v1 |
+| [Brute-Force Detection & Windows Authentication](./Windows-Authentication-Investigation/) | Wazuh rule 100101: 3 failed logins / 60s per account; 4 validation tests; Windows 4625/4624 investigation; SOC response playbook | Complete — portfolio v1 |
 | Phishing Email Investigation | Email headers, IOCs, threat intelligence, incident reporting | Planned |
 | Network PCAP Investigation | Wireshark, TCP/IP, packet analysis, network threats | Planned |
 | Vulnerability Assessment | Nmap, scanning, risk prioritisation, remediation | Planned |
