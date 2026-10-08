@@ -42,7 +42,15 @@ Check the attempted usernames, originating IP and device, logon types, event tim
 - The rule groups usernames, not necessarily source IP addresses.
 - Boundary-window behaviour, account case differences, lockout handling, RDP/network logons and repeat bursts were not fully tested.
 - A Wazuh Level 10 alert is a signal to investigate; it is not confirmation of compromise.
-- Screenshot files remain to be committed separately.
+- All 19 evidence screenshots have been committed within Project 2 and grouped in the [visual evidence index](./screenshots/README.md).
+
+## Visual proof for interviews
+
+- [Detection rule 100101](./screenshots/04-custom-rule-100101.png)
+- [Positive alert for first test account](./screenshots/06-positive-100101-alert.png)
+- [Mixed-account negative test](./screenshots/13-mixed-account-no-correlation.png)
+- [Positive alert for second test account](./screenshots/14-second-account-positive-alert.png)
+- [Complete 19-image evidence index](./screenshots/README.md)
 
 ## Likely interview questions
 
