@@ -79,7 +79,7 @@ Because the activity was authorised, its operational classification is **Benign 
 - [Evidence index — 19 uploaded screenshots](./screenshots/README.md)
 - [Interview summary](./INTERVIEW-SUMMARY.md)
 - [Project 2 essential memorisation notes](./notes/WHAT-TO-MEMORISE.md)
-- [Combined Project 1 + Project 2 daily 20 flashcards](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
+- [Combined Project 1 + Project 2 daily 40 flashcards](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
 - [Project 2-only learning review](./notes/LEARNING-REVIEW.md)
 - [Investigation 02 screenshot upload checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
 
