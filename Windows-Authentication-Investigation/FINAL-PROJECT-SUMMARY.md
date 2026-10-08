@@ -1,7 +1,7 @@
 # Project 2 — Final Portfolio Summary
 
 **Project:** Windows Authentication Investigation and Brute-Force Detection with Wazuh  
-**Portfolio version:** 1.0 — completed 8 October 2026  
+**Status:** Complete — 8 October 2026  
 **Scope:** Home lab; authorised local tests, not a simulated remote adversary or production deployment.
 
 ## Objective
@@ -48,12 +48,12 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 
 The project successfully demonstrates entry-level SOC skills in Windows log analysis, Wazuh alert triage, rule authoring, event correlation, controlled testing and benign activity classification. The repeated failures were deliberately generated, and the failed-then-successful sequence was performed by the authorised lab user. No real-world compromise was demonstrated.
 
-## Limitations and future improvements (not required for v1.0)
+## Limitations and optional future improvements
 
 - Correlation threshold is low for production and can fire for an employee mistyping a password.
 - Tests were local interactive logons (Type 2); network/RDP attacks and distributed sources were not validated.
 - Usernames were used for grouping; source-IP independence, window boundaries, and lockouts deserve additional testing.
-- Uploading the missing `25-mcafee-webadvisor-process-details.png` and an uncropped failure-query screenshot showing the `targetUserName` filter would strengthen proof of Investigation 02, but these are outside the completed first-version scope.
+- Uploading the missing `25-mcafee-webadvisor-process-details.png` and an uncropped failure-query screenshot showing the `targetUserName` filter would strengthen proof of Investigation 02, but these are outside the completed project scope.
 - Expand follow-on process/user correlation and adopt an incident ticket format for a future iteration.
 
-This is a **completed first portfolio version**, not a claim that the detection is production-ready.
+This project is **Complete**. Its local lab detection is not presented as production-ready.
