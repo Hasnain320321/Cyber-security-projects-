@@ -1,7 +1,7 @@
 # Project 2 — Interview-Ready Summary
 
 **Project:** Windows Authentication Investigation and Wazuh Brute-Force Detection  
-**Status:** Complete — first portfolio version (8 October 2026)  
+**Status:** Complete (8 October 2026)  
 **Boundary:** Authorised local test activity; no actual compromise or remote attack was demonstrated.
 
 ## 30-Second Version
