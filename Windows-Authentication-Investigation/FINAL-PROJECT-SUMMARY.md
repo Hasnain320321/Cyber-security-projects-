@@ -36,7 +36,10 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 - [Investigation 02](./investigations/02-failed-then-successful-login.md) and [transcribed timeline](./evidence/02-authentication-timeline.md)
 - [Custom rule XML and validation table](./detections/01-brute-force-correlation.md)
 - [Triage and response playbook](./response/01-authentication-alert-triage-playbook.md)
-- [Interview summary](./INTERVIEW-SUMMARY.md)
+- [Expanded interview summary, including a 60-second explanation and 12 interview questions](./INTERVIEW-SUMMARY.md)
+- [Project 2 memorisation notes](./notes/WHAT-TO-MEMORISE.md)
+- [Combined 20-card revision deck for Projects 1 and 2](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
+- [Investigation 02 screenshot upload checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
 - [Learning review: five anchors and 20 flashcards](./notes/LEARNING-REVIEW.md)
 
 **Evidence boundary:** All 19 screenshots in GitHub belong to the first investigation. The second investigation's screenshots were reviewed in the session but are currently represented in the repository only by a clearly-labelled reconstructed timeline and write-up.
