@@ -15,14 +15,16 @@ My target roles are:
 
 ## Current Focus
 
-The first major project is a **SOC Home Lab** using a Windows endpoint, Kali Linux, Sysmon, Wazuh, and VirtualBox networking. Three controlled scenarios are now documented: failed authentication, PowerShell process investigation, and a custom Wazuh detection for PowerShell `Test-NetConnection` activity. The project includes three detection write-ups, three investigation reports, evidence screenshots, troubleshooting notes, and an interview-ready summary.
+**Project 1 — SOC Home Lab** is complete, including three controlled scenarios, three detection write-ups, three investigation reports, screenshots, and an interview summary.
+
+**Project 2 — Windows Authentication Investigation** is in progress. Initial lab tests created and validated Wazuh correlation rule `100101` for three failed logins against the same account within 60 seconds. The positive test generated the level-10 rule alert; a subsequent single-login negative test generated only the individual failure alert in the reviewed period. Reports have been added; further tuning and screenshot uploads are pending.
 
 ## Portfolio Projects
 
 | Project | Main Skills | Status |
 | --- | --- | --- |
 | [SOC Home Lab](./SOC-Home-Lab/) | Wazuh SIEM, Windows logs, Sysmon, custom detection engineering, alert triage, event correlation, MITRE ATT&CK | Complete |
-| Windows Authentication Investigation | Event logs, brute-force analysis, account activity | Planned |
+| [Windows Authentication Investigation](./Windows-Authentication-Investigation/) | Event logs, repeated-failure correlation, custom Wazuh rule, alert validation | In progress — initial tests complete |
 | Phishing Email Investigation | Email headers, IOCs, threat intelligence, incident reporting | Planned |
 | Network PCAP Investigation | Wireshark, TCP/IP, packet analysis, network threats | Planned |
 | Vulnerability Assessment | Nmap, scanning, risk prioritisation, remediation | Planned |
@@ -71,4 +73,4 @@ All attack simulations and testing documented here are performed only in systems
 
 ---
 
-**Portfolio status:** actively being built. Project 1 (SOC Home Lab) is complete; the remaining roadmap projects are planned/in progress.
+**Portfolio status:** actively being built. Project 1 (SOC Home Lab) is complete; Project 2 (Windows Authentication Investigation) is in progress, with initial positive/negative detection tests complete. Later projects remain planned.
