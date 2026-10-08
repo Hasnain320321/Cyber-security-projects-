@@ -1,7 +1,7 @@
 # Investigation 02 — Reconstructed Evidence Timeline
 
 **Evidence type:** Manual transcription of screenshots reviewed during the 8 October 2026 lab session; **not** an original Wazuh export or independently captured raw log.  
-**Scope:** Project 2 only. No screenshots of Investigation 02 have been committed to this folder as original PNG evidence.
+**Scope:** Project 2 only. **Seven Investigation 02 screenshot excerpts are committed to GitHub** under the [evidence index](../screenshots/README.md). These are excerpts, not a complete event export.
 
 ## Confirmed account correlation
 
@@ -22,12 +22,24 @@
 
 The **same test account** had two failed sign-ins followed by a successful local interactive login. The sequence was user-authorised testing. Nearby process alerts were not proven to belong to that account. No unauthorised authentication or compromise can be established from the reviewed evidence.
 
-## Additional original screenshot upload status
+## Visual exhibits from this investigation
 
-Ten distinct original Wazuh screenshots numbered 16–25 have been prepared for manual upload into the dedicated Project 2 screenshots folder. See the [Investigation 02 screenshot evidence checklist](./INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md). **At the time of this writing, they remain pending; this timeline is a transcription, not a substitute for original screenshots.**
+| Observed evidence | Screenshot |
+| --- | --- |
+| Wider failed-login list | [16 — failure overview](../screenshots/16-failed-logins-overview.png) |
+| `60118` success alert at 18:01:33 | [17 — successful logons](../screenshots/17-test-account-success-list.png) |
+| Source loopback / Logon Type 2 | [18 — successful event context](../screenshots/18-success-logon-type-and-ip.png) |
+| Confirmed `SOC-Lab-Test2` target | [19 — successful target username](../screenshots/19-success-target-username.png) |
+| Two prior `60122` failures | [20 — two failed events](../screenshots/20-two-failures-targeted-account.png) |
+| Later separate `4625` process details | [21 — WebView2-linked event](../screenshots/21-separate-webview-failure-process.png) |
+| Nearby process alert names | [24 — process alert list](../screenshots/24-nearby-sysmon-process-alerts.png) |
+
+**Important:** The two rows in screenshot 20 do not display the `targetUserName` filter. The account match was established during the live filtered Wazuh query, but that particular PNG is not a full proof of the username. The McAfee process-detail screenshot (`25`) is still missing from the public repository; see the [verified upload checklist](./INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md).
+
+
 
 ## Original evidence boundaries
 
-The [Project 2 screenshot index](../screenshots/README.md) contains **19 GitHub-hosted images for the first investigation**. The second investigation was supported by screenshots submitted in the ChatGPT conversation; those separate PNGs were **not uploaded into GitHub**. This markdown record makes the distinction explicit.
+The [Project 2 screenshot index](../screenshots/README.md) currently covers **19 images for Investigation 01 and 7 for Investigation 02**. It is a curated set of screenshot excerpts, not raw EVTX evidence. McAfee process detail image 25 remains absent.
 
 See [Investigation 02](../investigations/02-failed-then-successful-login.md) for methodology, response and conclusions.
