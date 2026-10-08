@@ -2,7 +2,7 @@
 
 ## 30-second explanation
 
-I built and validated a Wazuh detection for repeated Windows authentication failures in a controlled home lab. I monitored Windows Security Event ID 4625, used Wazuh's existing rule 60122 as a correlation source, then wrote custom rule 100101 using a three-event threshold within 60 seconds and a same-username requirement. I deliberately tested it on two local standard-user accounts, including a three-failure positive case for each, a single-failure negative case and a mixed-username case. The high-severity correlation alert fired when expected and was absent in the two negative cases I reviewed.
+I built and validated a custom Wazuh rule for repeated Windows authentication failures using Windows Security Event ID 4625 and a same-username three-event threshold within 60 seconds. I tested it against two local standard-user accounts with two positive and two negative scenarios. I then investigated two failed logins followed by a successful Event ID 4624 login for the same account, checking source, Logon Type and nearby process alerts. All activity was authorised in my lab; I documented the evidence, limitations and recommended SOC response.
 
 ## What I actually built
 
@@ -20,6 +20,10 @@ I built and validated a Wazuh detection for repeated Windows authentication fail
 | One wrong password for account 1 | Only `60122` | `60122` at 16:55:28, no new `100101` seen |
 | Two wrong passwords for account 1 + one for account 2 | `60122` events only | Three `60122` events at 17:18:01/:03/:07; no `100101` seen |
 | Three wrong passwords for account 2 | `100101` | Alert at 17:30:13; expanded event target `SOC-Lab-Test2` |
+
+## Investigation 02 — Failed followed by successful login
+
+Two 4625 events at 18:01:21 and 18:01:26 targeted `SOC-Lab-Test2`; a 4624 at 18:01:33 successfully logged the same account in using Logon Type 2. A separate Microsoft-account Logon Type 7 unlock was excluded. McAfee WebAdvisor BrowserHost.exe appeared in process-alert telemetry around 18:01:47, but we did not establish that the test-account session initiated it; no compromise was concluded. See [Investigation 02](./investigations/02-failed-then-successful-login.md).
 
 ## How I investigated
 
@@ -44,13 +48,18 @@ Check the attempted usernames, originating IP and device, logon types, event tim
 - A Wazuh Level 10 alert is a signal to investigate; it is not confirmation of compromise.
 - All 19 evidence screenshots have been committed within Project 2 and grouped in the [visual evidence index](./screenshots/README.md).
 
+## Response and practical outcome
+
+See the [SOC triage/response playbook](./response/01-authentication-alert-triage-playbook.md) and [final portfolio summary](./FINAL-PROJECT-SUMMARY.md). I did not perform real-world containment; the report recommends actions that would be appropriate if malicious activity were substantiated.
+
 ## Visual proof for interviews
 
 - [Detection rule 100101](./screenshots/04-custom-rule-100101.png)
 - [Positive alert for first test account](./screenshots/06-positive-100101-alert.png)
 - [Mixed-account negative test](./screenshots/13-mixed-account-no-correlation.png)
 - [Positive alert for second test account](./screenshots/14-second-account-positive-alert.png)
-- [Complete 19-image evidence index](./screenshots/README.md)
+- [Complete 19-image evidence index for Investigation 01](./screenshots/README.md)
+- [Investigation 02 transcribed event timeline](./evidence/02-authentication-timeline.md) (original PNGs not in repository)
 
 ## Likely interview questions
 
