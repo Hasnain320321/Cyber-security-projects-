@@ -15,9 +15,13 @@ When capturing screenshots from the test, keep timestamps and rule IDs visible, 
 | `07-positive-alert-details.png` | Rule `100101`, frequency 3 and MITRE T1110 |
 | `08-negative-60122-alert.png` | 8 Oct 2026 16:55:28 `60122` alert |
 | `09-negative-test-account.png` | `targetUserName: SOC-Lab-Test` on isolated failed logon |
+| `10-mixed-account-three-failures.png` | `60122` at 17:18:01, :03 and :07 (8 Oct 2026) |
+| `11-mixed-account-user-one.png` | First two failures' `targetUserName: SOC-Lab-Test` |
+| `12-mixed-account-user-two.png` | Third failure's `targetUserName: SOC-Lab-Test2` |
+| `13-mixed-account-no-correlation.png` | No new `100101` for the 2+1 mixed-account test |
 
 ## Interpretation
 
-The positive test confirms the intended alert was generated. The negative test did not generate a fresh custom alert in the observed window. This does not replace additional production-quality tests.
+The positive test confirms the intended alert was generated. The isolated negative and mixed-account 2+1 tests did not generate a fresh custom alert in their observed windows. This does not replace additional production-quality tests.
 
 Related documents: [Detection](../detections/01-brute-force-correlation.md) · [Investigation](../investigations/01-controlled-login-attempts.md).
