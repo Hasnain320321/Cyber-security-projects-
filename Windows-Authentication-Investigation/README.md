@@ -1,10 +1,10 @@
-# Project 2 — Windows Authentication Investigation
+# Project 2 — Wazuh Brute-Force Detection & Windows Authentication Investigation
 
 **Status:** **Complete — first portfolio version (8 October 2026).** Four correlation-rule tests and a separate failed-to-successful authentication investigation documented. Advanced detection tuning is future work.
 
 ## Objective
 
-Investigate repeated Windows authentication failures using Wazuh, create and validate a custom rule for a suspicious failure pattern, distinguish authorised testing from an attack, and document defensive recommendations.
+Design and validate a Wazuh **brute-force detection rule** (100101: three Windows failed logins against the same account within 60 seconds), then investigate 4625 failures followed by a 4624 success, distinguish authorised tests from potential account compromise, and document defensive recommendations.
 
 This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Home-Lab/).
 
