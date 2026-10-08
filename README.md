@@ -19,12 +19,15 @@ My target roles are:
 
 **Project 2 — Wazuh Brute-Force Detection & Authentication Investigation** is **Complete**. The project built and validated Wazuh brute-force detection rule `100101` (three failures against the same account within 60 seconds) using four controlled positive/negative scenarios across two accounts and investigated Event ID 4625 failures followed by an Event ID 4624 successful login. It includes two investigation reports, 26 curated screenshots (19 from the first investigation and seven from the second), an evidence timeline with limitations, a response playbook and an interview summary. Detection tuning for remote/production use remains optional future work.
 
+**New — Windows Privilege Escalation Hunt** has been added as a separate upcoming investigation. Its GitHub plan, detection hypothesis, evidence checklist and interview preparation are ready. **No privilege-change tests have been run yet.**
+
 ## Portfolio Projects
 
 | Project | Main Skills | Status |
 | --- | --- | --- |
 | [SOC Home Lab](./SOC-Home-Lab/) | Wazuh SIEM, Windows logs, Sysmon, custom detection engineering, alert triage, event correlation, MITRE ATT&CK | Complete |
 | [Brute-Force Detection & Windows Authentication](./Windows-Authentication-Investigation/) | Wazuh rule 100101: 3 failed logins / 60s per account; 4 validation tests; Windows 4625/4624 investigation; SOC response playbook | Complete |
+| [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) | Windows Event 4732/4733, privileged group changes, Wazuh detection, account/session correlation, MITRE T1098.007 | In progress — setup only |
 | Phishing Email Investigation | Email headers, IOCs, threat intelligence, incident reporting | Planned |
 | Network PCAP Investigation | Wireshark, TCP/IP, packet analysis, network threats | Planned |
 | Vulnerability Assessment | Nmap, scanning, risk prioritisation, remediation | Planned |
@@ -77,4 +80,4 @@ All attack simulations and testing documented here are performed only in systems
 
 ---
 
-**Portfolio status:** actively being built. Projects 1 and 2 are Complete; later projects remain planned.
+**Portfolio status:** Projects 1 and 2 are Complete. The Windows Privilege Escalation Hunt is in preparation; Phishing Email Investigation and the other future projects remain planned.
