@@ -41,7 +41,7 @@ This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Ho
 
 ## Evidence at a glance
 
-All 19 uploaded screenshots support the **first detection-testing investigation** in the dedicated [Project 2 visual evidence index](./screenshots/README.md). Investigation 02 additionally has a [separate reconstructed evidence timeline](./evidence/02-authentication-timeline.md), transcribed from screenshots shown during the lab session; those later PNGs have not been uploaded to GitHub.
+All 19 uploaded screenshots support the **first detection-testing investigation** in the dedicated [Project 2 visual evidence index](./screenshots/README.md). Investigation 02 additionally has a [separate reconstructed evidence timeline](./evidence/02-authentication-timeline.md), transcribed from screenshots shown during the lab session; those later PNGs have not been uploaded to GitHub. Ten original screenshots have been prepared for a separate future upload and listed in the [Investigation 02 evidence checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md).
 
 | Scenario | Direct evidence | Outcome |
 | --- | --- | --- |
@@ -78,7 +78,10 @@ Because the activity was authorised, its operational classification is **Benign 
 - [Final project summary](./FINAL-PROJECT-SUMMARY.md)
 - [Evidence index — 19 uploaded screenshots](./screenshots/README.md)
 - [Interview summary](./INTERVIEW-SUMMARY.md)
-- [Five memory anchors and 20 SOC flashcards](./notes/LEARNING-REVIEW.md)
+- [Project 2 essential memorisation notes](./notes/WHAT-TO-MEMORISE.md)
+- [Combined Project 1 + Project 2 daily 20 flashcards](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
+- [Project 2-only learning review](./notes/LEARNING-REVIEW.md)
+- [Investigation 02 screenshot upload checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
 
 ## Analyst approach
 
