@@ -42,7 +42,7 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 - [Investigation 02 screenshot audit and missing-image checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
 - [Learning review: five anchors and 20 flashcards](./notes/LEARNING-REVIEW.md)
 
-**Evidence boundary:** All 19 screenshots in GitHub belong to the first investigation. The second investigation's screenshots were reviewed in the session but are currently represented in the repository only by a clearly-labelled reconstructed timeline and write-up.
+**Evidence boundary:** GitHub now hosts **26 curated images: 19 from Investigation 01 and 7 from Investigation 02**. The second investigation also includes a textual reconstruction of the observed timeline. Its cropped failure-alert image does not display the username filter, and the McAfee BrowserHost.exe detail image has not been uploaded. These limitations are explicitly recorded rather than presenting the screenshots as complete forensic logs.
 
 ## Conclusion
 
