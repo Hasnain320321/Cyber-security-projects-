@@ -1,7 +1,7 @@
 # Detection 01 — Repeated Windows Failed Logins
 
 **Date tested:** 8 October 2026  
-**Status:** Initial positive, isolated-negative, and mixed-account tests passed in the lab; additional tuning needed.
+**Status:** Four initial validation scenarios passed in the lab; additional tuning needed.
 
 ## Detection hypothesis
 
@@ -49,6 +49,7 @@ Located inside `local_rules.xml` without replacing Project 1's custom rule `1001
 | Positive | Three wrong passwords against `SOC-Lab-Test` in quick succession | `100101` alert | Level-10 `100101` at 16:47:18 on 8 Oct 2026; `rule.frequency: 3`; earlier-event `previous_output` | Passed |
 | Negative | One wrong password against same account after waiting beyond correlation window | Individual `60122` but no new `100101` | `60122` at 16:55:28; no new `100101` observed in reviewed window | Passed within observed window |
 | Mixed accounts | Two incorrect passwords for `SOC-Lab-Test` and one for `SOC-Lab-Test2`, all within seconds | Three `60122` events; no `100101` | `60122` at 17:18:01.232 and 17:18:03.330 (account 1), and at 17:18:07.360 (account 2); no new `100101` in reviewed window | Passed within observed window |
+| Second-account positive | Three wrong passwords against `SOC-Lab-Test2` | New `100101` alert associated with second account | Level-10 `100101` at 17:30:13.110 on 8 Oct 2026; expanded `4625` event contained `targetUserName: SOC-Lab-Test2` | Passed |
 
 The Wazuh manager restarted successfully and was reported `active (running)` prior to live testing.
 
@@ -57,7 +58,7 @@ The Wazuh manager restarted successfully and was reported `active (running)` pri
 - A legitimate employee mistyping a password three times can trigger a benign alert.
 - Username grouping does not ensure that all attempts came from the same IP.
 - Interactive local logons (Type 2) do not validate detection coverage for network logons (Type 3) or RDP (Type 10).
-- Mixed-username case (2+1) was tested; still test account case variations, three failures for the second account, timing boundaries, bursts beyond the threshold, lockout behaviour and successful logons (4624).
+- Mixed-username case (2+1) and independent three-failure second-account test were completed; still test account case variations, timing boundaries, bursts beyond the threshold, lockout behaviour and successful logons (4624).
 - Alert severity must not substitute for incident severity or verification.
 
 ## Suggested analyst response
