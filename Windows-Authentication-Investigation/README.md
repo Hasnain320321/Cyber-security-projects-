@@ -78,6 +78,7 @@ Because the activity was authorised, its operational classification is **Benign 
 - [Final project summary](./FINAL-PROJECT-SUMMARY.md)
 - [Evidence index — 19 uploaded screenshots](./screenshots/README.md)
 - [Interview summary](./INTERVIEW-SUMMARY.md)
+- [Five memory anchors and 20 SOC flashcards](./notes/LEARNING-REVIEW.md)
 
 ## Analyst approach
 
