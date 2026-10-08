@@ -19,9 +19,11 @@ When capturing screenshots from the test, keep timestamps and rule IDs visible, 
 | `11-mixed-account-user-one.png` | First two failures' `targetUserName: SOC-Lab-Test` |
 | `12-mixed-account-user-two.png` | Third failure's `targetUserName: SOC-Lab-Test2` |
 | `13-mixed-account-no-correlation.png` | No new `100101` for the 2+1 mixed-account test |
+| `14-second-account-positive-alert.png` | Rule `100101` at 17:30:13.110 |
+| `15-second-account-alert-user.png` | Expanded `4625` event with `targetUserName: SOC-Lab-Test2` |
 
 ## Interpretation
 
-The positive test confirms the intended alert was generated. The isolated negative and mixed-account 2+1 tests did not generate a fresh custom alert in their observed windows. This does not replace additional production-quality tests.
+Both account-specific positive tests generated the intended correlation alert. The isolated negative and mixed-account 2+1 tests did not generate a fresh custom alert in their observed windows. This does not replace additional production-quality tests.
 
 Related documents: [Detection](../detections/01-brute-force-correlation.md) · [Investigation](../investigations/01-controlled-login-attempts.md).
