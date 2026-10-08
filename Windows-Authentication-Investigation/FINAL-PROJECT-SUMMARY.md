@@ -37,6 +37,7 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 - [Custom rule XML and validation table](./detections/01-brute-force-correlation.md)
 - [Triage and response playbook](./response/01-authentication-alert-triage-playbook.md)
 - [Interview summary](./INTERVIEW-SUMMARY.md)
+- [Learning review: five anchors and 20 flashcards](./notes/LEARNING-REVIEW.md)
 
 **Evidence boundary:** All 19 screenshots in GitHub belong to the first investigation. The second investigation's screenshots were reviewed in the session but are currently represented in the repository only by a clearly-labelled reconstructed timeline and write-up.
 
