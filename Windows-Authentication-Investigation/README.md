@@ -1,6 +1,6 @@
 # Project 2 — Wazuh Brute-Force Detection & Windows Authentication Investigation
 
-**Status:** **Complete — first portfolio version (8 October 2026).** Four correlation-rule tests and a separate failed-to-successful authentication investigation documented. Advanced detection tuning is future work.
+**Status:** **Complete (8 October 2026).** Four correlation-rule tests and a separate failed-to-successful authentication investigation documented. Advanced detection tuning is future work.
 
 ## Objective
 
@@ -89,4 +89,4 @@ Validate -> Identify -> Correlate -> Scope -> Classify.
 
 In a genuine incident, review account identity, source IP/device, logon type, failure count/time distribution, related successful logins (4624), and actions after any success before escalating or containing.
 
-**First-version completion note:** Core planned local authentication detection, validation, investigation and reporting are complete. This status does **not** certify production readiness or comprehensive post-login forensic coverage.
+**Completion note:** Core planned local authentication detection, validation, investigation and reporting are complete. This status does **not** certify production readiness or comprehensive post-login forensic coverage.
