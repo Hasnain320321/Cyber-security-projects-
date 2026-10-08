@@ -17,7 +17,7 @@ My target roles are:
 
 **Project 1 — SOC Home Lab** is complete, including three controlled scenarios, three detection write-ups, three investigation reports, screenshots, and an interview summary.
 
-**Project 2 — Windows Authentication Investigation** is **complete (first portfolio version)**. The project built and validated Wazuh correlation rule `100101` using four controlled positive/negative scenarios across two accounts and investigated Event ID 4625 failures followed by an Event ID 4624 successful login. It includes two investigation reports, 19 uploaded detection-test screenshots, a separately labelled timeline of the second scenario, a response playbook and an interview summary. Detection tuning for remote/production use remains optional future work.
+**Project 2 — Windows Authentication Investigation** is **complete (first portfolio version)**. The project built and validated Wazuh correlation rule `100101` using four controlled positive/negative scenarios across two accounts and investigated Event ID 4625 failures followed by an Event ID 4624 successful login. It includes two investigation reports, 26 curated screenshots (19 from the first investigation and seven from the second), an evidence timeline with limitations, a response playbook and an interview summary. Detection tuning for remote/production use remains optional future work.
 
 ## Portfolio Projects
 
