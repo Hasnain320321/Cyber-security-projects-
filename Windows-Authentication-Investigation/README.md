@@ -41,7 +41,7 @@ This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Ho
 
 ## Evidence at a glance
 
-All 19 uploaded screenshots support the **first detection-testing investigation** in the dedicated [Project 2 visual evidence index](./screenshots/README.md). Investigation 02 additionally has a [separate reconstructed evidence timeline](./evidence/02-authentication-timeline.md), transcribed from screenshots shown during the lab session; those later PNGs have not been uploaded to GitHub. Ten original screenshots have been prepared for a separate future upload and listed in the [Investigation 02 evidence checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md).
+**26 curated PNGs** are on GitHub: 19 from Investigation 01 and seven supporting Investigation 02. All are linked in the [Project 2 visual evidence index](./screenshots/README.md). A [reconstructed timeline](./evidence/02-authentication-timeline.md) explains which observations each image supports and where screenshots alone are incomplete. Two low-value cropped fragments were removed; image 25 (McAfee BrowserHost.exe process details) was not uploaded. See the [audit manifest](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md).
 
 | Scenario | Direct evidence | Outcome |
 | --- | --- | --- |
@@ -50,7 +50,7 @@ All 19 uploaded screenshots support the **first detection-testing investigation*
 | Single-failure negative | [Failure alert](./screenshots/08-negative-60122-alert.png) · [Username](./screenshots/09-negative-test-account.png) | Passed in reviewed window |
 | Mixed-account negative (2+1) | [Individual failures](./screenshots/10-mixed-account-three-failures.png) · [No correlated alert](./screenshots/13-mixed-account-no-correlation.png) | Passed in reviewed window |
 | Second-account positive | [Alert](./screenshots/14-second-account-positive-alert.png) · [Username](./screenshots/15-second-account-alert-user.png) | Passed |
-| Failed → successful authentication | [Investigation 02](./investigations/02-failed-then-successful-login.md) · [Timeline transcript](./evidence/02-authentication-timeline.md) | Authorised sequence documented |
+| Failed → successful authentication | [Two failed-login rows](./screenshots/20-two-failures-targeted-account.png) · [Success](./screenshots/17-test-account-success-list.png) · [Target account](./screenshots/19-success-target-username.png) · [Investigation 02](./investigations/02-failed-then-successful-login.md) | Authorised sequence documented; source-event crops are not complete exports |
 
 ![Custom Wazuh rule 100101 successfully detected a controlled burst of failures](./screenshots/06-positive-100101-alert.png)
 
@@ -66,7 +66,7 @@ Because the activity was authorised, its operational classification is **Benign 
 - Matching on username alone can combine attempts from different source IPs; investigate source separately.
 - Both account-specific positive tests and the mixed-account 2+1 case are complete; timing-boundary, repeated-burst and real remote authentication telemetry tests remain outside the current test scope.
 - Verify alert counts, time windows and Wazuh correlation behaviour under additional scenarios.
-- All **19 labelled evidence screenshots** are now uploaded and grouped by scenario in the [evidence index](./screenshots/README.md).
+- All **26 retained evidence screenshots** are uploaded and grouped by investigation and scenario in the [evidence index](./screenshots/README.md). The McAfee process-detail image remains missing.
 
 ## Documentation
 
@@ -76,12 +76,12 @@ Because the activity was authorised, its operational classification is **Benign 
 - [Investigation 02 evidence timeline (transcribed)](./evidence/02-authentication-timeline.md)
 - [SOC triage and response playbook](./response/01-authentication-alert-triage-playbook.md)
 - [Final project summary](./FINAL-PROJECT-SUMMARY.md)
-- [Evidence index — 19 uploaded screenshots](./screenshots/README.md)
+- [Evidence index — 26 curated screenshots](./screenshots/README.md)
 - [Interview summary](./INTERVIEW-SUMMARY.md)
 - [Project 2 essential memorisation notes](./notes/WHAT-TO-MEMORISE.md)
 - [Combined Project 1 + Project 2 daily 40 flashcards](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
 - [Project 2-only learning review](./notes/LEARNING-REVIEW.md)
-- [Investigation 02 screenshot upload checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
+- [Investigation 02 image-by-image audit and missing-image checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
 
 ## Analyst approach
 
