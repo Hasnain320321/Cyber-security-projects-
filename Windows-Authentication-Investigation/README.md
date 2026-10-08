@@ -38,6 +38,20 @@ This is a separate portfolio project from [Project 1 — SOC Home Lab](../SOC-Ho
 - `status: 0xC000006D`; `subStatus: 0xC000006A` (incorrect password)
 - Custom rule `100101`, level 10, mapped to MITRE ATT&CK **T1110 — Brute Force**
 
+## Evidence at a glance
+
+All 19 screenshots live in the dedicated [Project 2 visual evidence index](./screenshots/README.md), grouped into lab setup, initial positive, isolated negative, mixed-account negative, and second-account positive tests.
+
+| Scenario | Direct evidence | Outcome |
+| --- | --- | --- |
+| Lab setup and custom rule | [Wazuh XML](./screenshots/04-custom-rule-100101.png) · [Manager status](./screenshots/05-manager-active.png) | Rule deployed |
+| First-account positive | [Alert](./screenshots/06-positive-100101-alert.png) · [Details](./screenshots/07-positive-alert-details.png) | Passed |
+| Single-failure negative | [Failure alert](./screenshots/08-negative-60122-alert.png) · [Username](./screenshots/09-negative-test-account.png) | Passed in reviewed window |
+| Mixed-account negative (2+1) | [Individual failures](./screenshots/10-mixed-account-three-failures.png) · [No correlated alert](./screenshots/13-mixed-account-no-correlation.png) | Passed in reviewed window |
+| Second-account positive | [Alert](./screenshots/14-second-account-positive-alert.png) · [Username](./screenshots/15-second-account-alert-user.png) | Passed |
+
+![Custom Wazuh rule 100101 successfully detected a controlled burst of failures](./screenshots/06-positive-100101-alert.png)
+
 ## Interpretation and limitations
 
 The rule correctly detected the controlled repeated-failure pattern, did not fire on the single-failure negative test observed, and did not combine two failures for one test account with one failure for a different test account. This is **initial lab validation**, not proof of a production-ready detection.
@@ -50,7 +64,7 @@ Because the activity was authorised, its operational classification is **Benign 
 - Matching on username alone can combine attempts from different source IPs; investigate source separately.
 - Both account-specific positive tests and the mixed-account 2+1 case are complete; timing-boundary, repeated-burst and real remote authentication telemetry tests remain outside the current test scope.
 - Verify alert counts, time windows and Wazuh correlation behaviour under additional scenarios.
-- Save and label screenshots from the lab in the evidence folder. Screenshots are **not yet uploaded** in this project folder.
+- All **19 labelled evidence screenshots** are now uploaded and grouped by scenario in the [evidence index](./screenshots/README.md).
 
 ## Documentation
 
