@@ -1,41 +1,38 @@
-# Investigation 02 — Additional Screenshot Evidence Upload Checklist
+# Investigation 02 — Screenshot Review and Evidence Manifest
 
-**Status:** Prepared from the original Wazuh screenshots shared on 8 October 2026; **not yet committed to GitHub**.
+**Audited:** 8 October 2026 against the live GitHub files. **Seven Investigation 02 PNGs are currently retained and published. One important PNG remains missing.**
 
-**Location when uploaded:** `Windows-Authentication-Investigation/screenshots/`.
+**Location:** [Project 2 screenshots](../screenshots/README.md) under `Windows-Authentication-Investigation/screenshots/`.
 
-The project's first 19 verified images (01–15, including lettered subnumbers) support Investigation 01 and **must not be renamed, overwritten, or removed**. These 10 proposed new PNGs are distinct, numbered 16–25, for Investigation 02. No Project 1 path is involved.
+The 19 original images from Investigation 01 remain in place. **Do not modify Project 1 (`SOC-Home-Lab/`).**
 
-## What each new screenshot should demonstrate
+## Audit disposition for the ten originally prepared PNGs
 
-| Planned filename | Evidence | Investigation phase |
+| Original filename | Decision | Explanation |
 | --- | --- | --- |
-| `16-failed-logins-overview.png` | 4625 failure list near 18:01 | Establish timestamp candidates |
-| `17-test-account-success-list.png` | Filtered successful-logon results for the lab account | Find successful event |
-| `18-success-logon-type-and-ip.png` | 4624 with Logon Type 2 and loopback IP | Identify source and method |
-| `19-success-target-username.png` | Target username SOC-Lab-Test2 | Confirm account identity |
-| `20-two-failures-targeted-account.png` | 18:01:21 and 18:01:26 failed logins | Correlate failures to success |
-| `21-separate-webview-failure-process.png` | Different later 4625 process entry | Investigate adjacent event separately |
-| `22-separate-failure-context.png` | Context for later event | Do not over-attribute |
-| `23-separate-failure-rule.png` | Wazuh 60122 for later event | Detection details |
-| `24-nearby-sysmon-process-alerts.png` | Nearby CMD-related alert list | Post-login scoping (unattributed) |
-| `25-mcafee-webadvisor-process-details.png` | BrowserHost.exe, McAfee metadata/command line | Process attribution caution |
+| [16-failed-logins-overview.png](../screenshots/16-failed-logins-overview.png) | **Keep** | Context: observed failure timestamps, but no usernames in the crop |
+| [17-test-account-success-list.png](../screenshots/17-test-account-success-list.png) | **Keep** | Includes success at 18:01:33, Wazuh rule 60118 |
+| [18-success-logon-type-and-ip.png](../screenshots/18-success-logon-type-and-ip.png) | **Keep** | Expanded event shows interactive Type 2 and loopback IP |
+| [19-success-target-username.png](../screenshots/19-success-target-username.png) | **Keep** | Confirms SOC-Lab-Test2 target for expanded success |
+| [20-two-failures-targeted-account.png](../screenshots/20-two-failures-targeted-account.png) | **Keep** | Shows the 18:01:21 and 18:01:26 Wazuh 60122 failures; the cropped rows do not display the username filter |
+| [21-separate-webview-failure-process.png](../screenshots/21-separate-webview-failure-process.png) | **Keep (supporting only)** | Shows a separate subsequent failed sign-in and WebView2 process; target account unverified |
+| `22-separate-failure-context.png` | **Removed** | Fragment of separate event; mostly subject-account fields and could mislead a reader about the target username |
+| `23-separate-failure-rule.png` | **Removed** | Low-value duplicate context; rule 60122 already established elsewhere |
+| [24-nearby-sysmon-process-alerts.png](../screenshots/24-nearby-sysmon-process-alerts.png) | **Keep** | Documents process-related Wazuh alert rows after the success (not attributable to test account without further evidence) |
+| `25-mcafee-webadvisor-process-details.png` | **Not uploaded** | Needed to evidence the McAfee BrowserHost.exe process details mentioned in Investigation 02 |
 
-## Accuracy safeguards
+**Total after cleanup: 26 original PNGs on GitHub = 19 Investigation 01 + 7 Investigation 02.**
 
-1. The two filtered 4625 events and 4624 success are for **SOC-Lab-Test2**.
-2. The McAfee WebAdvisor-related event is **not proven to be caused by that account's sign-in**. Keep the report's caveat.
-3. The additional 18:01:48 failure's target account is **not established** in supplied field screenshots.
-4. The existing 19 PNGs support Detection/Investigation 01. Don't move them into Investigation 02.
-5. These are image captures, not a raw Windows EVTX export.
-6. Review these images for personally identifying information before publishing to the public repository.
+## Remaining user action — only if you want the last exhibit
 
-## Upload workflow
+From the additional evidence ZIP supplied earlier, upload **only** `25-mcafee-webadvisor-process-details.png` to `Windows-Authentication-Investigation/screenshots/` using GitHub's Add file → Upload files. Review its contents for information you do not want on a public repository before committing.
 
-1. Download and extract the prepared Investigation 02 ZIP supplied in the conversation.
-2. Open GitHub at **Windows-Authentication-Investigation -> screenshots**.
-3. Select **Add file -> Upload files** and choose only the ten PNGs named 16–25 from the extracted folder.
-4. Confirm all ten names and the correct directory, then commit directly to `main`.
-5. Verify each new image opens. Update the screenshot evidence index to link those files and mark them uploaded.
+Once uploaded, update the [evidence index](../screenshots/README.md), [Investigation 02](../investigations/02-failed-then-successful-login.md) and [timeline](./02-authentication-timeline.md) to link the actual image. The eventual total would be **27** (19 + 8), *not* 29.
 
-This checklist remains **pending** until those PNGs appear in the live repository.
+## Evidence limitations
+
+- The live Wazuh query confirmed the failed logins targeted SOC-Lab-Test2, but screenshots 16 and 20 crop out filter chips and target usernames. The written timeline therefore records the observed filtered search, not a complete exported raw event chain.
+- The process alert near 18:01:47 was **not conclusively tied** to the SOC-Lab-Test2 session.
+- The later WebView2-related failure is **not proven** to involve SOC-Lab-Test2.
+- Keep exact event names and timestamps; do not classify an alert as malicious purely because of its title.
+- These are screenshot excerpts, **not** EVTX or a complete forensic acquisition.
