@@ -38,7 +38,7 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 - [Triage and response playbook](./response/01-authentication-alert-triage-playbook.md)
 - [Expanded interview summary, including a 60-second explanation and 12 interview questions](./INTERVIEW-SUMMARY.md)
 - [Project 2 memorisation notes](./notes/WHAT-TO-MEMORISE.md)
-- [Combined 20-card revision deck for Projects 1 and 2](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
+- [Combined 40-card revision deck: 20 per project](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
 - [Investigation 02 screenshot upload checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
 - [Learning review: five anchors and 20 flashcards](./notes/LEARNING-REVIEW.md)
 
