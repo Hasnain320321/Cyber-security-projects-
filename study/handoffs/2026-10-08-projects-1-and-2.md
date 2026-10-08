@@ -1,6 +1,6 @@
 # SOC Portfolio Session Handoff — 8 October 2026
 
-**Current state:** Project 1 (SOC Home Lab) complete v1; Project 2 (Windows Authentication Investigation) complete v1. Project 3 (Phishing Email Investigation) deferred until the learner explicitly asks to begin.
+**Current state:** Project 1 (SOC Home Lab) Complete; Project 2 (Windows Authentication Investigation) Complete. Project 3 (Phishing Email Investigation) deferred until the learner explicitly asks to begin.
 
 ## Project 1 — Baseline retained unchanged
 
