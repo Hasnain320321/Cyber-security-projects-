@@ -32,6 +32,10 @@ My target roles are:
 
 See the full plan in [PROJECT-ROADMAP.md](./PROJECT-ROADMAP.md).
 
+### Daily SOC revision
+
+Use the [combined Project 1 + Project 2 20-card flashcard deck](./study/SOC-FLASHCARDS-PROJECTS-1-2.md) and the [Project 2 memorisation notes](./Windows-Authentication-Investigation/notes/WHAT-TO-MEMORISE.md). The Project 2 [interview guide](./Windows-Authentication-Investigation/INTERVIEW-SUMMARY.md) has both short and detailed responses.
+
 ## Tools & Technologies
 
 Tools I am using or developing experience with include:
