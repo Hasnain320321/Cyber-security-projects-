@@ -80,7 +80,7 @@ I added custom rule `100101` under `local_rules.xml`, preserving Project 1's sep
 
 The detections correctly reflected deliberately generated account failures. **Benign Positive** as SOC disposition. As rule testing, the positive cases confirmed the behaviour could be detected. MITRE ATT&CK **T1110 (Brute Force)** describes the detection hypothesis; it does **not** establish malicious intent.
 
-Evidence: [XML rule](./screenshots/04-custom-rule-100101.png), [first positive alert](./screenshots/06-positive-100101-alert.png), [mixed-account negative](./screenshots/13-mixed-account-no-correlation.png), [second-account positive](./screenshots/14-second-account-positive-alert.png), and the [full 19-image index](./screenshots/README.md).
+Evidence: [XML rule](./screenshots/04-custom-rule-100101.png), [first positive alert](./screenshots/06-positive-100101-alert.png), [mixed-account negative](./screenshots/13-mixed-account-no-correlation.png), [second-account positive](./screenshots/14-second-account-positive-alert.png), and the [full 26-image evidence index](./screenshots/README.md).
 
 ## Scenario 2 — Failed Logins Followed by Successful Login
 
@@ -106,7 +106,7 @@ The nearby Wazuh alerts included rules `92052` and `92032` around 18:01:47, with
 
 **Benign Positive for the controlled authentication sequence**, without evidence of a real compromise. The neighbouring process alerts were treated as separate context with attribution limits, rather than overclaimed as malicious or fully exonerated.
 
-Evidence: [Investigation 02 write-up](./investigations/02-failed-then-successful-login.md) and [transcribed event timeline](./evidence/02-authentication-timeline.md). The additional original screenshots for Investigation 02 were **reviewed in the session but are pending upload**; the existing 19 committed PNGs relate to Scenario 1.
+Evidence: [Investigation 02 write-up](./investigations/02-failed-then-successful-login.md), [two observed failure alerts](./screenshots/20-two-failures-targeted-account.png), [success alert](./screenshots/17-test-account-success-list.png), [local Type 2 context](./screenshots/18-success-logon-type-and-ip.png), [target username](./screenshots/19-success-target-username.png), and the [timeline](./evidence/02-authentication-timeline.md). **Seven Investigation 02 PNGs are on GitHub**; McAfee process-detail image 25 remains missing. The cropped failure list alone does not prove username without the query context.
 
 ## Investigation Workflow I Can Explain
 
@@ -173,10 +173,10 @@ Baseline normal sign-in failures, tune thresholds, assess source IP and identity
 - [Detection design and four tests](./detections/01-brute-force-correlation.md)
 - [Investigation 01](./investigations/01-controlled-login-attempts.md)
 - [Investigation 02](./investigations/02-failed-then-successful-login.md)
-- [Project 2 evidence index (19 committed PNGs)](./screenshots/README.md)
+- [Project 2 evidence index (26 retained PNGs)](./screenshots/README.md)
 - [Project 2 final summary](./FINAL-PROJECT-SUMMARY.md)
 
-**Limits:** Testing used local interactive logons, not network/RDP brute-force; threshold deliberately low; session attribution for nearby process alerts incomplete; Investigation 02 additional PNG evidence pending upload. Interview claims must stay within these bounds.
+**Limits:** Testing used local interactive logons, not network/RDP brute-force; threshold deliberately low; session attribution for nearby process alerts incomplete; Seven Investigation 02 images uploaded; McAfee process-detail image missing; the cropped failure rows omit the username filter. Interview claims must stay within these bounds.
 
 ## 5 Points to Remember in an Interview
 
