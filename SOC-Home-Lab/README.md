@@ -1,6 +1,6 @@
 # SOC Home Lab
 
-**Status:** Complete - first portfolio version
+**Status:** Complete
 
 ## Objective
 
@@ -230,7 +230,7 @@ The activity was classified as a **Benign Positive** because the detection was a
 
 ## Success Criteria
 
-The first version of this project will be considered complete when:
+Project completion criteria:
 
 - [x] Windows host is connected to the isolated lab network
 - [x] Kali Linux can communicate with the Windows endpoint
@@ -252,7 +252,7 @@ The first version of this project will be considered complete when:
 - [Interview-ready project summary](./INTERVIEW-SUMMARY.md)
 - [Screenshot evidence index](./screenshots/README.md)
 
-Direct Kali-to-Windows communication was verified successfully with 4/4 ICMP replies and 0% packet loss. The first version of Project 1 is complete: three controlled scenarios, three detections, three investigations, organised evidence, lessons learned, troubleshooting notes, and an interview-ready summary.
+Direct Kali-to-Windows communication was verified successfully with 4/4 ICMP replies and 0% packet loss. Project 1 is complete: three controlled scenarios, three detections, three investigations, organised evidence, lessons learned, troubleshooting notes, and an interview-ready summary.
 
 ## Safety and Scope
 
