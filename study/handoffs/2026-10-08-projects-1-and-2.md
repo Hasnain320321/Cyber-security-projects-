@@ -14,7 +14,7 @@ Project 1 lives in `SOC-Home-Lab/`. The Wazuh/Sysmon home lab, three controlled 
 - Four controlled tests completed: three failures Account 1 (alert), one isolated failure (no higher-level alert in reviewed window), two failures Account 1 plus one failure Account 2 (no higher-level alert), and three failures Account 2 (alert).
 - Investigation 02: **18:01:21 and 18:01:26** failures for SOC-Lab-Test2 followed by **18:01:33** successful 4624 interactive login, event source `127.0.0.1`. Authorised benign activity. Neighbouring Wazuh shell-related alerts showed McAfee WebAdvisor BrowserHost.exe in process fields, but were **not proved to originate from the SOC-Lab-Test2 session**.
 - Project 2 now has an expanded [interview summary](../../Windows-Authentication-Investigation/INTERVIEW-SUMMARY.md), [two investigation reports](../../Windows-Authentication-Investigation/), [response playbook](../../Windows-Authentication-Investigation/response/01-authentication-alert-triage-playbook.md), and [essential memorisation notes](../../Windows-Authentication-Investigation/notes/WHAT-TO-MEMORISE.md).
-- [Daily mixed 20-card flashcards](../SOC-FLASHCARDS-PROJECTS-1-2.md): ten Project 1 cards plus ten Project 2 cards.
+- [Daily mixed 40-card flashcards](../SOC-FLASHCARDS-PROJECTS-1-2.md): twenty Project 1 cards plus twenty Project 2 cards.
 
 ## Evidence verification and remaining optional upload
 
@@ -33,7 +33,7 @@ Project 1 lives in `SOC-Home-Lab/`. The Wazuh/Sysmon home lab, three controlled 
 
 ## Next session
 
-- First do the [20 daily flashcards](../SOC-FLASHCARDS-PROJECTS-1-2.md) and five anchors.
+- First do the [40 daily flashcards](../SOC-FLASHCARDS-PROJECTS-1-2.md) and five anchors.
 - If the learner wants perfect original-evidence coverage, verify the ten pending screenshot uploads for Investigation 02 and activate evidence links.
 - Do not rebuild or modify Project 1. Project 3 begins only when specifically requested.
 - Portfolio repo: https://github.com/Hasnain320321/Cyber-security-projects-
