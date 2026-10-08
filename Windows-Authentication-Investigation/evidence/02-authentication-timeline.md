@@ -22,6 +22,10 @@
 
 The **same test account** had two failed sign-ins followed by a successful local interactive login. The sequence was user-authorised testing. Nearby process alerts were not proven to belong to that account. No unauthorised authentication or compromise can be established from the reviewed evidence.
 
+## Additional original screenshot upload status
+
+Ten distinct original Wazuh screenshots numbered 16–25 have been prepared for manual upload into the dedicated Project 2 screenshots folder. See the [Investigation 02 screenshot evidence checklist](./INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md). **At the time of this writing, they remain pending; this timeline is a transcription, not a substitute for original screenshots.**
+
 ## Original evidence boundaries
 
 The [Project 2 screenshot index](../screenshots/README.md) contains **19 GitHub-hosted images for the first investigation**. The second investigation was supported by screenshots submitted in the ChatGPT conversation; those separate PNGs were **not uploaded into GitHub**. This markdown record makes the distinction explicit.
