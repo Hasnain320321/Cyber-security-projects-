@@ -2,7 +2,7 @@
 
 **Status:** All **19 PNG screenshots uploaded to this directory** and verified against the Project 2 GitHub upload commit of 8 October 2026. Every image belongs to `Windows-Authentication-Investigation/screenshots/`; **Project 1 (`SOC-Home-Lab/`) is unchanged**.
 
-These 19 screenshots support **Investigation 01** (custom brute-force detection tests). They are stored together in one dedicated evidence folder, but organised **by investigation phase below**. The detection and investigation reports link directly to the relevant images so reviewers do not need to browse them in filename order.
+These 19 screenshots support **Investigation 01** (custom brute-force detection tests). The additional Investigation 02 evidence is [listed separately as pending upload](../evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md); do not interpret its checklist as confirmation those ten PNGs exist in GitHub. They are stored together in one dedicated evidence folder, but organised **by investigation phase below**. The detection and investigation reports link directly to the relevant images so reviewers do not need to browse them in filename order.
 
 ## 1. Lab setup and rule configuration (4 images)
 
@@ -69,5 +69,7 @@ Four controlled validation scenarios were completed on 8 October 2026: **two pos
 - [Investigation 02 — failed-to-successful login](../investigations/02-failed-then-successful-login.md), with [textual evidence timeline](../evidence/02-authentication-timeline.md) (separate screenshots not yet uploaded)
 - [Project 2 overview](../README.md)
 - [Interview summary](../INTERVIEW-SUMMARY.md)
+- [Project 2 memory notes](../notes/WHAT-TO-MEMORISE.md)
+- [Combined Project 1 + 2 20-card review](../../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
 
 **Privacy note:** The repository is public. Screenshots show lab host/account identifiers; review public images periodically for sensitive information. No passwords should be included.
