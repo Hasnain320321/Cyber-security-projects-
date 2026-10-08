@@ -58,11 +58,20 @@ An application compatibility rule `92058` appeared at 18:00:33, **before** the c
 
 Confirm account and source for each failure and success, correlate Logon Type and session timing, inspect follow-on process/network activity, and consult the account owner or system operator. If unauthorised access is substantiated, follow incident response procedures (contain the account/session, rotate credentials, revoke sessions, retain logs, and escalate). Do not treat an automatic severity level or MITRE mapping as proof.
 
-See the [response and triage playbook](../response/01-authentication-alert-triage-playbook.md) and [time-based evidence transcription](../evidence/02-authentication-timeline.md).
+See the [response and triage playbook](../response/01-authentication-alert-triage-playbook.md), [time-based evidence transcription](../evidence/02-authentication-timeline.md), and [visual evidence index](../screenshots/README.md).
 
 ## Evidence provenance
 
-These observations were read from screenshots supplied during the live investigation on 8 October 2026. The [19 screenshots already uploaded to GitHub](../screenshots/README.md) support **Investigation 01**. Screenshots of this separate successful-login sequence were reviewed in the conversation, **not uploaded as additional PNGs to this repository**. The evidence timeline is a transparent transcription, not a raw Windows event export.
+Seven relevant original screenshot excerpts from this investigation are now available in the [Project 2 evidence index](../screenshots/README.md):
+
+- [16 — Initial failed-login overview](../screenshots/16-failed-logins-overview.png) and [20 — the two failed attempts](../screenshots/20-two-failures-targeted-account.png)
+- [17 — Successful login at 18:01:33](../screenshots/17-test-account-success-list.png), [18 — local source and Type 2](../screenshots/18-success-logon-type-and-ip.png), and [19 — SOC-Lab-Test2 target username](../screenshots/19-success-target-username.png)
+- [21 — separate later WebView2-linked failure](../screenshots/21-separate-webview-failure-process.png)
+- [24 — nearby process alert list](../screenshots/24-nearby-sysmon-process-alerts.png)
+
+The PNG showing the McAfee WebAdvisor `BrowserHost.exe` command line was **not included in the GitHub upload**. That detail was observed in a screenshot supplied during the live conversation and described here, but must not be represented as an uploaded exhibit.
+
+**Limits of image evidence:** The filtered query linked failures to `SOC-Lab-Test2` during investigation, but screenshot 20 crops out the username/filter chips. The screenshots are excerpts, not a full exported log. The other event's target username and the process alerts' user/session attribution were not established. Two low-value cropped images were removed during curation. See the [audit manifest](../evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md).
 
 ## Key lessons
 
