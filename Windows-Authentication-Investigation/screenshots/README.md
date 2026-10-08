@@ -2,7 +2,7 @@
 
 **Status:** All **19 PNG screenshots uploaded to this directory** and verified against the Project 2 GitHub upload commit of 8 October 2026. Every image belongs to `Windows-Authentication-Investigation/screenshots/`; **Project 1 (`SOC-Home-Lab/`) is unchanged**.
 
-The screenshots are stored together in one dedicated evidence folder, but organised **by investigation phase below**. The detection and investigation reports link directly to the relevant images so reviewers do not need to browse them in filename order.
+These 19 screenshots support **Investigation 01** (custom brute-force detection tests). They are stored together in one dedicated evidence folder, but organised **by investigation phase below**. The detection and investigation reports link directly to the relevant images so reviewers do not need to browse them in filename order.
 
 ## 1. Lab setup and rule configuration (4 images)
 
@@ -65,7 +65,8 @@ The screenshots are stored together in one dedicated evidence folder, but organi
 Four controlled validation scenarios were completed on 8 October 2026: **two positive tests** against separate accounts, **one isolated negative**, and **one mixed-account 2+1 negative**. These demonstrate initial rule behaviour in the local lab, not production readiness or a real compromise.
 
 - [Detection design and validation](../detections/01-brute-force-correlation.md)
-- [SOC investigation report](../investigations/01-controlled-login-attempts.md)
+- [Investigation 01 — detection validation](../investigations/01-controlled-login-attempts.md)
+- [Investigation 02 — failed-to-successful login](../investigations/02-failed-then-successful-login.md), with [textual evidence timeline](../evidence/02-authentication-timeline.md) (separate screenshots not yet uploaded)
 - [Project 2 overview](../README.md)
 - [Interview summary](../INTERVIEW-SUMMARY.md)
 
