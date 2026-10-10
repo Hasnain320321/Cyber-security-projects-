@@ -101,7 +101,8 @@ Other companion and support screenshots remain available in the full index, not 
 - [Reproducible custom Wazuh rule source](./detections/privilege_escalation_rules.xml)
 - [Investigation and verdict](./investigations/01-privileged-group-change.md)
 - [26 verified screenshots — organised evidence index](./screenshots/README.md)
-- [Interview guide and revision notes — separate study repository](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/tree/main/Project-03-Privilege-Escalation-Hunt)
+- [Project 3 interview guide and revision notes](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/tree/main/Project-03-Privilege-Escalation-Hunt)
+- [Cumulative SOC flashcards (60 cards)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Flashcards/SOC-MASTER-FLASHCARDS.md)
 
 ## Final cleanup (10 October 2026)
 
