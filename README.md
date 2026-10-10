@@ -6,13 +6,6 @@
 
 I am building this repository to document practical cyber security work rather than only listing tools on a CV. Each project will show the problem, lab setup, evidence, investigation process, findings, MITRE ATT&CK mapping, and recommended response.
 
-My target roles are:
-
-- SOC Analyst / SOC Analyst Tier 1
-- Cyber Security Analyst
-- Junior Security Analyst
-- Security Operations Analyst
-
 ## Current Focus
 
 **Project 1 — SOC Home Lab** is complete, including three controlled scenarios, three detection write-ups, three investigation reports, screenshots, and an interview summary.
