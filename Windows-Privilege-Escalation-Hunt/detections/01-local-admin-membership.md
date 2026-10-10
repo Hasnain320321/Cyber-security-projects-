@@ -48,6 +48,17 @@ The `wazuh-analysisd -t` configuration check succeeded and `wazuh-manager` resta
 
 **Important qualifier:** This is a lab-based test of three specifically observed scenarios, not proof the rule is perfect or tuned for every production environment.
 
+## Screenshot-backed validation
+
+The following pairs show **event context and Wazuh rule outcome together**. The cropped rule-ID image alone is not sufficient to validate the positive detection.
+
+- **Positive:** [Event 4732 + Administrators target](../screenshots/08-positive-event-fields.png) · [Event ID confirmation](../screenshots/08b-positive-event4732.png) · [custom rule 100102 / level 13](../screenshots/08c-positive-rule100102-level13.png).
+- **Negative — removal:** [no 100102+4733 matches](../screenshots/10-negative-4733-no-custom-alert.png) **and** [4733 events ingested](../screenshots/10b-negative-4733-seen-in-wazuh.png).
+- **Negative — ordinary group:** [normal group + Event 4732](../screenshots/11-nonadmin-addition-event4732.png) · [rule 60144 / level 5](../screenshots/12-negative-rule60144.png) · [description](../screenshots/12b-negative-rule60144-description.png).
+- **Safe testing:** [PowerShell rollback](../screenshots/09-safe-final-end-state.png) · [final account deletion](../screenshots/18-final-test-account-deleted.png).
+
+[Browse all 26 evidence files by stage](../screenshots/README.md).
+
 ## Why the negative tests matter
 
 Event ID 4732 alone includes ordinary local group membership additions. Filtering specifically for the built-in `Administrators` target SID and the **addition** event reduces irrelevant alerts. A group removal event 4733 should not be labelled a new administrator grant.
@@ -60,4 +71,4 @@ Event ID 4732 alone includes ordinary local group membership additions. Filterin
 4. If unauthorised: preserve evidence, escalate and follow approved least-privilege/rollback procedures.
 5. Watch for localised group names, benign administrator workflows, domain principals and potentially missing collection.
 
-**Known gaps:** final screenshot upload and cross-event logon/process correlation remain outstanding. This is not presented as a production deployment.
+**Scope limitation:** all 26 screenshots are in the project evidence folder. A limited 4624/4672 identity/time query found no matches and Sysmon Event 1 supplied process creation context; neither proves that no other activity occurred. These lab tests do not establish production detection accuracy or cover every administrator workflow.
