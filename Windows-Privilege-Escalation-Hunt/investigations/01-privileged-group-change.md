@@ -1,6 +1,6 @@
 # Investigation 01 — Local Administrators Membership Change
 
-**Status: Core investigation and controlled detection tests performed, 10 October 2026. Evidence file upload and further logon/process correlation pending.**
+**Status: Core investigation, limited logon/process correlation, and final cleanup completed 10 October 2026. GitHub PNG evidence upload pending.**
 
 ## Executive summary
 
@@ -43,7 +43,7 @@ A Wazuh alert for a Windows Administrators group membership change was investiga
 - **Identify:** `subjectUserName` is **who made the change**, whereas `memberSid` is **the account added**. The test account SID was resolved with PowerShell `Get-LocalUser`.
 - **Authorisation:** Changes were deliberately initiated as a documented lab test by the owner of the endpoint.
 - **Correlate:** Wazuh ingestion and the pair of 4732/4733 events are verified. A limited 4624/4672 query found no matches for the disabled test account in the checked time window; Sysmon Event 1 captured elevated PowerShell process creation near the event, but did not expose individual typed commands. These findings do not establish absence of other activity.
-- **Scope:** No claim of broader investigation or absence of malicious activity beyond the limited controlled change. The account remained disabled and lost membership after the test.
+- **Scope:** No claim of broader investigation or absence of malicious activity beyond the limited controlled change. The account remained disabled and lost membership after the test; it was later deleted after safe checks.
 - **Classify:** A **true-positive detection of a real administrative change**, but **benign/authorised lab activity**, not a demonstrated compromise.
 - **Response:** Roll back elevated membership, verify actual account and group state, retain audit records and review approval + related activity for any unexpected real-world occurrence.
 
@@ -71,8 +71,12 @@ Read-only search of the Sysmon Operational log (Event ID **1**, 22:15–22:50 lo
 
 - [ ] Upload carefully reviewed screenshot PNGs; preserve unaltered event fields and visible rule IDs where possible
 - [x] Document limited 4624/4672 search and Sysmon Event 1 process context with attribution limitations
-- [ ] Decide whether to remove the disabled lab account after evidence gathering (do not silently delete it)
-- [ ] Write a short detection tuning/reflection conclusion after the follow-up
+- [x] After reviewing results, permanently removed the disabled lab account and verified it no longer existed
+- [x] Document tuning/limitations: target Administrators SID -544 and event 4732 rather than all group changes; validate exclusions via 4733 and non-admin 4732
+
+## Final cleanup evidence
+
+After the controlled tests, an elevated PowerShell script checked the disposable account was still **disabled**, not in **Administrators**, and the normal test group no longer existed. The account was then deleted using `Remove-LocalUser`. A second lookup found no remaining account; the command printed **"CLEANUP VERIFIED: Temporary test account deleted."** The main `hasna` account was not removed or demoted. No Windows account-deletion event (4726) has been reviewed, so cleanup proof is limited to the PowerShell output.
 
 ## Lessons learned
 
