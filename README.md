@@ -12,7 +12,7 @@ I am building this repository to document practical cyber security work rather t
 
 **Project 2 — Wazuh Brute-Force Detection & Authentication Investigation:** Complete. Built and tested custom rule `100101`, conducted four positive/negative tests, wrote two investigations and a response playbook, and curated 26 screenshots.
 
-**Project 3 — Windows Privilege Escalation Hunt:** **Detection and controlled tests validated on 10 October 2026; screenshot upload and cross-event correlation are pending.** Created custom Wazuh rule `100102` (level 13) for Windows Security 4732 additions specifically to the built-in Administrators group. Confirmed alerts, 4733 rollback, and two negative tests including a normal-group 4732 that triggered built-in rule `60144`, not `100102`.
+**Project 3 — Windows Privilege Escalation Hunt:** **Practical investigation, detection tests, limited log/process correlation and safe final cleanup completed 10 October 2026; screenshot upload to GitHub pending.** Created custom Wazuh rule `100102` (level 13) for Windows Security 4732 additions specifically to the built-in Administrators group. Confirmed alerts, 4733 rollback, and two negative tests including a normal-group 4732 that triggered built-in rule `60144`, not `100102`.
 
 ## Portfolio Projects
 
@@ -20,7 +20,7 @@ I am building this repository to document practical cyber security work rather t
 | --- | --- | --- |
 | [SOC Home Lab](./SOC-Home-Lab/) | Wazuh, Windows Security logs, Sysmon, detection and triage | Complete |
 | [Brute-Force Detection & Windows Authentication](./Windows-Authentication-Investigation/) | Rule 100101, Windows 4625/4624, validation, investigations | Complete |
-| [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) | 4732/4733, rule 100102, group SID targeting, negative tests, T1098.007 | Tested; evidence/correlation pending |
+| [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) | 4732/4733, rule 100102, group SID targeting, negative tests, T1098.007 | Practical complete; evidence PNG upload pending |
 | Phishing Email Investigation | Email headers, IOCs, incident reporting | Planned |
 | Network PCAP Investigation | Wireshark, TCP/IP, threat analysis | Planned |
 | Vulnerability Assessment | Nmap, scanning, remediation | Planned |
@@ -44,4 +44,4 @@ All simulations and testing are undertaken only on authorised personally control
 
 ---
 
-**Portfolio status:** Projects 1 and 2 complete. Project 3 detection/tests validated, documentation in progress. Remaining projects planned.
+**Portfolio status:** Projects 1 and 2 complete. Project 3 practical work and reports complete; PNG evidence publishing pending. Remaining projects planned.
