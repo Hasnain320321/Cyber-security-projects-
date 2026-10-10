@@ -42,7 +42,7 @@ A Wazuh alert for a Windows Administrators group membership change was investiga
 - **Validate:** Event 4732 showed a real local security-group membership addition. The target SID `-544` established that the target was Administrators, distinguishing it from the `-1006` normal-group negative case.
 - **Identify:** `subjectUserName` is **who made the change**, whereas `memberSid` is **the account added**. The test account SID was resolved with PowerShell `Get-LocalUser`.
 - **Authorisation:** Changes were deliberately initiated as a documented lab test by the owner of the endpoint.
-- **Correlate:** Wazuh ingestion and the pair of 4732/4733 events are verified. **A structured review of 4624/4672 and Sysmon process events has not yet been completed**; none is claimed as collected or exculpatory.
+- **Correlate:** Wazuh ingestion and the pair of 4732/4733 events are verified. A limited 4624/4672 query found no matches for the disabled test account in the checked time window; Sysmon Event 1 captured elevated PowerShell process creation near the event, but did not expose individual typed commands. These findings do not establish absence of other activity.
 - **Scope:** No claim of broader investigation or absence of malicious activity beyond the limited controlled change. The account remained disabled and lost membership after the test.
 - **Classify:** A **true-positive detection of a real administrative change**, but **benign/authorised lab activity**, not a demonstrated compromise.
 - **Response:** Roll back elevated membership, verify actual account and group state, retain audit records and review approval + related activity for any unexpected real-world occurrence.
@@ -53,12 +53,24 @@ The main `hasna` account was confirmed enabled and in Administrators before test
 
 ## Logon check: additional observed result
 
-On 10 October 2026, a read-only PowerShell search of Windows Security events **4624 and 4672** during **22:15–22:50 local time** filtered messages for the disabled `SOC-PrivEsc-Test` username or SID. The script printed **"No matching test-account logons found in this time window."** This is a **negative search result for the specified records/window**, not independent proof that the account was never used, and query errors were configured to be silently ignored. Sysmon Event 1/process correlation has not yet been conducted.
+On 10 October 2026, a read-only PowerShell search of Windows Security events **4624 and 4672** during **22:15–22:50 local time** filtered messages for the disabled `SOC-PrivEsc-Test` username or SID. The script printed **"No matching test-account logons found in this time window."** This is a **negative search result for the specified records/window**, not independent proof that the account was never used, and query errors were configured to be silently ignored. A limited Sysmon Event 1 correlation is documented below; it supports actor/session context without proving which command changed membership.
+
+## Sysmon process correlation
+
+Read-only search of the Sysmon Operational log (Event ID **1**, 22:15–22:50 local time) produced relevant process-create records:
+
+| Time (local) | Observation | Assessment |
+| --- | --- | --- |
+| **22:22:19** | `powershell.exe` launched by `explorer.exe`, actor `hasna`, **High** integrity, Logon ID `0x3FE50` | Approximately seconds before observed 4732 membership event, consistent with authorised elevated PowerShell session |
+| **22:30:46** | `ssh.exe` launched from PowerShell, command line to `wazuh-user@192.168.56.101`, **High** integrity | Consistent with Wazuh server management during lab |
+| **22:35:57** | Another elevated PowerShell created by Explorer, actor `hasna` | Additional shell context, not proof of group change |
+
+**Evidence boundary:** Event 1 shows process creation and startup command line, not each PowerShell statement typed later. No claim is made that Sysmon independently captured `Add-LocalGroupMember`; Windows 4732 and Wazuh 100102 are the primary evidence for the group change. The process/logon context is corroborative, not conclusive.
 
 ## Gaps and recommended follow-up
 
 - [ ] Upload carefully reviewed screenshot PNGs; preserve unaltered event fields and visible rule IDs where possible
-- [ ] Query relevant Windows 4624 and 4672 activity around the test, and Sysmon Event 1 if present; document what is and is not attributable
+- [x] Document limited 4624/4672 search and Sysmon Event 1 process context with attribution limitations
 - [ ] Decide whether to remove the disabled lab account after evidence gathering (do not silently delete it)
 - [ ] Write a short detection tuning/reflection conclusion after the follow-up
 
