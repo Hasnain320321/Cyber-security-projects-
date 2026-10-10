@@ -46,6 +46,10 @@ A disabled local test account, `SOC-PrivEsc-Test`, was temporarily added to the 
 
 The positive-test script printed successful removal and an independent group-membership check showed the test account absent from Administrators. `SOC-PrivEsc-Test` remained **disabled** throughout the tests.
 
+## Logon correlation check (10 October 2026)
+
+A read-only Windows PowerShell query searched Security Event IDs **4624** (successful logon) and **4672** (special privileges assigned) from **22:15–22:50 local time**, filtering event messages for the disabled `SOC-PrivEsc-Test` username or SID. **No matching test-account records were returned.** This supports the limited finding that no such matches were observed **in that time window**; it does not prove that no account logon ever occurred or rule out logging/query limitations. A Sysmon Event 1 process review remains outstanding.
+
 ## Investigation / response reasoning
 
 For a real alert: confirm group SID `-544`; identify the **subject** (actor), **member** (newly added identity), **target group**, host and time; check change approval and correlate relevant 4624/4672, Sysmon process activity and any other suspicious changes where data exists. If unauthorised, preserve logs, escalate through incident procedures, remove unexpected membership safely and examine follow-on activity.
