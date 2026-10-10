@@ -1,41 +1,92 @@
-# Project 3 — Screenshot Evidence
+# Project 3 — Verified Screenshot Evidence
 
-**Status: 26 screenshots were staged in a downloadable ZIP on 10 October 2026, including final cleanup. The actual PNG evidence has not yet been committed to this GitHub folder.** Do not treat this checklist as screenshot files.
+**Status: Complete.** All **26 original PNG screenshots** have been committed to this folder and checked against the evidence index on 10 October 2026. The folder contains **Project 3 only**; Projects 1 and 2 retain separate evidence folders.
 
-Evidence must be kept **separate** from Project 1's and Project 2's screenshots. When uploading, choose the most legible original captured image (avoid redundant crops). Review public screenshots for local usernames, endpoint names, internal IPs and identifiers before publishing; don't obscure fields necessary to support a claim.
+The filenames follow the order of the lab investigation. Companion filenames such as `05b`, `08b` and `08c` capture **different fields of the same event**, not separate incidents. Both screenshots may be necessary to validate a claim because the Wazuh event view is scrollable.
 
-## Curated screenshot upload plan
+**Quick links:** [Investigation](../investigations/01-privileged-group-change.md) · [Detection tests](../detections/01-local-admin-membership.md) · [Rule XML](../detections/privilege_escalation_rules.xml) · [Project README](../README.md)
 
-| Suggested file | Captured during session? | What should be visible |
-| --- | --- | --- |
-| `01-audit-policy.png` | Yes | `Security Group Management: Success` |
-| `02-wazuh-collection.png` | Yes | Wazuh agent running and collecting `Security` eventchannel |
-| `03-admin-baseline.png` | Yes | Administrators list before testing |
-| `04-disabled-test-account.png` | Yes | `SOC-PrivEsc-Test` and `Enabled=False` |
-| `05-original-admin-4732.png` | Yes | Event 4732, Administrators target SID `-544`, subject/member |
-| `06-event-4733-rollback.png` | Yes | Event 4733 removal from Administrators, matching member |
-| `07-rule-created-manager-active.png` | Yes | New custom rule configuration and manager restart `active` |
-| `08-positive-rule-100102.png` | Yes | `rule.id=100102`, `rule.level=13`, same 4732 event (may need two related captures) |
-| `09-positive-safe-end-state.png` | Yes | Rollback and disabled account |
-| `10-negative-removal.png` | Yes | Rule 100102 + Event 4733 produces no matches, and separate 4733 results appear |
-| `11-negative-normal-group-4732.png` | Yes | Target group `SOC-NonAdmin-Test`, SID ending `-1006`, Event 4732 |
-| `12-negative-rule-60144.png` | Yes | Same non-admin event handled by rule `60144`, level 5 |
-| `13-negative-group-cleanup.png` | Yes | Group deletion Event 4734 or PowerShell cleanup output |
+## Evidence by investigation stage
 
-"Captured during session" means the evidence was seen in the chat, **not** that a matching PNG file is present on GitHub.
+### 1. Baseline and safe setup
 
-| `14-logon-correlation-no-matches.png` | Yes | Read-only Windows query of Security Event 4624/4672 in 22:15–22:50 lab window returned no account matches; interpret cautiously |
+| Actual screenshot | Evidence shown |
+| --- | --- |
+| [`01-audit-policy.png`](./01-audit-policy.png) | Security Group Management auditing set to Success |
+| [`02-wazuh-collection.png`](./02-wazuh-collection.png) | Running Wazuh agent and Security eventchannel collection configuration |
+| [`03-admin-baseline.png`](./03-admin-baseline.png) | Original Administrators group membership before testing |
+| [`04-disabled-test-account.png`](./04-disabled-test-account.png) | Dedicated account created; Enabled = False |
 
-| `15-sysmon-powershell-high-2235.png` | Yes | Elevated `powershell.exe` started by Explorer at 22:35:57 |
-| `16-sysmon-ssh-wazuh-2230.png` | Yes | `ssh.exe` to Wazuh VM started by PowerShell at 22:30:46 |
-| `17-sysmon-powershell-correlated-2222.png` | Yes | Elevated PowerShell process at 22:22:19 preceding controlled administrator group-change event |
+### 2. Initial administrator change and rollback
 
-| `18-final-test-account-deleted.png` | Yes | After checking no test membership or temporary group, `Remove-LocalUser` succeeded and subsequent lookup found no test account |
+| Actual screenshot | Evidence shown |
+| --- | --- |
+| [`05-admin-4732-target-and-actor.png`](./05-admin-4732-target-and-actor.png) | Wazuh 4732 event: actor, member SID, Administrators target SID -544 |
+| [`05b-admin-4732-event-id.png`](./05b-admin-4732-event-id.png) | Companion capture confirming Event 4732 and event message |
+| [`06-windows-4733-rollback.png`](./06-windows-4733-rollback.png) | Windows Security Event 4733 showing removal |
+| [`06b-wazuh-4733-target-member.png`](./06b-wazuh-4733-target-member.png) | Wazuh 4733 details linking removal to the same account/group |
 
-## Upload verification checklist
+### 3. Custom detection deployment
 
-- [ ] PNG files have actually been uploaded to this GitHub directory
-- [ ] Every cited screenshot corresponds to the correct event/test and includes relevant visible context
-- [ ] Positive detection and negative cases are clearly separated
-- [ ] Personally identifying/internal information reviewed for public disclosure
-- [ ] Links in the investigation document updated to point to the committed screenshot files
+| Actual screenshot | Evidence shown |
+| --- | --- |
+| [`07-custom-rule-file-created.png`](./07-custom-rule-file-created.png) | Project 3 Wazuh rule created and configuration tested |
+| [`07b-wazuh-manager-active.png`](./07b-wazuh-manager-active.png) | Manager successfully restarted; service active |
+
+### 4. Positive test of custom rule 100102
+
+| Actual screenshot | Evidence shown |
+| --- | --- |
+| [`08-positive-event-fields.png`](./08-positive-event-fields.png) | New 4732 member/target/actor context in Wazuh |
+| [`08b-positive-event4732.png`](./08b-positive-event4732.png) | Companion capture confirming Windows Event ID 4732 |
+| [`08c-positive-rule100102-level13.png`](./08c-positive-rule100102-level13.png) | Same positive test reported by custom rule 100102, level 13 |
+| [`09-safe-final-end-state.png`](./09-safe-final-end-state.png) | Immediate rollback, test account disabled and no admin membership |
+
+### 5. Negative test: removal must not trigger an addition rule
+
+| Actual screenshot | Evidence shown |
+| --- | --- |
+| [`10-negative-4733-no-custom-alert.png`](./10-negative-4733-no-custom-alert.png) | Combined rule 100102 + Event 4733 search returned no matching alerts |
+| [`10b-negative-4733-seen-in-wazuh.png`](./10b-negative-4733-seen-in-wazuh.png) | Separate 4733 query shows removals were ingested, not absent |
+
+### 6. Negative test: ordinary local group
+
+| Actual screenshot | Evidence shown |
+| --- | --- |
+| [`11-nonadmin-addition-event4732.png`](./11-nonadmin-addition-event4732.png) | 4732 for SOC-NonAdmin-Test; target SID is not the built-in Administrators SID |
+| [`12-negative-rule60144.png`](./12-negative-rule60144.png) | Wazuh rule 60144, level 5, instead of custom rule 100102 |
+| [`12b-negative-rule60144-description.png`](./12b-negative-rule60144-description.png) | Companion description for the ordinary group change |
+| [`13-temporary-group-cleanup.png`](./13-temporary-group-cleanup.png) | Non-admin test group removed; test account stayed disabled |
+| [`13b-temporary-group-deletion-event4734.png`](./13b-temporary-group-deletion-event4734.png) | Windows Security Event 4734 confirms temporary group deletion |
+
+### 7. Event correlation and final cleanup
+
+| Actual screenshot | Evidence shown |
+| --- | --- |
+| [`14-logon-correlation-no-matches.png`](./14-logon-correlation-no-matches.png) | 4624/4672 query found no test-account matches in the limited lab window |
+| [`15-sysmon-powershell-high-2235.png`](./15-sysmon-powershell-high-2235.png) | Additional elevated PowerShell process creation at 22:35:57 |
+| [`16-sysmon-ssh-wazuh-2230.png`](./16-sysmon-ssh-wazuh-2230.png) | SSH to lab Wazuh VM launched from PowerShell at 22:30:46 |
+| [`17-sysmon-powershell-correlated-2222.png`](./17-sysmon-powershell-correlated-2222.png) | Elevated PowerShell started at 22:22:19, just before initial admin-change event |
+| [`18-final-test-account-deleted.png`](./18-final-test-account-deleted.png) | Verified group safety, deleted disabled test account and confirmed absence |
+
+## Evidence interpretation and quality checks
+
+- **Positive rule result requires related captures.** Use [08-positive-event-fields](./08-positive-event-fields.png), [08b-positive-event4732](./08b-positive-event4732.png) and [08c-positive-rule100102-level13](./08c-positive-rule100102-level13.png) **together**. The tiny rule-ID crop alone does not prove the targeted group or event ID.
+- **Removal negative test requires both views.** [10](./10-negative-4733-no-custom-alert.png) proves the combined filter had no results; [10b](./10b-negative-4733-seen-in-wazuh.png) proves removal events were actually received. Absence of an alert alone is not sufficient to prove correct collection.
+- **Ordinary-group negative test requires two views.** [11](./11-nonadmin-addition-event4732.png) confirms the non-admin group and Event 4732; [12](./12-negative-rule60144.png) confirms built-in rule 60144/level 5. [12b](./12b-negative-rule60144-description.png) provides the message.
+- **Sysmon correlation is contextual.** [17](./17-sysmon-powershell-correlated-2222.png) documents nearby PowerShell process creation; it does not independently prove which later interactive command changed membership.
+- **No logon matches is a scoped result.** [14](./14-logon-correlation-no-matches.png) is a query of 4624/4672 within a limited window; it does not prove the account never logged in.
+- **Final cleanup is distinct from membership rollback.** [18](./18-final-test-account-deleted.png) documents the disposal of the temporary account after the test.
+- **Original captures preserved.** No screenshot has been fabricated, cropped further, renamed or altered as part of this GitHub organisation audit. Each of the 26 PNG files has nonzero size; filenames match this index.
+
+## Public repository note
+
+This repository is public. Original lab screenshots contain a local Windows username/hostname, internal `192.168.56.x` addresses and account SIDs. These support the investigation but are visible to visitors. They are **not passwords or credentials**. Consider whether you want to publish redacted copies in future; do not change forensic fields or make edited copies look like untouched evidence.
+
+## Completeness
+
+- [x] 26/26 expected PNG files in `Windows-Privilege-Escalation-Hunt/screenshots/`
+- [x] All files indexed by exact filename with direct GitHub links
+- [x] Baseline, positive, negative, correlation, and cleanup stages clearly separated
+- [x] Every screenshot retained because it adds a field, validation step, or supporting context
+- [x] Project 1 and Project 2 screenshot folders untouched
