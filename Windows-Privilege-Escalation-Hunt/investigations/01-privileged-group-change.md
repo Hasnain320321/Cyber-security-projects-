@@ -51,6 +51,10 @@ A Wazuh alert for a Windows Administrators group membership change was investiga
 
 The main `hasna` account was confirmed enabled and in Administrators before testing. The built-in Administrator account was disabled. A dedicated disabled test account was used; its group membership was changed only briefly, with automatic rollback and an independent final check. The privileged test account was **not enabled**, and there is no evidence it ever logged on during this test. No production or third-party machine was targeted.
 
+## Logon check: additional observed result
+
+On 10 October 2026, a read-only PowerShell search of Windows Security events **4624 and 4672** during **22:15–22:50 local time** filtered messages for the disabled `SOC-PrivEsc-Test` username or SID. The script printed **"No matching test-account logons found in this time window."** This is a **negative search result for the specified records/window**, not independent proof that the account was never used, and query errors were configured to be silently ignored. Sysmon Event 1/process correlation has not yet been conducted.
+
 ## Gaps and recommended follow-up
 
 - [ ] Upload carefully reviewed screenshot PNGs; preserve unaltered event fields and visible rule IDs where possible
