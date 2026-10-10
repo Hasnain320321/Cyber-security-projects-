@@ -24,6 +24,8 @@ Evidence must be kept **separate** from Project 1's and Project 2's screenshots.
 
 "Captured during session" means the evidence was seen in the chat, **not** that a matching PNG file is present on GitHub.
 
+| `14-logon-correlation-no-matches.png` | Yes | Read-only Windows query of Security Event 4624/4672 in 22:15–22:50 lab window returned no account matches; interpret cautiously |
+
 ## Upload verification checklist
 
 - [ ] PNG files have actually been uploaded to this GitHub directory
