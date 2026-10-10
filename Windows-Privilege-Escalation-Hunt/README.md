@@ -21,7 +21,7 @@ A dedicated disabled local test account, `SOC-PrivEsc-Test`, was temporarily add
 - Windows Security eventchannel collection enabled in the Wazuh agent, service confirmed running
 - Wazuh Manager rule check and restart succeeded; service returned `active`
 - Relevant Windows events: **4732** group member added, **4733** member removed, **4734** group deleted, optionally **4624** successful logon and **4672** special privileges assigned at logon
-- Sysmon Event 1 can provide process context when present; **no Sysmon/process correlation is claimed yet**
+- Sysmon Event 1 provided limited PowerShell process context during the tested time window; this is **not** proof of the exact group-change command.
 
 ## Observed rule logic
 
@@ -75,7 +75,7 @@ See the [investigation report](./investigations/01-privileged-group-change.md).
 - Existing built-in Administrator account was disabled; the main `hasna` account was enabled and an Administrators group member. No claim of an independently tested backup-admin login.
 - The test account was removed immediately after each privileged addition, with post-test membership validation. After the investigation, the disposable test account itself was deleted, with a subsequent existence check confirming no account found.
 - An authorised change can be a true positive for the *rule* without being a malicious incident.
-- **Limitations:** negative 4624/4672 search was restricted to 22:15–22:50 and suppressed query errors; Sysmon Event 1 establishes process creation/context rather than the exact typed command; screenshot files not yet hosted in this repository; disabled test-account disposal pending.
+- **Limitations:** negative 4624/4672 search was restricted to 22:15–22:50 and suppressed query errors; Sysmon Event 1 establishes process creation/context rather than the exact typed command; screenshot files not yet hosted in this repository. The disabled test account was subsequently deleted.
 - Do not claim production deployment or real attacker activity.
 
 ## Repository files
@@ -84,7 +84,7 @@ See the [investigation report](./investigations/01-privileged-group-change.md).
 - [Reproducible custom Wazuh rule source](./detections/privilege_escalation_rules.xml)
 - [Investigation and verdict](./investigations/01-privileged-group-change.md)
 - [Evidence checklist](./screenshots/README.md)
-- [Interview preparation](./notes/INTERVIEW-PREP.md)
+- [Interview guide and revision notes — separate study repository](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/tree/main/Project-03-Privilege-Escalation-Hunt)
 
 ## Final cleanup (10 October 2026)
 
