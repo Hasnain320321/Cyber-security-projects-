@@ -48,7 +48,7 @@ Skills demonstrated:
 
 ## Supplemental Hunt — Windows Privilege Escalation (new, separate)
 
-**Status:** In progress — documentation/setup only; no new lab events or detection results yet.
+**Status:** **Complete (10 October 2026).** Custom Wazuh rule 100102 (level 13) validated on actual Windows Event 4732 targeting Administrators, with Event 4733 rollback, non-administrator group negative test, limited logon and Sysmon process correlation, 26 curated screenshots and verified disposal of the temporary test account.
 
 **Goal:** Hunt changes to the built-in local Administrators group; determine the actor, added account, authorisation and related process/logon context without mistaking all admin actions for attacks.
 
@@ -56,9 +56,9 @@ Skills demonstrated:
 
 **MITRE ATT&CK:** T1098.007 — Additional Local or Domain Groups (Persistence / Privilege Escalation).
 
-**Planned outcomes:** Read-only auditing check; controlled positive + nonprivileged negative test on a machine owned by the learner; reversible membership change; custom Wazuh detection; rollback proof; investigation report, and curated screenshots. The tests are **not yet completed**.
+**Delivered outcomes:** Read-only auditing checks; controlled positive + nonprivileged negative tests on an owned machine; automatic rollback and independent verification; deployed custom Wazuh rule 100102; investigation report; limited Sysmon/logon correlation; 26 linked screenshots; and confirmed disposal of the temporary test account. This was authorised lab activity, not a live compromise.
 
-**Repository:** [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/).
+**Repository:** [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) · [26 screenshots](./Windows-Privilege-Escalation-Hunt/screenshots/README.md).
 
 The existing **Phase 3 — Phishing Email Investigation** remains planned for later; this supplemental project does not erase or renumber it.
 
