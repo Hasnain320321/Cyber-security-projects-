@@ -79,6 +79,14 @@ Because the activity was authorised, its operational classification is **Benign 
 - [Evidence index — 26 curated screenshots](./screenshots/README.md)
 - [Investigation 02 image-by-image audit and missing-image checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
 
+## Interview and revision resources
+
+This portfolio project contains the investigation reports, detection and original evidence. Supporting interview preparation is in the dedicated study repository:
+
+- [Project 2 interview guide](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-02-Windows-Authentication/INTERVIEW-GUIDE.md)
+- [Project 2 key concepts and memory anchors](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-02-Windows-Authentication/WHAT-TO-MEMORISE.md)
+- [Cumulative SOC flashcards (Projects 1-3, 60 cards)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Flashcards/SOC-MASTER-FLASHCARDS.md)
+
 ## Analyst approach
 
 Validate -> Identify -> Correlate -> Scope -> Classify.
