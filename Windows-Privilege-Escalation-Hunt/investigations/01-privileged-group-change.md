@@ -1,6 +1,6 @@
 # Investigation 01 — Local Administrators Membership Change
 
-**Status: Core investigation, limited logon/process correlation, and final cleanup completed 10 October 2026. GitHub PNG evidence upload pending.**
+**Status: COMPLETE — core investigation, controlled tests, limited process/logon correlation, safe cleanup and 26 uploaded evidence screenshots, 10 October 2026.**
 
 ## Executive summary
 
@@ -21,6 +21,26 @@ A Wazuh alert for a Windows Administrators group membership change was investiga
 | Negative A | Wazuh displayed 4733 removal alerts; rule 100102 + event 4733 combined search returned no matches |
 | Negative B | Test account added to temporary `SOC-NonAdmin-Test` group; 4732 in Wazuh, group SID ending `-1006`; **rule 60144 / level 5**, not 100102 |
 | Cleanup | Temporary non-admin group deletion logged as **4734**, record **1466318**; account remained disabled |
+
+## Linked primary evidence
+
+All captures can be found in the [complete screenshot index](../screenshots/README.md); the table below maps the strongest directly to observed conclusions.
+
+| Conclusion | Verified supporting captures |
+| --- | --- |
+| Logging and baseline configured | [01 Security Group Management audit](../screenshots/01-audit-policy.png), [02 Wazuh agent collection](../screenshots/02-wazuh-collection.png), [03 admin baseline](../screenshots/03-admin-baseline.png), [04 disabled test identity](../screenshots/04-disabled-test-account.png) |
+| Actual privileged-group addition occurred | [05 Wazuh subject/member/group](../screenshots/05-admin-4732-target-and-actor.png) + [05b Windows 4732](../screenshots/05b-admin-4732-event-id.png) |
+| Initial admin privilege addition was rolled back | [06 Windows 4733](../screenshots/06-windows-4733-rollback.png) + [06b Wazuh 4733 details](../screenshots/06b-wazuh-4733-target-member.png) |
+| Wazuh custom rule built and loaded | [07 XML creation](../screenshots/07-custom-rule-file-created.png), [07b manager active](../screenshots/07b-wazuh-manager-active.png) |
+| Controlled positive test fired **100102 / level 13** | [08 positive field context](../screenshots/08-positive-event-fields.png), [08b Event 4732](../screenshots/08b-positive-event4732.png), [08c rule 100102 level 13](../screenshots/08c-positive-rule100102-level13.png) (three complementary views) |
+| Rollback and disabled test account remained safe | [09 PowerShell check](../screenshots/09-safe-final-end-state.png) |
+| Removal event **4733** did not trigger addition rule | [10 combined rule/event query no matches](../screenshots/10-negative-4733-no-custom-alert.png) + [10b Wazuh 4733 received](../screenshots/10b-negative-4733-seen-in-wazuh.png) |
+| Ordinary group addition not mistaken for Administrators | [11 target group Event 4732](../screenshots/11-nonadmin-addition-event4732.png) + [12 Wazuh rule 60144/level 5](../screenshots/12-negative-rule60144.png) and [12b description](../screenshots/12b-negative-rule60144-description.png) |
+| Ordinary test group removed | [13 PowerShell cleanup](../screenshots/13-temporary-group-cleanup.png), [13b deletion Event 4734](../screenshots/13b-temporary-group-deletion-event4734.png) |
+| Logon/process context reviewed with limits | [14 no logon matches in selected window](../screenshots/14-logon-correlation-no-matches.png); [17 Sysmon elevated PowerShell launch](../screenshots/17-sysmon-powershell-correlated-2222.png), [16 Wazuh SSH session](../screenshots/16-sysmon-ssh-wazuh-2230.png) |
+| Disposable test account removed after testing | [18 final safety checks and account deletion](../screenshots/18-final-test-account-deleted.png) |
+
+**Interpretation:** No single crop proves the entire investigation; paired screenshots must be read together where field values are displayed at different scroll positions. These are screenshots of authorised lab activity, not a real intrusion.
 
 ## Observable event details
 
@@ -69,7 +89,7 @@ Read-only search of the Sysmon Operational log (Event ID **1**, 22:15–22:50 lo
 
 ## Gaps and recommended follow-up
 
-- [ ] Upload carefully reviewed screenshot PNGs; preserve unaltered event fields and visible rule IDs where possible
+- [x] All 26 original screenshots uploaded and indexed; key captures explicitly linked to corresponding findings
 - [x] Document limited 4624/4672 search and Sysmon Event 1 process context with attribution limitations
 - [x] After reviewing results, permanently removed the disabled lab account and verified it no longer existed
 - [x] Document tuning/limitations: target Administrators SID -544 and event 4732 rather than all group changes; validate exclusions via 4733 and non-admin 4732
