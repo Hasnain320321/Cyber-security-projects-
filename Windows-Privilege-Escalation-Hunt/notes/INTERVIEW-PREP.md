@@ -23,7 +23,7 @@
 5. Why are negative tests necessary for detection engineering?
 6. What did rule 100102 add beyond built-in Wazuh rule 60154?
 7. Why was the detected event a true positive but the activity classified as benign?
-8. How did you restore and verify safe group membership after the test?
+8. How did you restore and verify safe group membership after the test?\n9. What does Sysmon Event 1 establish, and why doesn't it prove which interactive PowerShell command was typed?
 
 ## Technical quick reference
 
@@ -36,6 +36,6 @@
 | Non-admin 4732 test | Rule 60144, level 5 |
 | MITRE ATT&CK | T1098.007 |
 | Test account | SOC-PrivEsc-Test, disabled throughout |
-| Remaining work | Screenshots in repo, logon/process correlation and final housekeeping |
+| Sysmon cross-check | Event 1: elevated PowerShell at 22:22:19, same user/session context as group-change test; exact typed command not visible |\n| 4624/4672 cross-check | No matching test-account logon in limited 22:15–22:50 window |\n| Remaining work | Screenshots in repo and final housekeeping |
 
 These are **project-specific notes**, not a replacement for the existing 40 flashcards from Projects 1 and 2. Add Project 3 cards only when reviewing this completed material in a later study session.
