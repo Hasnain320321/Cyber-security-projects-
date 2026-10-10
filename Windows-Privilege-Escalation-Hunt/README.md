@@ -1,6 +1,6 @@
 # Windows Privilege Escalation Hunt — Wazuh + Windows Security
 
-**Status: Practical lab and core investigation finished (10 October 2026); GitHub screenshot evidence upload pending.**
+**Status: COMPLETE — controlled detection tests, investigation, rollback, Sysmon correlation, final cleanup and 26 verified screenshots (10 October 2026).**
 
 ## Objective
 
@@ -75,15 +75,32 @@ See the [investigation report](./investigations/01-privileged-group-change.md).
 - Existing built-in Administrator account was disabled; the main `hasna` account was enabled and an Administrators group member. No claim of an independently tested backup-admin login.
 - The test account was removed immediately after each privileged addition, with post-test membership validation. After the investigation, the disposable test account itself was deleted, with a subsequent existence check confirming no account found.
 - An authorised change can be a true positive for the *rule* without being a malicious incident.
-- **Limitations:** negative 4624/4672 search was restricted to 22:15–22:50 and suppressed query errors; Sysmon Event 1 establishes process creation/context rather than the exact typed command; screenshot files not yet hosted in this repository. The disabled test account was subsequently deleted.
+- **Limitations:** negative 4624/4672 search was restricted to 22:15–22:50 and suppressed query errors; Sysmon Event 1 establishes process creation/context rather than the exact typed command; all supporting screenshots are retained in the public repository. The disabled test account was subsequently deleted.
 - Do not claim production deployment or real attacker activity.
+
+## Verified screenshot evidence
+
+All **26 original PNG screenshots** are stored under [Project 3 / screenshots](./screenshots/), with a [fully linked evidence index](./screenshots/README.md). Every uploaded screenshot was verified against the local original by Git blob SHA-1; the **26 files match byte-for-byte, all PNGs open correctly, and none are exact duplicates**.
+
+The strongest recruiter-facing evidence is:
+
+| Investigation step | Linked screenshots |
+| --- | --- |
+| Audit, Wazuh collection and baseline | [01 audit policy](./screenshots/01-audit-policy.png), [02 Wazuh collection](./screenshots/02-wazuh-collection.png), [03 admin baseline](./screenshots/03-admin-baseline.png) |
+| Windows admin group change | [05 target/actor](./screenshots/05-admin-4732-target-and-actor.png), [05b Event 4732](./screenshots/05b-admin-4732-event-id.png) |
+| Initial rollback | [06 Windows 4733](./screenshots/06-windows-4733-rollback.png), [06b Wazuh 4733](./screenshots/06b-wazuh-4733-target-member.png) |
+| Custom rule 100102 | [07 rule created](./screenshots/07-custom-rule-file-created.png), [08c level-13 alert](./screenshots/08c-positive-rule100102-level13.png) (read alongside [08 event fields](./screenshots/08-positive-event-fields.png) and [08b Event 4732](./screenshots/08b-positive-event4732.png)) |
+| Negative tests | [10 no false removal alert](./screenshots/10-negative-4733-no-custom-alert.png), [10b 4733 received](./screenshots/10b-negative-4733-seen-in-wazuh.png), [11 non-admin Event 4732](./screenshots/11-nonadmin-addition-event4732.png), [12 rule 60144](./screenshots/12-negative-rule60144.png) |
+| Correlation and cleanup | [17 Sysmon PowerShell](./screenshots/17-sysmon-powershell-correlated-2222.png), [14 scoped logon search](./screenshots/14-logon-correlation-no-matches.png), [18 final account deletion](./screenshots/18-final-test-account-deleted.png) |
+
+Other companion and support screenshots remain available in the full index, not discarded.
 
 ## Repository files
 
 - [Detection logic and test matrix](./detections/01-local-admin-membership.md)
 - [Reproducible custom Wazuh rule source](./detections/privilege_escalation_rules.xml)
 - [Investigation and verdict](./investigations/01-privileged-group-change.md)
-- [Evidence checklist](./screenshots/README.md)
+- [26 verified screenshots — organised evidence index](./screenshots/README.md)
 - [Interview guide and revision notes — separate study repository](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/tree/main/Project-03-Privilege-Escalation-Hunt)
 
 ## Final cleanup (10 October 2026)
@@ -99,8 +116,8 @@ After completing the event investigations, the operator verified that `SOC-PrivE
 - [x] Admin-removal and non-admin-group negative cases passed
 - [x] Test account confirmed disabled; privileged membership removed; temporary normal group deleted
 - [x] Investigation write-up based on observed results
-- [ ] Upload curated, reviewed screenshots to this project's `screenshots/` folder
+- [x] All 26 curated PNG screenshots verified in this project's `screenshots/` folder and indexed by investigation stage
 - [x] Review limited 4624/4672 and Sysmon Event 1 context; document limitations
 - [x] Final housekeeping: verified non-admin group gone, test account not enabled or in Administrators, and deleted temporary account; checked it no longer exists
 
-**Current status: Practical work, correlation, cleanup and reporting finished. Evidence PNGs prepared separately; GitHub upload and verification pending before calling the full portfolio project Complete.**
+**Final status: COMPLETE (10 October 2026).** The authorised lab evidence, custom rule, positive and negative test results, contextual Sysmon review, independent rollback and final account deletion are documented. Public screenshots retain their original lab-local identifiers.
