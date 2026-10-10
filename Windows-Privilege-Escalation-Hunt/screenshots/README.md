@@ -1,6 +1,6 @@
 # Project 3 — Screenshot Evidence
 
-**Status: The user has supplied screenshots during the guided session on 10 October 2026. The actual PNG evidence has not yet been committed to this GitHub folder.** Do not treat this checklist as screenshot files.
+**Status: 26 screenshots were staged in a downloadable ZIP on 10 October 2026, including final cleanup. The actual PNG evidence has not yet been committed to this GitHub folder.** Do not treat this checklist as screenshot files.
 
 Evidence must be kept **separate** from Project 1's and Project 2's screenshots. When uploading, choose the most legible original captured image (avoid redundant crops). Review public screenshots for local usernames, endpoint names, internal IPs and identifiers before publishing; don't obscure fields necessary to support a claim.
 
@@ -29,6 +29,8 @@ Evidence must be kept **separate** from Project 1's and Project 2's screenshots.
 | `15-sysmon-powershell-high-2235.png` | Yes | Elevated `powershell.exe` started by Explorer at 22:35:57 |
 | `16-sysmon-ssh-wazuh-2230.png` | Yes | `ssh.exe` to Wazuh VM started by PowerShell at 22:30:46 |
 | `17-sysmon-powershell-correlated-2222.png` | Yes | Elevated PowerShell process at 22:22:19 preceding controlled administrator group-change event |
+
+| `18-final-test-account-deleted.png` | Yes | After checking no test membership or temporary group, `Remove-LocalUser` succeeded and subsequent lookup found no test account |
 
 ## Upload verification checklist
 
