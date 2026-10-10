@@ -48,7 +48,17 @@ The positive-test script printed successful removal and an independent group-mem
 
 ## Logon correlation check (10 October 2026)
 
-A read-only Windows PowerShell query searched Security Event IDs **4624** (successful logon) and **4672** (special privileges assigned) from **22:15–22:50 local time**, filtering event messages for the disabled `SOC-PrivEsc-Test` username or SID. **No matching test-account records were returned.** This supports the limited finding that no such matches were observed **in that time window**; it does not prove that no account logon ever occurred or rule out logging/query limitations. A Sysmon Event 1 process review remains outstanding.
+A read-only Windows PowerShell query searched Security Event IDs **4624** (successful logon) and **4672** (special privileges assigned) from **22:15–22:50 local time**, filtering event messages for the disabled `SOC-PrivEsc-Test` username or SID. **No matching test-account records were returned.** This supports the limited finding that no such matches were observed **in that time window**; it does not prove that no account logon ever occurred or rule out logging/query limitations. A limited Sysmon Event 1 review found relevant elevated PowerShell process creation, described separately below; process creation alone does not record commands later typed in that shell.
+
+## Sysmon process correlation (10 October 2026)
+
+A read-only query of `Microsoft-Windows-Sysmon/Operational` Event ID **1** for 22:15–22:50 (local time) returned, among others:
+
+- **22:22:19**: `powershell.exe` created by `explorer.exe`, user `hasna`, **High** integrity, Logon ID **0x3FE50**. This precedes the controlled **4732** group addition by seconds, and is consistent with the actor/session.
+- **22:30:46**: `ssh.exe` spawned by `powershell.exe`, user `hasna`, High integrity, command line connects to the lab Wazuh VM at `192.168.56.101`; consistent with authorised lab management.
+- **22:35:57**: another `powershell.exe` process started by Explorer, user `hasna`, High integrity.
+
+The Sysmon events corroborate process/session context but **do not prove that the individual `Add-LocalGroupMember` command was executed inside any particular PowerShell process**: the Sysmon Event 1 command line is the shell executable invocation, not every command typed after startup.
 
 ## Investigation / response reasoning
 
@@ -65,7 +75,7 @@ See the [investigation report](./investigations/01-privileged-group-change.md).
 - Existing built-in Administrator account was disabled; the main `hasna` account was enabled and an Administrators group member. No claim of an independently tested backup-admin login.
 - The test account was removed immediately after each privileged addition, with post-test membership validation.
 - An authorised change can be a true positive for the *rule* without being a malicious incident.
-- **Not yet verified:** full follow-on 4624/4672/Sysmon correlation, final screenshot files hosted in this repository, disposal of the disabled test account.
+- **Limitations:** negative 4624/4672 search was restricted to 22:15–22:50 and suppressed query errors; Sysmon Event 1 establishes process creation/context rather than the exact typed command; screenshot files not yet hosted in this repository; disabled test-account disposal pending.
 - Do not claim production deployment or real attacker activity.
 
 ## Repository files
@@ -86,7 +96,7 @@ See the [investigation report](./investigations/01-privileged-group-change.md).
 - [x] Test account confirmed disabled; privileged membership removed; temporary normal group deleted
 - [x] Investigation write-up based on observed results
 - [ ] Upload curated, reviewed screenshots to this project's `screenshots/` folder
-- [ ] Review pertinent logon/process context (and document evidence limitations)
+- [x] Review limited 4624/4672 and Sysmon Event 1 context; document limitations
 - [ ] Verify final housekeeping; then mark fully **Complete**
 
-**Current status: Tests validated; evidence and correlation pending.**
+**Current status: Tests and limited correlation validated; screenshot upload and final housekeeping pending.**
