@@ -1,6 +1,6 @@
 # Windows Privilege Escalation Hunt — Wazuh + Windows Security
 
-**Status: Detection and controlled tests validated (10 October 2026). Evidence upload and additional log correlation are pending.**
+**Status: Practical lab and core investigation finished (10 October 2026); GitHub screenshot evidence upload pending.**
 
 ## Objective
 
@@ -10,7 +10,7 @@ This is a standalone portfolio project using the existing Wazuh + Sysmon lab inf
 
 ## Key result
 
-A disabled local test account, `SOC-PrivEsc-Test`, was temporarily added to the Administrators group and promptly removed on a personally controlled Windows host. Windows Security Event **4732** was observed in Wazuh and custom rule **100102 (level 13)** triggered. Rollback Event **4733** was observed; the test account remained disabled and was not left in the Administrators group. A separate local non-admin-group addition produced Event **4732** under existing Wazuh rule **60144 (level 5)**, **not** custom rule 100102.
+A dedicated disabled local test account, `SOC-PrivEsc-Test`, was temporarily added to the Administrators group and promptly removed on a personally controlled Windows host. Windows Security Event **4732** was observed in Wazuh and custom rule **100102 (level 13)** triggered. Rollback Event **4733** was observed; the test account remained disabled and was not left in the Administrators group. A separate local non-admin-group addition produced Event **4732** under existing Wazuh rule **60144 (level 5)**, **not** custom rule 100102.
 
 **Verdict:** True-positive detection of the targeted *membership-change event*, with **authorised benign lab activity**; **not** evidence of compromise, active exploitation, or that the disabled test account ever logged in with elevated permissions.
 
@@ -73,7 +73,7 @@ See the [investigation report](./investigations/01-privileged-group-change.md).
 - Testing used a dedicated **disabled** account on a personally controlled Windows host.
 - Before changes, the Administrators membership and account state were examined; the test never modified the `hasna` membership.
 - Existing built-in Administrator account was disabled; the main `hasna` account was enabled and an Administrators group member. No claim of an independently tested backup-admin login.
-- The test account was removed immediately after each privileged addition, with post-test membership validation.
+- The test account was removed immediately after each privileged addition, with post-test membership validation. After the investigation, the disposable test account itself was deleted, with a subsequent existence check confirming no account found.
 - An authorised change can be a true positive for the *rule* without being a malicious incident.
 - **Limitations:** negative 4624/4672 search was restricted to 22:15–22:50 and suppressed query errors; Sysmon Event 1 establishes process creation/context rather than the exact typed command; screenshot files not yet hosted in this repository; disabled test-account disposal pending.
 - Do not claim production deployment or real attacker activity.
@@ -86,6 +86,10 @@ See the [investigation report](./investigations/01-privileged-group-change.md).
 - [Evidence checklist](./screenshots/README.md)
 - [Interview preparation](./notes/INTERVIEW-PREP.md)
 
+## Final cleanup (10 October 2026)
+
+After completing the event investigations, the operator verified that `SOC-PrivEsc-Test` remained disabled and absent from Administrators, and that `SOC-NonAdmin-Test` no longer existed. They then ran `Remove-LocalUser -Name 'SOC-PrivEsc-Test'` and verified that `Get-LocalUser` no longer found the account. The PowerShell output printed **"CLEANUP VERIFIED: Temporary test account deleted."**. No claim is made that Event 4726 was checked in Wazuh.
+
 ## Completion checklist
 
 - [x] Audit policy, Windows Security log, Wazuh agent/ingestion verified
@@ -97,6 +101,6 @@ See the [investigation report](./investigations/01-privileged-group-change.md).
 - [x] Investigation write-up based on observed results
 - [ ] Upload curated, reviewed screenshots to this project's `screenshots/` folder
 - [x] Review limited 4624/4672 and Sysmon Event 1 context; document limitations
-- [ ] Verify final housekeeping; then mark fully **Complete**
+- [x] Final housekeeping: verified non-admin group gone, test account not enabled or in Administrators, and deleted temporary account; checked it no longer exists
 
-**Current status: Tests and limited correlation validated; screenshot upload and final housekeeping pending.**
+**Current status: Practical work, correlation, cleanup and reporting finished. Evidence PNGs prepared separately; GitHub upload and verification pending before calling the full portfolio project Complete.**
