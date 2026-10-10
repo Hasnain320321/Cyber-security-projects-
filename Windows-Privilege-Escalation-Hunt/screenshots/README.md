@@ -26,6 +26,10 @@ Evidence must be kept **separate** from Project 1's and Project 2's screenshots.
 
 | `14-logon-correlation-no-matches.png` | Yes | Read-only Windows query of Security Event 4624/4672 in 22:15–22:50 lab window returned no account matches; interpret cautiously |
 
+| `15-sysmon-powershell-high-2235.png` | Yes | Elevated `powershell.exe` started by Explorer at 22:35:57 |
+| `16-sysmon-ssh-wazuh-2230.png` | Yes | `ssh.exe` to Wazuh VM started by PowerShell at 22:30:46 |
+| `17-sysmon-powershell-correlated-2222.png` | Yes | Elevated PowerShell process at 22:22:19 preceding controlled administrator group-change event |
+
 ## Upload verification checklist
 
 - [ ] PNG files have actually been uploaded to this GitHub directory
