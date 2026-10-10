@@ -1,20 +1,33 @@
-# Windows Privilege Escalation Hunt — Screenshot Evidence
+# Project 3 — Screenshot Evidence
 
-**Status: No screenshots collected or committed for this project yet.**
+**Status: The user has supplied screenshots during the guided session on 10 October 2026. The actual PNG evidence has not yet been committed to this GitHub folder.** Do not treat this checklist as screenshot files.
 
-This directory is deliberately separate from:
-- `SOC-Home-Lab/screenshots/`
-- `Windows-Authentication-Investigation/screenshots/`
+Evidence must be kept **separate** from Project 1's and Project 2's screenshots. When uploading, choose the most legible original captured image (avoid redundant crops). Review public screenshots for local usernames, endpoint names, internal IPs and identifiers before publishing; don't obscure fields necessary to support a claim.
 
-## Proposed evidence plan
+## Curated screenshot upload plan
 
-1. `01-audit-policy.png` — Windows audit policy checked before any change.
-2. `02-existing-admin-membership.png` — Approved baseline/permissions (review for sensitive identity data).
-3. `03-event-4732-security-log.png` — Event 4732, member, subject and group fields.
-4. `04-wazuh-4732-event.png` — SIEM visibility.
-5. `05-custom-group-change-alert.png` — Custom Wazuh rule, if actually deployed.
-6. `06-event-4733-rollback.png` — Removal event.
-7. `07-restored-admin-membership.png` — Confirm post-test group membership matches intended state.
-8. `08-negative-test.png` — Evidence a nonprivileged change does not alert as an Administrators change.
+| Suggested file | Captured during session? | What should be visible |
+| --- | --- | --- |
+| `01-audit-policy.png` | Yes | `Security Group Management: Success` |
+| `02-wazuh-collection.png` | Yes | Wazuh agent running and collecting `Security` eventchannel |
+| `03-admin-baseline.png` | Yes | Administrators list before testing |
+| `04-disabled-test-account.png` | Yes | `SOC-PrivEsc-Test` and `Enabled=False` |
+| `05-original-admin-4732.png` | Yes | Event 4732, Administrators target SID `-544`, subject/member |
+| `06-event-4733-rollback.png` | Yes | Event 4733 removal from Administrators, matching member |
+| `07-rule-created-manager-active.png` | Yes | New custom rule configuration and manager restart `active` |
+| `08-positive-rule-100102.png` | Yes | `rule.id=100102`, `rule.level=13`, same 4732 event (may need two related captures) |
+| `09-positive-safe-end-state.png` | Yes | Rollback and disabled account |
+| `10-negative-removal.png` | Yes | Rule 100102 + Event 4733 produces no matches, and separate 4733 results appear |
+| `11-negative-normal-group-4732.png` | Yes | Target group `SOC-NonAdmin-Test`, SID ending `-1006`, Event 4732 |
+| `12-negative-rule-60144.png` | Yes | Same non-admin event handled by rule `60144`, level 5 |
+| `13-negative-group-cleanup.png` | Yes | Group deletion Event 4734 or PowerShell cleanup output |
 
-The list is **planned**, not proof that any action was performed. Review screenshots for identifiable/sensitive account details before publicly uploading them.
+"Captured during session" means the evidence was seen in the chat, **not** that a matching PNG file is present on GitHub.
+
+## Upload verification checklist
+
+- [ ] PNG files have actually been uploaded to this GitHub directory
+- [ ] Every cited screenshot corresponds to the correct event/test and includes relevant visible context
+- [ ] Positive detection and negative cases are clearly separated
+- [ ] Personally identifying/internal information reviewed for public disclosure
+- [ ] Links in the investigation document updated to point to the committed screenshot files
