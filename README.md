@@ -34,6 +34,10 @@ Wazuh, Windows Event Viewer, Sysmon, PowerShell, VirtualBox, Kali Linux, Linux C
 
 Future learning may include Microsoft Sentinel, KQL, Sigma rules, threat intelligence tools and defensive automation.
 
+## Interview and Study Resources
+
+This repository is the **recruiter-facing evidence portfolio**: completed projects, detection logic, investigation reports and original screenshots. Interview guides, learning notes and a cumulative **60-card** deck (20 questions for each finished project) are maintained in the separate [SOC Interview and Study Notes repository](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes), with the [master flashcards here](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Flashcards/SOC-MASTER-FLASHCARDS.md).
+
 ## How Projects Are Documented
 
 Objectives; lab setup; scenario; data sources; detection logic; test matrix; investigation; evidence; MITRE mapping; findings; response recommendations; legitimate activity/false-positive discussion; lessons learned; honest limitations.
