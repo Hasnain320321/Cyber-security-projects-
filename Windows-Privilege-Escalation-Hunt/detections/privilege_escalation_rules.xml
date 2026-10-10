@@ -1,0 +1,15 @@
+<!-- Project 3 lab rule, deployed and tested on Wazuh Manager 10 October 2026.
+     Rule 100102: Windows 4732 addition to built-in local Administrators.
+     Keep separate from custom Project 1 (100100) and Project 2 (100101).
+     File on manager: /var/ossec/etc/rules/privilege_escalation_rules.xml -->
+<group name="windows,privilege_escalation_hunt,">
+  <rule id="100102" level="13">
+    <if_sid>60154</if_sid>
+    <field name="win.system.eventID" type="pcre2">^4732$</field>
+    <field name="win.eventdata.targetSid" type="pcre2">^S-1-5-32-544$</field>
+    <description>Local Administrators addition: $(win.eventdata.memberSid) by $(win.eventdata.subjectUserName)</description>
+    <mitre>
+      <id>T1098.007</id>
+    </mitre>
+  </rule>
+</group>
