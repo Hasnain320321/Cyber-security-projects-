@@ -92,8 +92,5 @@ Four controlled detection-validation scenarios were completed in Investigation 0
 - [Investigation 01 — detection validation](../investigations/01-controlled-login-attempts.md)
 - [Investigation 02 — failed-to-successful login](../investigations/02-failed-then-successful-login.md), with [textual evidence timeline](../evidence/02-authentication-timeline.md) and seven uploaded visual exhibits.
 - [Project 2 overview](../README.md)
-- [Interview summary](../INTERVIEW-SUMMARY.md)
-- [Project 2 memory notes](../notes/WHAT-TO-MEMORISE.md)
-- [Combined Project 1 + 2 20-card review](../../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
 
 **Privacy note:** The repository is public. Screenshots show lab host/account identifiers; review public images periodically for sensitive information. No passwords should be included.

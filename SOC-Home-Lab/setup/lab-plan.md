@@ -119,7 +119,6 @@ Completed:
 - [x] Main SOC Home Lab README updated
 - [x] Learning log and troubleshooting notes written
 - [x] Evidence-based MITRE ATT&CK mapping used
-- [x] Interview-ready project summary created
 
 ## Completion Checklist
 

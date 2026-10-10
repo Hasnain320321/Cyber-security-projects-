@@ -4,7 +4,7 @@ This roadmap keeps the portfolio focused on the practical skills expected from j
 
 ## Phase 1 — SOC Home Lab
 
-**Status:** Complete — 3/3 controlled scenarios, 3 detections, 3 investigations, evidence, lessons learned, interview summary, and Kali-to-Windows connectivity validation completed.
+**Status:** Complete — 3/3 controlled scenarios, 3 detections, 3 investigations, evidence, lessons learned, and Kali-to-Windows connectivity validation completed.
 
 **Goal:** Build a small security monitoring environment and prove that endpoint activity can be collected, detected, and investigated.
 
@@ -31,7 +31,7 @@ This roadmap keeps the portfolio focused on the practical skills expected from j
 
 ## Phase 2 — Wazuh Brute-Force Detection & Windows Authentication Investigation
 
-**Status:** **Complete (8 October 2026).** Custom Wazuh brute-force detection rule 100101 (three failed logins per account within 60 seconds) was tested in four controlled scenarios. Two Windows authentication investigations, 26 curated screenshots (19 for the first and seven for the second), an evidence timeline with documented limits, response guidance and interview summary are documented. Further remote/production rule tuning is optional future work.
+**Status:** **Complete (8 October 2026).** Custom Wazuh brute-force detection rule 100101 (three failed logins per account within 60 seconds) was tested in four controlled scenarios. Two Windows authentication investigations, 26 curated screenshots (19 for the first and seven for the second), an evidence timeline with documented limits, and response guidance are documented. Further remote/production rule tuning is optional future work.
 
 **Evidence and reports:** [Windows Authentication Investigation](./Windows-Authentication-Investigation/) · [Final summary](./Windows-Authentication-Investigation/FINAL-PROJECT-SUMMARY.md)
 
@@ -56,7 +56,7 @@ Skills demonstrated:
 
 **MITRE ATT&CK:** T1098.007 — Additional Local or Domain Groups (Persistence / Privilege Escalation).
 
-**Planned outcomes:** Read-only auditing check; controlled positive + nonprivileged negative test on a machine owned by the learner; reversible membership change; custom Wazuh detection; rollback proof; investigation report, curated screenshots and interview notes. The tests are **not yet completed**.
+**Planned outcomes:** Read-only auditing check; controlled positive + nonprivileged negative test on a machine owned by the learner; reversible membership change; custom Wazuh detection; rollback proof; investigation report, and curated screenshots. The tests are **not yet completed**.
 
 **Repository:** [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/).
 

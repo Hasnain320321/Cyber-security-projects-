@@ -68,6 +68,5 @@ The [Project 2 evidence index](../screenshots/README.md) contains all 19 screens
 - All 19 labelled evidence PNGs committed under this project's screenshots folder and indexed above.
 - Both three-failure positive cases and the mixed-account 2+1 case are tested; additional source-IP/timing edge cases are outside current scope.
 - Review whether the rule threshold/source grouping should be tuned.
-- [Interview summary](../INTERVIEW-SUMMARY.md) is available; periodically review evidence quality and technical limitations.
 
 This report is deliberately limited to the evidence actually observed in the lab.

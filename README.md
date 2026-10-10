@@ -8,11 +8,11 @@ I am building this repository to document practical cyber security work rather t
 
 ## Current Focus
 
-**Project 1 — SOC Home Lab** is complete, including three controlled scenarios, three detection write-ups, three investigation reports, screenshots, and an interview summary.
+**Project 1 — SOC Home Lab** is complete, including three controlled scenarios, three detection write-ups, three investigation reports, and screenshots.
 
-**Project 2 — Wazuh Brute-Force Detection & Authentication Investigation** is **Complete**. The project built and validated Wazuh brute-force detection rule `100101` (three failures against the same account within 60 seconds) using four controlled positive/negative scenarios across two accounts and investigated Event ID 4625 failures followed by an Event ID 4624 successful login. It includes two investigation reports, 26 curated screenshots (19 from the first investigation and seven from the second), an evidence timeline with limitations, a response playbook and an interview summary. Detection tuning for remote/production use remains optional future work.
+**Project 2 — Wazuh Brute-Force Detection & Authentication Investigation** is **Complete**. The project built and validated Wazuh brute-force detection rule `100101` (three failures against the same account within 60 seconds) using four controlled positive/negative scenarios across two accounts and investigated Event ID 4625 failures followed by an Event ID 4624 successful login. It includes two investigation reports, 26 curated screenshots (19 from the first investigation and seven from the second), an evidence timeline with limitations, and a response playbook. Detection tuning for remote/production use remains optional future work.
 
-**New — Windows Privilege Escalation Hunt** has been added as a separate upcoming investigation. Its GitHub plan, detection hypothesis, evidence checklist and interview preparation are ready. **No privilege-change tests have been run yet.**
+**New — Windows Privilege Escalation Hunt** has been added as a separate upcoming investigation. Its GitHub plan, detection hypothesis, and evidence checklist are ready. **No privilege-change tests have been run yet.**
 
 ## Portfolio Projects
 
@@ -27,10 +27,6 @@ I am building this repository to document practical cyber security work rather t
 | Detection Engineering | KQL/Sigma, detection logic, false positives, MITRE ATT&CK | Planned |
 
 See the full plan in [PROJECT-ROADMAP.md](./PROJECT-ROADMAP.md).
-
-### Daily SOC revision
-
-Use the [combined Project 1 + Project 2 40-card flashcard deck](./study/SOC-FLASHCARDS-PROJECTS-1-2.md) and the [Project 2 memorisation notes](./Windows-Authentication-Investigation/notes/WHAT-TO-MEMORISE.md). The Project 2 [interview guide](./Windows-Authentication-Investigation/INTERVIEW-SUMMARY.md) has both short and detailed responses.
 
 ## Tools & Technologies
 

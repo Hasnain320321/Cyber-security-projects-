@@ -36,7 +36,7 @@ Microsoft 4732 documentation: https://learn.microsoft.com/en-us/previous-version
 3. **Detection:** Create and validate a separate Wazuh custom detection for additions to the built-in Administrators group, only after observing the true event field names. Never modify Project 1 rule 100100 or Project 2 rule 100101.
 4. **Negative / tuning test:** Examine a change to a **non-privileged local group** or another approved event and ensure it is not misclassified as an Administrators-group escalation.
 5. **Investigation:** Attribute the actor and added member, check related 4624/4672 and Sysmon process activity (if collected), establish authorisation and outcome.
-6. **Reporting:** Screenshots, detection write-up, incident narrative, response recommendations, MITRE mapping, interview summary and flashcards.
+6. **Reporting:** Screenshots, detection write-up, incident narrative, response recommendations, and MITRE mapping.
 
 ## Safety and rollback
 
@@ -58,7 +58,6 @@ Check: **Who was added? Which privileged group? Who performed the change? When? 
 - [Detection plan](./detections/01-local-admin-membership.md) — hypothesis, fields and test matrix.
 - [Investigation template](./investigations/01-privileged-group-change.md) — fill in only after observing actual events.
 - [Screenshot evidence checklist](./screenshots/README.md) — placeholder list, no evidence uploaded yet.
-- [Study and interview topics](./notes/INTERVIEW-PREP.md) — preparation, not claimed achievements.
 
 ## Status checklist
 
@@ -68,6 +67,6 @@ Check: **Who was added? Which privileged group? Who performed the change? When? 
 - [ ] Build and test Wazuh rule using observed event fields.
 - [ ] Verify rollback/administrators membership restoration.
 - [ ] Investigate and classify actual generated events.
-- [ ] Add screenshots and completed interview write-up.
+- [ ] Add screenshots and completed investigation write-up.
 
 **Status will be changed to Complete only after testing and evidence are verified.**

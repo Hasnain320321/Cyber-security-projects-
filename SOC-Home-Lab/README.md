@@ -134,7 +134,6 @@ The analyst validates the underlying telemetry, identifies the affected user/hos
 SOC-Home-Lab/
 |
 |-- README.md
-|-- INTERVIEW-SUMMARY.md
 |-- setup/
 |   |-- lab-plan.md
 |
@@ -153,9 +152,6 @@ SOC-Home-Lab/
 |-- screenshots/
 |   |-- README.md
 |   |-- 04 through 19 evidence screenshots
-|
-|-- notes/
-    |-- learning-log.md
 ```
 
 ## Verified Progress Evidence
@@ -248,11 +244,9 @@ Project completion criteria:
 
 ## Final Project Notes
 
-- [Learning log and lessons learned](./notes/learning-log.md)
-- [Interview-ready project summary](./INTERVIEW-SUMMARY.md)
 - [Screenshot evidence index](./screenshots/README.md)
 
-Direct Kali-to-Windows communication was verified successfully with 4/4 ICMP replies and 0% packet loss. Project 1 is complete: three controlled scenarios, three detections, three investigations, organised evidence, lessons learned, troubleshooting notes, and an interview-ready summary.
+Direct Kali-to-Windows communication was verified successfully with 4/4 ICMP replies and 0% packet loss. Project 1 is complete: three controlled scenarios, three detections, three investigations, organised evidence, and documented findings and lessons learned.
 
 ## Safety and Scope
 

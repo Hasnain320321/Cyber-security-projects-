@@ -27,7 +27,7 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 | Positive test 2 | Three failures for second test account -> new correlated level-10 alert |
 | Authentication investigation | Two `4625` failures for `SOC-Lab-Test2` at 18:01:21/26 followed by `4624` success at 18:01:33 for the same account; Logon Type 2 |
 | Post-login triage | Nearby shell-related alerts were reviewed; McAfee WebAdvisor BrowserHost.exe appears in expanded telemetry, but the alerted process was **not proven to be initiated by the logged-in test account** |
-| Reporting | Two investigations, detection design, response playbook, learning points, interview summary and evidence index |
+| Reporting | Two investigations, detection design, response playbook, learning points and evidence index |
 
 ## Evidence
 
@@ -36,11 +36,7 @@ Build and validate a Wazuh rule to detect bursts of Windows authentication failu
 - [Investigation 02](./investigations/02-failed-then-successful-login.md) and [transcribed timeline](./evidence/02-authentication-timeline.md)
 - [Custom rule XML and validation table](./detections/01-brute-force-correlation.md)
 - [Triage and response playbook](./response/01-authentication-alert-triage-playbook.md)
-- [Expanded interview summary, including a 60-second explanation and 12 interview questions](./INTERVIEW-SUMMARY.md)
-- [Project 2 memorisation notes](./notes/WHAT-TO-MEMORISE.md)
-- [Combined 40-card revision deck: 20 per project](../study/SOC-FLASHCARDS-PROJECTS-1-2.md)
 - [Investigation 02 screenshot audit and missing-image checklist](./evidence/INVESTIGATION-02-SCREENSHOT-UPLOAD-CHECKLIST.md)
-- [Learning review: five anchors and 20 flashcards](./notes/LEARNING-REVIEW.md)
 
 **Evidence boundary:** GitHub now hosts **26 curated images: 19 from Investigation 01 and 7 from Investigation 02**. The second investigation also includes a textual reconstruction of the observed timeline. Its cropped failure-alert image does not display the username filter, and the McAfee BrowserHost.exe detail image has not been uploaded. These limitations are explicitly recorded rather than presenting the screenshots as complete forensic logs.
 
