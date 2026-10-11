@@ -1,6 +1,6 @@
 # CASE-0043 — Benign Email Control and CASE-0042 Comparison
 
-**Status:** Local offline control analysis **performed** on 11 October 2026; user-provided PowerShell screenshots reviewed. Actual screenshots not yet committed to GitHub.  
+**Status:** Local offline control analysis **performed** on 11 October 2026; user-provided PowerShell screenshots reviewed. [CASE-0043 terminal screenshot](../screenshots/05-case0043-benign-control.png) committed and verified on GitHub.  
 **Sample:** [CASE-0043-benign-control.eml](../samples/CASE-0043-benign-control.eml), a **deliberately synthetic** benign control authored for this training project. `.example` is reserved for examples.  
 **Environment:** Windows laptop, Python 3.15.0, PowerShell, [email_triage.py](../tools/email_triage.py).
 
@@ -11,7 +11,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Hasnain320321/Cyber-se
 python tools\email_triage.py samples\CASE-0043-benign-control.eml --output output\CASE-0043.json
 ```
 
-The user shared screenshots demonstrating the file download command, the offline analysis command, the successful message `Saved read-only triage results: output\CASE-0043.json`, and JSON output. The screenshots are conversation evidence; their PNGs are not uploaded to this folder yet.
+The user shared screenshots demonstrating the file download command, the offline analysis command, the successful message `Saved read-only triage results: output\CASE-0043.json`, and JSON output. The user-captured PowerShell evidence is now archived as [05-case0043-benign-control.png](../screenshots/05-case0043-benign-control.png) in the screenshot folder.
 
 ## Observed tool output
 
@@ -57,7 +57,7 @@ The Python script **extracts indicators only** and performs **no autonomous mali
 
 ## Follow-up before project completion
 
-- Preserve and upload a clean, genuine screenshot of Case 0043 script output (suggested `05-case0043-benign-control.png`), after checking it for sensitive data.
+- **Completed:** Screenshot of the user-run Case 0043 output uploaded and verified as [05-case0043-benign-control.png](../screenshots/05-case0043-benign-control.png).
 - Upload earlier local unit-test and Case 0042 summary evidence screenshots, cropping/removing the long tracking URL path.
 - Review both samples together and complete a final investigation report with explicit evidence, confidence, source limitations and recommendations.
 - Project 4 remains **IN PROGRESS** until the evidence review is complete.
