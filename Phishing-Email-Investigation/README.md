@@ -11,6 +11,7 @@ The initial synthetic CASE-0041 was **not** sufficient as a stand-alone hands-on
 - [Four initial unit tests](./tests/test_email_triage.py) — passed in the assistant's isolated development container **and independently re-run on the user's Windows laptop (4/4 passed)**.
 - [Reproducible synthetic test output](./evidence/CASE-0041-tool-output.json) — tool-generated output from the supplied safe training .eml. This is **assistant-executed proof of tool functionality**, not a real-world phishing investigation.
 - [CASE-0042 verified initial laptop analysis](./investigations/CASE-0042-INITIAL-TRIAGE.md) — four local Python unit tests passed, the public sample was hashed and parsed, authentication headers and three URL hostnames were extracted, and the decoded message body was reviewed on the user's laptop; privacy-safe findings recorded.
+- [CASE-0043 synthetic benign control](./samples/CASE-0043-benign-control.eml) — labelled no-action library-booking email to compare against Case 0042; local analyst test **pending**. Authentication header values are intentionally simulated, not checked against real DNS.
 - Real-world case [decoded-body PNG](./screenshots/04-case0042-decoded-body.png): **uploaded and verified**. Three other planned PNGs, benign comparison and final report: **PENDING**.
 
 The portfolio should only be marked complete once the actual real-world sample analysis, genuine screenshots, meaningful controls, final report and evidence review are done.
