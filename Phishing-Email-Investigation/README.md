@@ -1,60 +1,46 @@
 # Phishing Email Investigation — Project 4
 
-**Status: IN PROGRESS — evidence upgrade (reopened 11 October 2026).** The introductory synthetic case is documented; a sourced real-world sample has now been analysed offline on the user's Windows laptop; three earlier Case 0042/unit-test screenshots remain to upload; the consolidated final report is now drafted for final evidence review.
+**Status: COMPLETE — 11 October 2026 (scoped offline SOC analysis of one historical redacted phishing-style email, plus a synthetic benign control).**
 
-## Evidence rebuild (in progress)
+## What this project demonstrates
 
-The initial synthetic CASE-0041 was **not** sufficient as a stand-alone hands-on portfolio project. We reopened this project instead of overstating completion.
+I performed a local, read-only Python/PowerShell email investigation on a Windows laptop. I evaluated a **real-world historical but redacted and defanged** DBS/POSB impersonation sample (CASE-0042) and compared its indicators with a **deliberately synthetic benign** library confirmation (CASE-0043). I built and executed a standard-library Python email triage script, ran four passing unit tests, extracted email header information and URLs, examined message content, calculated a SHA-256 sample hash, compared the control, documented a defensible conclusion, and preserved five genuine local screenshots.
 
-- [CASE-0042 source provenance and practical evidence plan](./investigations/CASE-0042-SOURCE-AND-PLAN.md) — selected redacted real-world banking impersonation sample, now initially investigated on the user's laptop (evidence still incomplete).
-- [Python offline email triage helper](./tools/email_triage.py) — read-only header/URL/hash extraction, no requests or attachment execution.
-- [Four initial unit tests](./tests/test_email_triage.py) — passed in the assistant's isolated development container **and independently re-run on the user's Windows laptop (4/4 passed)**.
-- [Reproducible synthetic test output](./evidence/CASE-0041-tool-output.json) — tool-generated output from the supplied safe training .eml. This is **assistant-executed proof of tool functionality**, not a real-world phishing investigation.
-- [CASE-0042 verified initial laptop analysis](./investigations/CASE-0042-INITIAL-TRIAGE.md) — four local Python unit tests passed, the public sample was hashed and parsed, authentication headers and three URL hostnames were extracted, and the decoded message body was reviewed on the user's laptop; privacy-safe findings recorded.
-- [CASE-0043 synthetic benign control](./samples/CASE-0043-benign-control.eml) — labelled no-action library-booking email; local analyst test **completed** on Windows and results compared against Case 0042. Authentication header values are intentionally simulated, not checked against real DNS.
-- [CASE-0043 user-run benign-control comparison](./investigations/CASE-0043-BENIGN-COMPARISON.md) — locally downloaded and parsed; verified 1,363-byte file, SHA-256, simulated authentication results, consistent domain identities, one example URL and no attachments; [CASE-0043 evidence PNG](./screenshots/05-case0043-benign-control.png) **uploaded and verified on GitHub**.
-- Real-world case [decoded-body PNG](./screenshots/04-case0042-decoded-body.png): **uploaded and verified**. [CASE-0043 control PNG](./screenshots/05-case0043-benign-control.png): **uploaded and verified**. Three prior PNGs: **PENDING**; [consolidated final report](./investigations/FINAL-INVESTIGATION-REPORT.md): **drafted, awaiting screenshot verification**.
+**Conclusion:** CASE-0042 was assessed as **likely bank-impersonation phishing**, based on sender-brand mismatch, the banking-token action request, and a third-party button URL. Its true redirect destination and any credential theft remain **unverified**. CASE-0043 is benign **by construction**, not a real legitimate email that was independently authenticated.
 
-The real-world sample and benign-control analyses are complete. The consolidated final report is written. **Keep project status In Progress until the remaining three genuine screenshots are uploaded, checked and linked.**
+## Evidence and reports
 
-## Consolidated investigation deliverables
+- [**Consolidated investigation report**](./investigations/FINAL-INVESTIGATION-REPORT.md) — source, SHA-256, methods, headers, URL roles, analysis, control comparison, ATT&CK mapping, limitations, and recommendations.
+- [**Five verified practical evidence screenshots**](./screenshots/README.md) — original user-run local tests, sample listing, privacy-cropped Case 0042 triage output, decoded email body, and benign-case analysis.
+- [**Evidence manifest**](./evidence/SCREENSHOT-UPLOAD-MANIFEST.md) — screenshot hashes and explicit description of the crop.
+- [CASE-0042 technical triage](./investigations/CASE-0042-INITIAL-TRIAGE.md) · [Public sample provenance](./investigations/CASE-0042-SOURCE-AND-PLAN.md)
+- [CASE-0043 benign-control comparison](./investigations/CASE-0043-BENIGN-COMPARISON.md)
+- [Offline Python indicator extractor](./tools/email_triage.py) · [Four unit tests](./tests/test_email_triage.py) · [Tool usage notes](./tools/README.md)
+- [Synthetic control fixture](./samples/CASE-0043-benign-control.eml); the historical CASE-0042 message remains in the [attributed public source corpus](./investigations/CASE-0042-SOURCE-AND-PLAN.md), not republished in this repository.
 
-- [**Final Case 0042 investigation and Case 0043 comparison report**](./investigations/FINAL-INVESTIGATION-REPORT.md) — executive summary, SHA-256 provenance, method, authentication limitations, CTA/link roles, benign comparison, findings, MITRE mapping and recommended SOC action.
-- [**Screenshot evidence index**](./screenshots/README.md) — two images currently verified in GitHub, three still awaiting upload.
-- [**Remaining screenshot upload manifest**](./evidence/SCREENSHOT-UPLOAD-MANIFEST.md) — proposed filenames, SHA-256 hashes and transparent crop/privacy disclosure.
-- [CASE-0042 initial hands-on triage](./investigations/CASE-0042-INITIAL-TRIAGE.md) and [CASE-0043 benign-control comparison](./investigations/CASE-0043-BENIGN-COMPARISON.md).
+## Practical exercises completed
 
-## Overview
+| Exercise | Verified outcome |
+| --- | --- |
+| Windows Python setup | Python 3.15.0 used from PowerShell |
+| Tool unit tests | **4/4 passed** on user's laptop |
+| CASE-0042 file analysis | **13,049 bytes**; SHA-256 `004f4a14e51ffd35a513984d464d59341d8440c65ebab3a5f3da620431c4b735`; JSON output saved locally |
+| CASE-0042 email inspection | From domain `substackss.firebaseapp.com`; header-reported SPF pass, DKIM pass, DMARC permerror |
+| CASE-0042 content and links | Banking token update pretext; HTML button points initially to `email.notify.thinkific.com`; logo from `www.dbs.com.sg`; unsubscribe to `bing.com` |
+| CASE-0043 synthetic control | **1,363 bytes**; matching example From/Reply-To/Return-Path domains; SPF pass, DKIM none, DMARC pass **as simulated header claims** |
+| Portfolio evidence | **5/5 actual screenshots** committed and checked against case descriptions; 01–03 also matched source screenshot Git blob hashes |
 
-Conducted a guided SOC-style investigation of a **deliberately synthetic** university IT-support phishing email (case `CASE-0041`). Opened the training `.eml` safely as text, examined sender identities, authentication-result claims, the `Received` sequence, the defanged link, and social-engineering content. Classified the sample as a **phishing simulation** and documented response recommendations. No real phishing site was visited, no malware executed, and no real user compromise established.
+## Background — introductory synthetic case
 
-**Verdict:** High-confidence phishing-pattern **training example**, consistent with an account-verification credential-harvesting lure. This is **not** a confirmed real-world incident.
+The initial exercise, [CASE-0041](./investigations/CASE-0041-phishing-analysis.md), used a fully synthetic university-support email to practise header inspection, defanged links and reported authentication results. Its [source](./samples/CASE-0041-training-email.eml), [evidence](./evidence/CASE-0041-evidence.md), and [SOC response playbook](./response/PHISHING-TRIAGE-PLAYBOOK.md) are preserved as training materials; it is **not** the main real-world case or a genuine compromise.
 
-## Evidence and case files
+## Evidence quality and limits
 
-- [Investigation report](./investigations/CASE-0041-phishing-analysis.md) — analysis, timeline, findings, MITRE mapping, limitations and verdict.
-- [Original synthetic email](./samples/CASE-0041-training-email.eml) — safe `.example` / documentation-only IP addresses; inspect in a text editor, not by following links.
-- [Header and IOC evidence](./evidence/CASE-0041-evidence.md) — extracted strings with observed vs inferred distinctions.
-- [Suggested SOC response](./response/PHISHING-TRIAGE-PLAYBOOK.md) — steps for a real environment, explicitly **not performed** on this training case.
+- CASE-0042 came from a public **pre-redacted** dataset, so original Received/Return-Path chain and original live URLs are unavailable. The header's SPF/DKIM/DMARC results were **read**, not independently authenticated.
+- CASE-0043 is **synthetic**, with reserved `.example` addresses and simulated authentication results; the comparison does not establish accuracy statistics for an email classifier.
+- The Python helper extracts indicators; **it does not classify emails as malicious or benign**.
+- No malicious link was opened, redirect resolved, attachment executed, victim click observed, credentials stolen, mailbox searched, email quarantined or production incident handled.
+- A privacy-cropped screenshot excludes an opaque tracking-style URL path. The [manifest](./evidence/SCREENSHOT-UPLOAD-MANIFEST.md) documents exactly what was cropped; no result values were invented.
+- **Status COMPLETE means the scoped offline lab investigation and evidence review are complete**, not that a live phishing campaign was discovered or responded to.
 
-## Skills demonstrated
-
-- Email header triage: `From`, `Reply-To`, `Return-Path`, `Received`, `Message-ID`
-- Interpreting **reported** SPF fail, DKIM none and DMARC fail
-- Defanging and extracting indicators without visiting unknown links
-- UTC timestamp normalization and basic message timeline
-- Distinguishing facts, suspected attacker objective and unknown impact
-- Phishing verdict, ATT&CK T1566.002 mapping and proportionate SOC response guidance
-
-## Boundaries
-
-- All domains use the reserved `.example` namespace; IPs `192.0.2.45` and `198.51.100.26` are documentation address ranges. Real DNS, WHOIS, web reputation, click telemetry and authentication validation are **not possible or meaningful** for this case.
-- Header values (including authentication results and relay path) are **simulated input**, not independently validated mail-server logs.
-- There was **no** real email-gateway quarantine, user-impact hunt, credential reset, Wazuh email detection, malware analysis, or live incident response.
-- The uploaded `.eml` and text evidence extracts form the GitHub evidence; the screenshot viewed during the guided session has **not** been added to GitHub.
-
-## Further practice
-
-Repeat this workflow using a permitted, appropriately sanitised real email sample or an isolated phishing-training dataset if available. Never upload private recipient information or live malicious links to a public repository.
-
-See the portfolio [home page](../README.md) and [roadmap](../PROJECT-ROADMAP.md).
+[Return to portfolio](../README.md) · [Roadmap](../PROJECT-ROADMAP.md)
