@@ -1,6 +1,6 @@
 # Project 4 — User-Captured Practical Evidence
 
-**Status: 2 screenshots uploaded and verified (CASE-0042 body and CASE-0043 control); 3 earlier screenshots pending.** This folder is prepared for genuine user-captured evidence from the local Windows/Python investigation. Screenshots seen in chat count as GitHub evidence only when their actual PNG has been committed and reviewed.
+**Status: 2 screenshots uploaded and verified (CASE-0042 body and CASE-0043 control); 3 prepared genuine PowerShell screenshots awaiting GitHub upload.** This folder is prepared for genuine user-captured evidence from the local Windows/Python investigation. Screenshots seen in chat count as GitHub evidence only when their actual PNG has been committed and reviewed.
 
 ## Planned screenshot set
 
@@ -8,9 +8,11 @@
 | --- | --- | --- |
 | `01-python-unit-tests-passed.png` | PowerShell `python -m unittest discover -s tests -v`, 4/4 OK | Pending |
 | `02-case0042-sample-list.png` | `Get-ChildItem .\samples` with two sample filenames and file sizes | Pending |
-| `03-case0042-triage-summary.png` | `email_triage.py` output, sample SHA-256, subject, reported authentication statuses and hostname list | Pending |
+| `03-case0042-triage-summary.png` | **Cropped actual PowerShell output** showing CASE-0042 SHA-256, sender and claimed authentication; bottom URL section removed to avoid publishing token-like paths. Three URL hostnames documented in the report | Pending |
 | [`04-case0042-decoded-body.png`](./04-case0042-decoded-body.png) | Local decoding of the real-world email's plain-text body | **Uploaded and verified** (11 October 2026) |
 | [`05-case0043-benign-control.png`](./05-case0043-benign-control.png) | Local PowerShell output of synthetic benign control analysis (SHA-256, domains, reported auth, defanged example link) | **Uploaded and verified** (11 October 2026) |
+
+[Final investigation report](../investigations/FINAL-INVESTIGATION-REPORT.md) · [Prepared screenshot hashes and crop disclosure](../evidence/SCREENSHOT-UPLOAD-MANIFEST.md)
 
 ## Privacy and quality guidance
 
