@@ -57,8 +57,8 @@ The preserved email uses a **DBS/POSB banking identity**, claims the customer's 
 
 ## Evidence still outstanding
 
-1. The authentic screenshot of locally decoded `text/plain` message body **has been seen in this conversation (11 October 2026), but the PNG still needs to be added to GitHub**. Suggested name: `04-case0042-decoded-body.png`.
-2. Actual screenshots shown in conversation, after privacy inspection, should be committed under `screenshots/`. **These PNGs have NOT yet been uploaded to GitHub.**
+1. **Completed:** [04-case0042-decoded-body.png](../screenshots/04-case0042-decoded-body.png) uploaded and verified on GitHub (11 October 2026); screenshot shows locally decoded `text/plain` body.
+2. Actual screenshots shown in conversation, after privacy inspection, should be committed under `screenshots/`. **Of the four planned screenshots, `04-case0042-decoded-body.png` is uploaded and verified; the other three are pending.**
 3. Do **not** upload the raw JSON without first removing long tracking-link paths and checking for identifiers; a public, hostname-only summary is sufficient for now.
 4. A benign comparison sample and outcome, plus final investigation, limitations and defensible SOC verdict.
 
