@@ -58,6 +58,6 @@ The Python script **extracts indicators only** and performs **no autonomous mali
 ## Follow-up before project completion
 
 - **Completed:** Screenshot of the user-run Case 0043 output uploaded and verified as [05-case0043-benign-control.png](../screenshots/05-case0043-benign-control.png).
-- Upload earlier local unit-test and Case 0042 summary evidence screenshots, cropping/removing the long tracking URL path.
+- **Completed:** Earlier local unit-test and Case 0042 summary screenshots uploaded to [evidence folder](../screenshots/README.md); Case 0042 output crop documented in [manifest](../evidence/SCREENSHOT-UPLOAD-MANIFEST.md).
 - Review both samples together and complete a final investigation report with explicit evidence, confidence, source limitations and recommendations.
-- Project 4 remains **IN PROGRESS** until the evidence review is complete.
+- **Completed:** Consolidated [final investigation](./FINAL-INVESTIGATION-REPORT.md), evidence checks and five linked screenshots. Project 4 marked **COMPLETE for offline training/analysis scope**, not as a live incident response.
