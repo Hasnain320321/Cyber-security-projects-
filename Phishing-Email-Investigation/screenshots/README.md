@@ -1,6 +1,6 @@
 # Project 4 — User-Captured Practical Evidence
 
-**Status: 1 screenshot uploaded and verified; 3 other screenshots pending.** This folder is prepared for genuine user-captured evidence from the local Windows/Python investigation. Screenshots seen in chat count as GitHub evidence only when their actual PNG has been committed and reviewed.
+**Status: 1 screenshot uploaded and verified; 4 other screenshots pending (three previous tests/case evidence plus CASE-0043).** This folder is prepared for genuine user-captured evidence from the local Windows/Python investigation. Screenshots seen in chat count as GitHub evidence only when their actual PNG has been committed and reviewed.
 
 ## Planned screenshot set
 
@@ -10,6 +10,7 @@
 | `02-case0042-sample-list.png` | `Get-ChildItem .\samples` with two sample filenames and file sizes | Pending |
 | `03-case0042-triage-summary.png` | `email_triage.py` output, sample SHA-256, subject, reported authentication statuses and hostname list | Pending |
 | [`04-case0042-decoded-body.png`](./04-case0042-decoded-body.png) | Local decoding of the real-world email's plain-text body | **Uploaded and verified** (11 October 2026) |
+| `05-case0043-benign-control.png` | Local PowerShell output of synthetic benign control analysis (SHA-256, domains, reported auth, defanged example link) | Screenshot shared in chat; **GitHub upload pending** |
 
 ## Privacy and quality guidance
 
