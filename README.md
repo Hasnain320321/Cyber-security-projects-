@@ -14,7 +14,7 @@ I am building this repository to document practical cyber security work rather t
 
 **Project 3 — Windows Privilege Escalation Hunt:** **Complete (10 October 2026)** — detection tests, limited log/process correlation, final cleanup and 26 evidence screenshots verified on GitHub. Created custom Wazuh rule `100102` (level 13) for Windows Security 4732 additions specifically to the built-in Administrators group. Confirmed alerts, 4733 rollback, and two negative tests including a normal-group 4732 that triggered built-in rule `60144`, not `100102`.
 
-**Project 4 — Phishing Email Investigation:** **In Progress — reopened for real-world sample triage and hands-on evidence (11 October 2026)** — examined a synthetic .eml, analysed sender/authentication/routing fields, documented the defanged link and recorded a phishing-simulation verdict with a response playbook. No live compromise claimed.
+**Project 4 — Phishing Email Investigation:** **Complete (11 October 2026) — offline email-analysis lab.** Investigated a historical redacted banking-impersonation sample, built/tested a Python indicator extractor (4/4 tests), compared against a labelled synthetic benign email, reviewed headers and message content, and verified five user-captured evidence screenshots. No live compromise or site analysis claimed.
 
 ## Portfolio Projects
 
@@ -23,7 +23,7 @@ I am building this repository to document practical cyber security work rather t
 | [SOC Home Lab](./SOC-Home-Lab/) | Wazuh, Windows Security logs, Sysmon, detection and triage | Complete |
 | [Brute-Force Detection & Windows Authentication](./Windows-Authentication-Investigation/) | Rule 100101, Windows 4625/4624, validation, investigations | Complete |
 | [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) | 4732/4733, rule 100102, group SID targeting, positive/negative tests, [26 evidence screenshots](./Windows-Privilege-Escalation-Hunt/screenshots/README.md), T1098.007 | Complete |
-| [Phishing Email Investigation](./Phishing-Email-Investigation/) | Synthetic training case documented; real-world redacted sample, offline triage tool and practical evidence in progress | In Progress — evidence build |
+| [Phishing Email Investigation](./Phishing-Email-Investigation/) | Historical redacted email, Python tool, 4/4 tests, source hash, benign control, [5 screenshots](./Phishing-Email-Investigation/screenshots/README.md), [report](./Phishing-Email-Investigation/investigations/FINAL-INVESTIGATION-REPORT.md) | Complete — scoped offline investigation |
 | Network PCAP Investigation | Wireshark, TCP/IP, threat analysis | Planned |
 | Vulnerability Assessment | Nmap, scanning, remediation | Planned |
 | Detection Engineering | KQL/Sigma, alert tuning, MITRE ATT&CK | Planned |
@@ -46,4 +46,4 @@ All simulations and testing are undertaken only on authorised personally control
 
 ---
 
-**Portfolio status:** Projects 1–3 complete. Project 4 reopened and in progress (synthetic introductory case documented; stronger independent practical evidence pending). Network PCAP, vulnerability assessment and detection engineering are planned.
+**Portfolio status:** Projects 1–4 complete and documented; Project 4 completed as an **offline historical-sample / synthetic-control exercise**, not a live incident. Network PCAP, vulnerability assessment and detection engineering are planned.
