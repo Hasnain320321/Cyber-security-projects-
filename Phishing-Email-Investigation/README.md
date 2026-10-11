@@ -1,6 +1,18 @@
 # Phishing Email Investigation — Project 4
 
-**Status: COMPLETE — synthetic single-email investigation (11 October 2026).**
+**Status: IN PROGRESS — evidence upgrade (reopened 11 October 2026).** The introductory synthetic case is documented; a sourced real-world case and user-run analysis are still pending.
+
+## Evidence rebuild (in progress)
+
+The initial synthetic CASE-0041 was **not** sufficient as a stand-alone hands-on portfolio project. We reopened this project instead of overstating completion.
+
+- [CASE-0042 source provenance and practical evidence plan](./investigations/CASE-0042-SOURCE-AND-PLAN.md) — selected redacted real-world banking impersonation sample, not yet investigated on the user's laptop.
+- [Python offline email triage helper](./tools/email_triage.py) — read-only header/URL/hash extraction, no requests or attachment execution.
+- [Four initial unit tests](./tests/test_email_triage.py) — executed and passed in the assistant's isolated development container, **not yet on the user's laptop**.
+- [Reproducible synthetic test output](./evidence/CASE-0041-tool-output.json) — tool-generated output from the supplied safe training .eml. This is **assistant-executed proof of tool functionality**, not a real-world phishing investigation.
+- Real-world case screenshots, manual findings, and benign comparator: **PENDING**.
+
+The portfolio should only be marked complete once the actual real-world sample analysis, genuine screenshots, meaningful controls, final report and evidence review are done.
 
 ## Overview
 
