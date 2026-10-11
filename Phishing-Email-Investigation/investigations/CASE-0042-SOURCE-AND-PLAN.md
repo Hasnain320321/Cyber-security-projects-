@@ -1,6 +1,6 @@
 # CASE-0042 — Public redacted real-world phishing sample (planned practical investigation)
 
-**Status:** NOT YET INVESTIGATED ON USER LAPTOP. Training CASE-0041 is archived as an introductory synthetic exercise, not substituted for this case.
+**Status:** INITIAL LOCAL TRIAGE VERIFIED ON USER LAPTOP (11 October 2026); full investigation and screenshot upload pending. Training CASE-0041 is archived as an introductory synthetic exercise, not substituted for this case.
 
 ## Source
 
@@ -16,14 +16,18 @@ The public sample describes a **DBS/POSB banking-token account notice**. Its vis
 
 **Dataset limitation:** The corpus maintainer strips `Received` and `Return-Path` headers and defangs URLs. We **cannot** claim to independently trace the delivery route, reconstruct all envelope sender data, or confirm a live malicious destination from this sample.
 
-## User practical exercise (pending)
+## User practical exercise (first steps completed; subsequent steps pending)
 
-1. Download the sample via GitHub **Raw**; save exactly as `CASE-0042-real-redacted.eml` locally. **Do not double-click/open in a mail client or click any content links.**
-2. Extract the [local triage kit](../tools/) and use Windows Terminal/PowerShell to run `python tools/email_triage.py samples/CASE-0042-real-redacted.eml --output output/CASE-0042.json`.
-3. Capture authentic screenshots of the local terminal, exact file SHA-256, JSON summary and manual header observations. Note that the case source originally lived outside the portfolio.
+1. **Done on user laptop.** Download the sample via GitHub **Raw**; save exactly as `CASE-0042-real-redacted.eml` locally. **Do not double-click/open in a mail client or click any content links.**
+2. **Done on user laptop, screenshots seen.** Extract the [local triage kit](../tools/) and use Windows Terminal/PowerShell to run `python tools/email_triage.py samples/CASE-0042-real-redacted.eml --output output/CASE-0042.json`.
+3. **Terminal results shared in chat, not yet committed as PNGs.** Capture authentic screenshots of the local terminal, exact file SHA-256, JSON summary and manual header observations. Note that the case source originally lived outside the portfolio.
 4. Record observed sender, reported authentication (including permerror), suspicious message content and link domains. Independently inspect recipient-safe artefacts; do not resolve, refang or browse live URLs.
 5. Compare to the synthetic CASE-0041 and eventually a sourced legitimate/benign control case.
 6. Produce a defensible verdict with **observed vs inferred vs unknown**, and justify it. No live incident response or credential theft can be claimed without telemetry.
+
+## Initial verified findings
+
+See [CASE-0042 initial hands-on triage](./CASE-0042-INITIAL-TRIAGE.md) for actual test output, SHA-256, header claims, URL roles, limitations, and the evidence upload backlog.
 
 ## Evidence to add
 
