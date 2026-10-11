@@ -1,0 +1,41 @@
+{
+  "tool_version": "1.0",
+  "source_filename": "Project4_Phishing_Training_Case01.eml",
+  "sha256": "d9c3280ee686425b6797aae1d7ecf45aa8e6b77966d06cfaff77d6e1470b2bd9",
+  "size_bytes": 1540,
+  "subject": "ACTION REQUIRED: Your university account will be disabled in 2 hours",
+  "date_header_unverified": "Fri, 09 Oct 2026 14:11:30 +0100",
+  "message_id": "<case0041.20261009@mailer-notify.example>",
+  "from_domains": [
+    "it-support.example"
+  ],
+  "reply_to_domains": [
+    "campus-support.example"
+  ],
+  "return_path_domains": [
+    "mailer-notify.example"
+  ],
+  "received_header_count": 2,
+  "authentication_results_claimed_by_headers": [
+    {
+      "reported_results_only": {
+        "spf": "fail",
+        "dkim": "none",
+        "dmarc": "fail"
+      }
+    }
+  ],
+  "urls": [
+    {
+      "domain": "account-review.example",
+      "defanged_url_no_query": "hxxps://account-review[.]example/verify"
+    }
+  ],
+  "attachments_metadata_only": [],
+  "limitations": [
+    "This script never verifies SPF, DKIM or DMARC, and never sends network requests.",
+    "Routing headers and authentication results may be incomplete, redacted or forged.",
+    "Extracted URLs are defanged and queries/fragments omitted; this is not a malware verdict.",
+    "No attachments or URLs were opened or executed."
+  ]
+}
