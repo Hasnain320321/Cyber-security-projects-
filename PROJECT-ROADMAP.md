@@ -60,25 +60,24 @@ Skills demonstrated:
 
 **Repository:** [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) · [26 screenshots](./Windows-Privilege-Escalation-Hunt/screenshots/README.md).
 
-The existing **Phase 3 — Phishing Email Investigation** was reopened on 11 October 2026 for a sourced real-world (redacted) email investigation and evidence, separately from this supplemental privilege hunt.
+The separate **Phase 3 — Phishing Email Investigation** was reopened and subsequently completed on 11 October 2026 as a scoped offline investigation. It remains distinct from the privilege escalation hunt.
 
 ## Phase 3 — Phishing Email Investigation
 
-**Status:** **In Progress — evidence rebuild (reopened 11 October 2026).** Initial offline synthetic training email analysed and documented; this alone is not enough to call the expanded practical project complete. Inspected a safe .eml in plaintext, extracted key headers and defanged link, interpreted reported SPF/DKIM/DMARC failures, produced a UTC relay timeline, documented a phishing-pattern verdict and proposed a response playbook. No live reputation lookup, actual email system, clicked link, account compromise or real incident response was demonstrated.
+**Status:** **Complete (11 October 2026) for scoped offline lab investigation.** The introductory synthetic CASE-0041 was followed by a **redacted historical real-world banking-impersonation email (CASE-0042)**, local Python indicator extraction and 4/4 passing unit tests, a decoded MIME body inspection, and a **synthetic benign control (CASE-0043)** analysed with the same tool. Five genuine user-captured screenshots are linked and verified.
 
-**Evidence and report:** [Phishing Email Investigation](./Phishing-Email-Investigation/) · [CASE-0041 synthetic exercise](./Phishing-Email-Investigation/investigations/CASE-0041-phishing-analysis.md) · [CASE-0042 sourced sample and remaining plan](./Phishing-Email-Investigation/investigations/CASE-0042-SOURCE-AND-PLAN.md) · [Offline triage script](./Phishing-Email-Investigation/tools/email_triage.py).
+**Report and evidence:** [Project 4 README](./Phishing-Email-Investigation/) · [Consolidated findings](./Phishing-Email-Investigation/investigations/FINAL-INVESTIGATION-REPORT.md) · [Five evidence screenshots](./Phishing-Email-Investigation/screenshots/README.md) · [Python tool](./Phishing-Email-Investigation/tools/email_triage.py).
 
-**Scenario:** Analyse a suspicious email and decide whether it is benign, suspicious, or malicious.
+**Skills supported by evidence:**
 
-Skills demonstrated:
+- Email headers, sender domain comparison, reported SPF/DKIM/DMARC interpretation including `permerror`
+- Read-only Python .eml parsing, test execution, SHA-256 hashing, safe defanging and URL-domain extraction
+- HTML-link role analysis (CTA vs logo image vs unsubscribe) without clicking
+- Evidence integrity and privacy-aware redaction
+- Suspicious historical vs **constructed benign** sample reasoning; observed facts vs inference
+- ATT&CK T1566.002 thematic mapping, report writing and recommended response
 
-- Email headers
-- SPF / DKIM / DMARC concepts
-- URL and domain analysis
-- Hash and IOC analysis
-- Threat intelligence
-- MITRE ATT&CK mapping
-- Incident report writing
+**Boundaries:** The source sample's mail path and destination are pre-redacted; no real authentication verification, live threat intelligence/redirect testing, production email quarantine, recipient impact or compromise was established. The tool is an extractor, not an autonomous malicious-email classifier.
 
 ## Phase 4 — Network PCAP Investigation
 
