@@ -1,6 +1,6 @@
 # CASE-0042 — Real-World Redacted Email: Initial Hands-On Triage
 
-**Status:** In progress; local analysis, unit tests and decoded plaintext-body review confirmed by user screenshots on 11 October 2026.  
+**Status:** Initial triage completed and preserved; consolidated offline investigation and all screenshot uploads verified on 11 October 2026. [Final report](./FINAL-INVESTIGATION-REPORT.md).  
 **Source:** [cw-l/email-corpus](https://github.com/cw-l/email-corpus) at commit `220ba996e76d0a1ef27e0598c958b3cd1d141388`, file `submissions/b037056b02c300ba/1.0.0/emails/004f4a14e51ffd35a513984d464d59341d8440c65ebab3a5f3da620431c4b735.eml`.  
 **Environment:** User's Windows laptop, Python 3.15.0, PowerShell, offline `email_triage.py`.
 
@@ -58,8 +58,8 @@ The preserved email uses a **DBS/POSB banking identity**, claims the customer's 
 ## Evidence still outstanding
 
 1. **Completed:** [04-case0042-decoded-body.png](../screenshots/04-case0042-decoded-body.png) uploaded and verified on GitHub (11 October 2026); screenshot shows locally decoded `text/plain` body.
-2. Actual screenshots shown in conversation, after privacy inspection, should be committed under `screenshots/`. **Of the four planned screenshots, `04-case0042-decoded-body.png` is uploaded and verified; the other three are pending.**
+2. **Completed:** [01 unit tests](../screenshots/01-python-unit-tests-passed.png), [02 sample list](../screenshots/02-case0042-sample-list.png), [03 cropped triage](../screenshots/03-case0042-triage-summary.png), [04 decoded body](../screenshots/04-case0042-decoded-body.png) and [05 benign control](../screenshots/05-case0043-benign-control.png) all uploaded and verified.
 3. Do **not** upload the raw JSON without first removing long tracking-link paths and checking for identifiers; a public, hostname-only summary is sufficient for now.
-4. **Benign comparison completed:** [CASE-0043 report](./CASE-0043-BENIGN-COMPARISON.md). Outstanding: Case 0043 PNG upload, consolidated final investigation, limitations and defensible SOC verdict.
+4. **Completed:** [CASE-0043 benign comparison](./CASE-0043-BENIGN-COMPARISON.md) and [consolidated final report](./FINAL-INVESTIGATION-REPORT.md). Remaining restrictions are analytical: no live redirect, independent authentication or user-impact telemetry.
 
 This is **offline analysis of a historical, pre-redacted dataset**; no live phishing site was clicked, no attachment executed, no real mailbox surveyed, and no production containment performed.
