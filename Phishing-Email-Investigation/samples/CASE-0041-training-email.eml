@@ -1,0 +1,28 @@
+Return-Path: <bounce@mailer-notify.example>
+Received: from relay.mailer-notify.example (relay.mailer-notify.example [192.0.2.45]) by mx.training.example with ESMTP id CASE-0041 for <student@training.example>; Fri, 09 Oct 2026 13:12:08 +0000
+Received: from workstation.mailer-notify.example (workstation.mailer-notify.example [198.51.100.26]) by relay.mailer-notify.example with ESMTP id CASE-0040; Fri, 09 Oct 2026 13:11:48 +0000
+Authentication-Results: mx.training.example; spf=fail smtp.mailfrom=mailer-notify.example; dkim=none; dmarc=fail header.from=it-support.example
+From: "MMU IT Support" <alerts@it-support.example>
+Reply-To: "Account Verification" <helpdesk@campus-support.example>
+To: <student@training.example>
+Subject: ACTION REQUIRED: Your university account will be disabled in 2 hours
+Date: Fri, 09 Oct 2026 14:11:30 +0100
+Message-ID: <case0041.20261009@mailer-notify.example>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+X-Lab-Notice: Synthetic training email. All domains and IP addresses are reserved examples.
+
+Dear Student,
+
+Our security team detected an unexpected login to your university email account.
+To avoid automatic suspension, you must verify your account within 2 hours.
+
+Verify your account immediately:
+https://account-review.example/verify
+
+Failure to verify will lock your university email and learning portal access.
+Do not contact the IT desk about this automated verification request.
+
+Kind regards,
+University IT Helpdesk
