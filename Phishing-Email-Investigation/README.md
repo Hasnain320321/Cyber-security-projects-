@@ -1,6 +1,6 @@
 # Phishing Email Investigation — Project 4
 
-**Status: IN PROGRESS — evidence upgrade (reopened 11 October 2026).** The introductory synthetic case is documented; a sourced real-world sample has now been analysed offline on the user's Windows laptop; screenshot publication, decoded body review, benign comparison and final report remain pending.
+**Status: IN PROGRESS — evidence upgrade (reopened 11 October 2026).** The introductory synthetic case is documented; a sourced real-world sample has now been analysed offline on the user's Windows laptop; screenshot publication, a benign comparison and the final report remain pending.
 
 ## Evidence rebuild (in progress)
 
@@ -8,10 +8,10 @@ The initial synthetic CASE-0041 was **not** sufficient as a stand-alone hands-on
 
 - [CASE-0042 source provenance and practical evidence plan](./investigations/CASE-0042-SOURCE-AND-PLAN.md) — selected redacted real-world banking impersonation sample, now initially investigated on the user's laptop (evidence still incomplete).
 - [Python offline email triage helper](./tools/email_triage.py) — read-only header/URL/hash extraction, no requests or attachment execution.
-- [Four initial unit tests](./tests/test_email_triage.py) — executed and passed in the assistant's isolated development container, **not yet on the user's laptop**.
+- [Four initial unit tests](./tests/test_email_triage.py) — passed in the assistant's isolated development container **and independently re-run on the user's Windows laptop (4/4 passed)**.
 - [Reproducible synthetic test output](./evidence/CASE-0041-tool-output.json) — tool-generated output from the supplied safe training .eml. This is **assistant-executed proof of tool functionality**, not a real-world phishing investigation.
-- [CASE-0042 verified initial laptop analysis](./investigations/CASE-0042-INITIAL-TRIAGE.md) — four local Python unit tests passed, the public sample was hashed and parsed, authentication headers and three URL hostnames were extracted; privacy-safe findings recorded.
-- Real-world case **PNG uploads**, full manual body review, benign comparator, final report: **PENDING**.
+- [CASE-0042 verified initial laptop analysis](./investigations/CASE-0042-INITIAL-TRIAGE.md) — four local Python unit tests passed, the public sample was hashed and parsed, authentication headers and three URL hostnames were extracted, and the decoded message body was reviewed on the user's laptop; privacy-safe findings recorded.
+- Real-world case **PNG uploads**, benign comparator and final report: **PENDING**. The decoded body screenshot was supplied in chat but has not yet been committed as a PNG.
 
 The portfolio should only be marked complete once the actual real-world sample analysis, genuine screenshots, meaningful controls, final report and evidence review are done.
 
