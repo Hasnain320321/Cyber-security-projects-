@@ -14,6 +14,8 @@ I am building this repository to document practical cyber security work rather t
 
 **Project 3 — Windows Privilege Escalation Hunt:** **Complete (10 October 2026)** — detection tests, limited log/process correlation, final cleanup and 26 evidence screenshots verified on GitHub. Created custom Wazuh rule `100102` (level 13) for Windows Security 4732 additions specifically to the built-in Administrators group. Confirmed alerts, 4733 rollback, and two negative tests including a normal-group 4732 that triggered built-in rule `60144`, not `100102`.
 
+**Project 4 — Phishing Email Investigation:** **Complete (11 October 2026, training case only)** — examined a synthetic .eml, analysed sender/authentication/routing fields, documented the defanged link and recorded a phishing-simulation verdict with a response playbook. No live compromise claimed.
+
 ## Portfolio Projects
 
 | Project | Main skills | Status |
@@ -21,7 +23,7 @@ I am building this repository to document practical cyber security work rather t
 | [SOC Home Lab](./SOC-Home-Lab/) | Wazuh, Windows Security logs, Sysmon, detection and triage | Complete |
 | [Brute-Force Detection & Windows Authentication](./Windows-Authentication-Investigation/) | Rule 100101, Windows 4625/4624, validation, investigations | Complete |
 | [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) | 4732/4733, rule 100102, group SID targeting, positive/negative tests, [26 evidence screenshots](./Windows-Privilege-Escalation-Hunt/screenshots/README.md), T1098.007 | Complete |
-| Phishing Email Investigation | Email headers, IOCs, incident reporting | Planned |
+| [Phishing Email Investigation](./Phishing-Email-Investigation/) | Header triage, reported SPF/DKIM/DMARC, defanged link, evidence-based verdict, response playbook | Complete — synthetic training case |
 | Network PCAP Investigation | Wireshark, TCP/IP, threat analysis | Planned |
 | Vulnerability Assessment | Nmap, scanning, remediation | Planned |
 | Detection Engineering | KQL/Sigma, alert tuning, MITRE ATT&CK | Planned |
@@ -44,4 +46,4 @@ All simulations and testing are undertaken only on authorised personally control
 
 ---
 
-**Portfolio status:** Projects 1, 2 and 3 complete. Remaining projects planned.
+**Portfolio status:** Projects 1–4 complete (Project 4 was an offline synthetic training investigation). Network PCAP, vulnerability assessment and detection engineering are planned.
