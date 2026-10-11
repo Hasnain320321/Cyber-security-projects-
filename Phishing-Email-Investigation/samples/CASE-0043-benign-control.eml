@@ -1,0 +1,29 @@
+Return-Path: <bounce@training.example>
+Received: from relay.training.example (relay.training.example [192.0.2.25]) by mx.training.example with ESMTP id SAFE-0043 for <student@training.example>; Sun, 11 Oct 2026 16:31:00 +0000
+Authentication-Results: mx.training.example; spf=pass smtp.mailfrom=training.example; dkim=none; dmarc=pass header.from=training.example
+From: "Training Library" <bookings@training.example>
+Reply-To: "Library Helpdesk" <helpdesk@training.example>
+To: <student@training.example>
+Subject: Study room booking confirmation for 14 October
+Date: Sun, 11 Oct 2026 17:30:00 +0100
+Message-ID: <safe0043.20261011@training.example>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+X-Lab-Notice: Deliberately synthetic benign comparison fixture. All addresses and authentication results are simulated.
+
+Dear Student,
+
+This confirms your previously requested study room booking on
+Wednesday 14 October, from 14:00 to 15:00.
+
+You do not need to take any action. If you want to review or cancel
+the booking, you can use the training library's example portal:
+https://portal.training.example/room-bookings
+
+If you did not make this booking, contact the library using the
+usual contact details you already have. Do not reply with passwords
+or account recovery codes.
+
+Kind regards,
+Training Library Bookings
