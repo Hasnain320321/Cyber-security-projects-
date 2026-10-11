@@ -60,13 +60,13 @@ Skills demonstrated:
 
 **Repository:** [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) · [26 screenshots](./Windows-Privilege-Escalation-Hunt/screenshots/README.md).
 
-The existing **Phase 3 — Phishing Email Investigation** is now complete as a **synthetic training investigation (11 October 2026)**, separate from this supplemental privilege hunt.
+The existing **Phase 3 — Phishing Email Investigation** was reopened on 11 October 2026 for a sourced real-world (redacted) email investigation and evidence, separately from this supplemental privilege hunt.
 
 ## Phase 3 — Phishing Email Investigation
 
-**Status:** **Complete (11 October 2026) — offline analysis of one synthetic training email.** Inspected a safe .eml in plaintext, extracted key headers and defanged link, interpreted reported SPF/DKIM/DMARC failures, produced a UTC relay timeline, documented a phishing-pattern verdict and proposed a response playbook. No live reputation lookup, actual email system, clicked link, account compromise or real incident response was demonstrated.
+**Status:** **In Progress — evidence rebuild (reopened 11 October 2026).** Initial offline synthetic training email analysed and documented; this alone is not enough to call the expanded practical project complete. Inspected a safe .eml in plaintext, extracted key headers and defanged link, interpreted reported SPF/DKIM/DMARC failures, produced a UTC relay timeline, documented a phishing-pattern verdict and proposed a response playbook. No live reputation lookup, actual email system, clicked link, account compromise or real incident response was demonstrated.
 
-**Evidence and report:** [Phishing Email Investigation](./Phishing-Email-Investigation/) · [CASE-0041 investigation](./Phishing-Email-Investigation/investigations/CASE-0041-phishing-analysis.md).
+**Evidence and report:** [Phishing Email Investigation](./Phishing-Email-Investigation/) · [CASE-0041 synthetic exercise](./Phishing-Email-Investigation/investigations/CASE-0041-phishing-analysis.md) · [CASE-0042 sourced sample and remaining plan](./Phishing-Email-Investigation/investigations/CASE-0042-SOURCE-AND-PLAN.md) · [Offline triage script](./Phishing-Email-Investigation/tools/email_triage.py).
 
 **Scenario:** Analyse a suspicious email and decide whether it is benign, suspicious, or malicious.
 
