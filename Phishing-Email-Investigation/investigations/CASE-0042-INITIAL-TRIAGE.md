@@ -53,13 +53,13 @@ An extracted URL is an investigation lead, **not automatically a malicious IOC**
 
 The preserved email uses a **DBS/POSB banking identity**, claims the customer's **authentication token is no longer valid**, warns banking services may be disrupted, and urges an update. The visible From domain `substackss.firebaseapp.com` does not match the claimed bank identity. SPF and DKIM reportedly passing only support authentication of the relevant sending identities, **not** the banking claim. The `dmarc=permerror` header shows an evaluation problem, not a simple negative outcome.
 
-**Provisional assessment:** This is *suspicious banking impersonation consistent with phishing*. The specific click-through destination, credential collection, user impact and any actual compromise remain **unverified**. The decoded text body has now been reviewed, but classification remains provisional pending the benign comparison, source/context checks and final evidence review.
+**Provisional assessment:** This is *suspicious banking impersonation consistent with phishing*. The specific click-through destination, credential collection, user impact and any actual compromise remain **unverified**. The decoded text body has been reviewed and a [synthetic benign comparator](./CASE-0043-BENIGN-COMPARISON.md) has now been executed locally. Classification remains provisional pending full final evidence review and contextual validation.
 
 ## Evidence still outstanding
 
 1. **Completed:** [04-case0042-decoded-body.png](../screenshots/04-case0042-decoded-body.png) uploaded and verified on GitHub (11 October 2026); screenshot shows locally decoded `text/plain` body.
 2. Actual screenshots shown in conversation, after privacy inspection, should be committed under `screenshots/`. **Of the four planned screenshots, `04-case0042-decoded-body.png` is uploaded and verified; the other three are pending.**
 3. Do **not** upload the raw JSON without first removing long tracking-link paths and checking for identifiers; a public, hostname-only summary is sufficient for now.
-4. A benign comparison sample and outcome, plus final investigation, limitations and defensible SOC verdict.
+4. **Benign comparison completed:** [CASE-0043 report](./CASE-0043-BENIGN-COMPARISON.md). Outstanding: Case 0043 PNG upload, consolidated final investigation, limitations and defensible SOC verdict.
 
 This is **offline analysis of a historical, pre-redacted dataset**; no live phishing site was clicked, no attachment executed, no real mailbox surveyed, and no production containment performed.
