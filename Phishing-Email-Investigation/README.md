@@ -1,6 +1,6 @@
 # Phishing Email Investigation — Project 4
 
-**Status: IN PROGRESS — evidence upgrade (reopened 11 October 2026).** The introductory synthetic case is documented; a sourced real-world sample has now been analysed offline on the user's Windows laptop; three earlier Case 0042/unit-test screenshots, a Case 0043 screenshot and the final report remain pending.
+**Status: IN PROGRESS — evidence upgrade (reopened 11 October 2026).** The introductory synthetic case is documented; a sourced real-world sample has now been analysed offline on the user's Windows laptop; three earlier Case 0042/unit-test screenshots and the final report remain pending.
 
 ## Evidence rebuild (in progress)
 
@@ -12,8 +12,8 @@ The initial synthetic CASE-0041 was **not** sufficient as a stand-alone hands-on
 - [Reproducible synthetic test output](./evidence/CASE-0041-tool-output.json) — tool-generated output from the supplied safe training .eml. This is **assistant-executed proof of tool functionality**, not a real-world phishing investigation.
 - [CASE-0042 verified initial laptop analysis](./investigations/CASE-0042-INITIAL-TRIAGE.md) — four local Python unit tests passed, the public sample was hashed and parsed, authentication headers and three URL hostnames were extracted, and the decoded message body was reviewed on the user's laptop; privacy-safe findings recorded.
 - [CASE-0043 synthetic benign control](./samples/CASE-0043-benign-control.eml) — labelled no-action library-booking email; local analyst test **completed** on Windows and results compared against Case 0042. Authentication header values are intentionally simulated, not checked against real DNS.
-- [CASE-0043 user-run benign-control comparison](./investigations/CASE-0043-BENIGN-COMPARISON.md) — locally downloaded and parsed; verified 1,363-byte file, SHA-256, simulated authentication results, consistent domain identities, one example URL and no attachments; screenshots supplied in chat, **not yet uploaded to GitHub**.
-- Real-world case [decoded-body PNG](./screenshots/04-case0042-decoded-body.png): **uploaded and verified**. Three prior PNGs, one CASE-0043 PNG and final report: **PENDING**.
+- [CASE-0043 user-run benign-control comparison](./investigations/CASE-0043-BENIGN-COMPARISON.md) — locally downloaded and parsed; verified 1,363-byte file, SHA-256, simulated authentication results, consistent domain identities, one example URL and no attachments; [CASE-0043 evidence PNG](./screenshots/05-case0043-benign-control.png) **uploaded and verified on GitHub**.
+- Real-world case [decoded-body PNG](./screenshots/04-case0042-decoded-body.png): **uploaded and verified**. [CASE-0043 control PNG](./screenshots/05-case0043-benign-control.png): **uploaded and verified**. Three prior PNGs and final report: **PENDING**.
 
 The portfolio should only be marked complete once the actual real-world sample analysis, genuine screenshots, meaningful controls, final report and evidence review are done.
 
