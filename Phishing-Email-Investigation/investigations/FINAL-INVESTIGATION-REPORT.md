@@ -1,7 +1,7 @@
 # Project 4 — Final Investigation Report: CASE-0042 with CASE-0043 Control
 
 **Report prepared:** 11 October 2026  
-**Project status:** **IN PROGRESS — final evidence upload/QA pending.** Investigation findings and this report are written, but screenshots `01`–`03` have not yet been verified in GitHub. Do not mark the project as fully complete before checking those uploads.  
+**Project status:** **COMPLETE — scoped offline lab investigation, five screenshots and evidence QA verified on 11 October 2026.** Historical public redacted sample analysed locally; no real-world compromise inferred.  
 **Analyst work:** Local Windows PowerShell and Python investigation, supported by guided review.  
 **Classification:** **Likely phishing / bank impersonation (moderate-to-high confidence based on preserved content and sender/link mismatch)**. Confidence in any *actual credential theft or redirect destination* is **not established**.  
 **Incident scope:** Historical, redacted public corpus message — **not a live organisational alert or confirmed intrusion**.
@@ -97,13 +97,13 @@ The user downloaded it and ran the same Python script locally. Its output showed
 
 | ID | Evidence | Verified in GitHub? |
 | --- | --- | --- |
-| 01 | Windows Python unittest: four tests `OK` | **Pending PNG upload** — genuine user screenshot supplied in chat |
-| 02 | `Get-ChildItem .\samples`: confirms sample files and size | **Pending PNG upload** — genuine user screenshot supplied in chat |
-| 03 | CASE-0042 script output: SHA-256, sender, reported auth | **Pending PNG upload** — genuine user screenshot supplied in chat; prepared **cropped** version omits token-like URL path |
+| 01 | [Windows Python unittest: four tests `OK`](../screenshots/01-python-unit-tests-passed.png) | **Uploaded and verified** |
+| 02 | [Local samples folder listing](../screenshots/02-case0042-sample-list.png): confirms sample files and size | **Uploaded and verified** |
+| 03 | [CASE-0042 script output](../screenshots/03-case0042-triage-summary.png): SHA-256, sender, reported auth | **Uploaded and verified** — privacy-cropped to omit opaque URL path |
 | 04 | [Decoded CASE-0042 message body](../screenshots/04-case0042-decoded-body.png) | **Uploaded and verified** |
 | 05 | [CASE-0043 benign control terminal output](../screenshots/05-case0043-benign-control.png) | **Uploaded and verified** |
 
-The 01–03 screenshots shown during the session were genuine local PowerShell output, but **not yet saved into the repository**. Cropping the Case 0042 terminal screenshot to omit a long tracking-style link is a **privacy redaction by omission, not synthetic evidence**. The GitHub [screenshot index](../screenshots/README.md) records upload status. The public repository intentionally does not contain the unredacted `CASE-0042.json` with its long path.
+All five genuine user-captured screenshots are now committed in the repository, and 01–03 matched the prepared originals by Git blob SHA. Cropping the Case 0042 terminal screenshot to omit a long tracking-style link is a **privacy redaction by omission, not synthetic evidence**. The GitHub [screenshot index](../screenshots/README.md) records upload status. The public repository intentionally does not contain the unredacted `CASE-0042.json` with its long path.
 
 ## 6. Outcome, confidence, and unknowns
 
@@ -134,4 +134,4 @@ The 01–03 screenshots shown during the session were genuine local PowerShell o
 
 **Not demonstrated:** Live email-gateway operations; independently verified SPF/DKIM/DMARC; live redirect/page analysis; real threat-intelligence validation; user impact investigation; quarantine or credential compromise.
 
-**Project quality checkpoint:** Upload genuine screenshots 01–03, verify that they match their descriptions, then update the screenshot index and README before changing **In Progress** to **Complete**. The three remaining PNGs are **already captured from the original user session**; no retest is needed.
+**Project quality checkpoint:** **Passed for the defined offline scope.** Five user-captured screenshots are uploaded and verified, links are indexed, the local script ran successfully, the benign synthetic comparison was completed, and limitations are documented. This does **not** establish live phishing campaign detection, real credential compromise, or verified phishing-page behaviour.
