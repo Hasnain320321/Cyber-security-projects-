@@ -60,9 +60,13 @@ Skills demonstrated:
 
 **Repository:** [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) · [26 screenshots](./Windows-Privilege-Escalation-Hunt/screenshots/README.md).
 
-The existing **Phase 3 — Phishing Email Investigation** remains planned for later; this supplemental project does not erase or renumber it.
+The existing **Phase 3 — Phishing Email Investigation** is now complete as a **synthetic training investigation (11 October 2026)**, separate from this supplemental privilege hunt.
 
 ## Phase 3 — Phishing Email Investigation
+
+**Status:** **Complete (11 October 2026) — offline analysis of one synthetic training email.** Inspected a safe .eml in plaintext, extracted key headers and defanged link, interpreted reported SPF/DKIM/DMARC failures, produced a UTC relay timeline, documented a phishing-pattern verdict and proposed a response playbook. No live reputation lookup, actual email system, clicked link, account compromise or real incident response was demonstrated.
+
+**Evidence and report:** [Phishing Email Investigation](./Phishing-Email-Investigation/) · [CASE-0041 investigation](./Phishing-Email-Investigation/investigations/CASE-0041-phishing-analysis.md).
 
 **Scenario:** Analyse a suspicious email and decide whether it is benign, suspicious, or malicious.
 
