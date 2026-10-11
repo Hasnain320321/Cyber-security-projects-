@@ -1,6 +1,6 @@
 # Phishing Email Investigation — Project 4
 
-**Status: IN PROGRESS — evidence upgrade (reopened 11 October 2026).** The introductory synthetic case is documented; a sourced real-world sample has now been analysed offline on the user's Windows laptop; screenshot publication, a benign comparison and the final report remain pending.
+**Status: IN PROGRESS — evidence upgrade (reopened 11 October 2026).** The introductory synthetic case is documented; a sourced real-world sample has now been analysed offline on the user's Windows laptop; three additional screenshots, a benign comparison and the final report remain pending.
 
 ## Evidence rebuild (in progress)
 
@@ -11,7 +11,7 @@ The initial synthetic CASE-0041 was **not** sufficient as a stand-alone hands-on
 - [Four initial unit tests](./tests/test_email_triage.py) — passed in the assistant's isolated development container **and independently re-run on the user's Windows laptop (4/4 passed)**.
 - [Reproducible synthetic test output](./evidence/CASE-0041-tool-output.json) — tool-generated output from the supplied safe training .eml. This is **assistant-executed proof of tool functionality**, not a real-world phishing investigation.
 - [CASE-0042 verified initial laptop analysis](./investigations/CASE-0042-INITIAL-TRIAGE.md) — four local Python unit tests passed, the public sample was hashed and parsed, authentication headers and three URL hostnames were extracted, and the decoded message body was reviewed on the user's laptop; privacy-safe findings recorded.
-- Real-world case **PNG uploads**, benign comparator and final report: **PENDING**. The decoded body screenshot was supplied in chat but has not yet been committed as a PNG.
+- Real-world case [decoded-body PNG](./screenshots/04-case0042-decoded-body.png): **uploaded and verified**. Three other planned PNGs, benign comparison and final report: **PENDING**.
 
 The portfolio should only be marked complete once the actual real-world sample analysis, genuine screenshots, meaningful controls, final report and evidence review are done.
 
