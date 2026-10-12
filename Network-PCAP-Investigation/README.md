@@ -113,9 +113,20 @@ No SNI visible **in this screenshot/time slice** unambiguously identifies the fa
 
 **Next evidence step:** Investigate the earlier `GET /api/file/get-file/264872` (frame 5031) and matching `200 OK` response (frame 5033), read-only in Wireshark, to determine whether the first returned body provides useful context. Do not execute/export payloads.
 
+### Earlier HTTP resource `264872` — confirmed response (12 October 2026)
+
+User's Wireshark screenshot filtering `frame.number == 5031 || frame.number == 5033` provides a direct request-response link:
+
+- **Frame 5031** (relative time **60.297799 s**): `10.1.17.215 -> 5.252.153.241`, `GET /api/file/get-file/264872`.
+- **Frame 5033** (relative time **60.464642 s**): `5.252.153.241 -> 10.1.17.215`, `HTTP/1.1 200 OK`, `Request in frame: 5031`, `Content-Type: application/octet-stream`, `Content-Length: 417`, `File Data: 417 bytes`, and `Time since request: 166.843 ms`.
+- This precedes the confirmed `.ps1` request (**5063**, at **62.145732 s**) and its response (**5071**, **62.309349 s**).
+- **Important limitation:** The contents and format of the initial 417 bytes are still unknown; whether either download executed on the client is unverified. A `200 OK` does not itself confirm benignness or malware.
+
+**Next practical step:** In Wireshark, right-click response frame 5033, choose Follow > TCP Stream and show ASCII to inspect the first response as inert text, without exporting, executing, or clicking any embedded links.
+
 ## Immediate next investigation
 
-**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has been recorded. The initial TLS SNI slice did not visibly establish the landing-page hostname. **Next:** inspect frame 5033, the earlier HTTP 200 response to request 5031, without running or exporting its content; continue timeline documentation. Do not visit captured URLs.
+**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has been recorded. The initial TLS SNI slice did not visibly establish the landing-page hostname. **Next:** frame 5033 is confirmed as a 417-byte HTTP 200 response to request 5031. Inspect the response body read-only via Follow TCP Stream (ASCII), then continue timeline documentation. Do not visit captured URLs.
 
 ## Investigation questions
 
