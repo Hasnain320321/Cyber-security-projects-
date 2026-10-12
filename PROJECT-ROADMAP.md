@@ -81,6 +81,8 @@ The separate **Phase 3 — Phishing Email Investigation** was reopened and subse
 
 ## Phase 4 — Network PCAP Investigation
 
+**Status:** **In progress (12 October 2026), setup only.** Selected a published third-party [training scenario and PCAP](https://malware-traffic-analysis.net/2025/01/22/index.html) concerning a purported fake Google Authenticator download. [Project 5 case plan](./Network-PCAP-Investigation/). Local acquisition, hashing, Wireshark investigation, screenshots and final report are **not yet complete**. No real-world incident response is claimed.
+
 **Scenario:** Investigate suspicious network behaviour from a packet capture.
 
 Skills demonstrated:
