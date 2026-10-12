@@ -48,9 +48,21 @@ A source-address display filter `http && ip.src == 5.252.153.241` showed HTTP tr
 
 **Interpretation:** 200 status codes support that HTTP requests reached a responding server; a generic octet-stream body is consistent with transferred bytes but does not establish that the file was malicious or executed. The successful response to the `.ps1` URL is verified via the HTTP `Request in frame` field. **Receiving bytes is not proof of script execution, maliciousness or compromise.** The user has not uploaded these screenshots to GitHub yet.
 
+### Static HTTP TCP-stream inspection — obfuscated PowerShell content
+
+User's local Wireshark **Follow TCP Stream (stream 61)** screenshot shows:
+
+- Request: `GET /api/file/get-file/29842.ps1 HTTP/1.1`; `Host: 5.252.153.241`.
+- Response: `HTTP/1.1 200 OK`, `Content-Type: application/octet-stream`, `Content-Length: 1512`, with an HTTP body beginning with a PowerShell expression featuring `iex` (`Invoke-Expression`), `[system.text.encoding]::UTF8.GetString(...)`, `[system.convert]`, and repeated `.replace(...)` transformations.
+- The obfuscated expression **appears intended to reconstruct/decode text and feed it into `iex`**. This suggests an obfuscated PowerShell loader, **not independently decoded**, and no payload execution has been tested or observed.
+- In the same TCP stream, a later `GET /1517096937 HTTP/1.1` receives a `404 Not Found`. The HTTP response list showed several more `404` responses over time; determine whether these are attempts to reach a repeating endpoint before applying a beaconing/C2 label.
+- The screenshots were shown directly by the user in chat. **Screenshot files have not yet been uploaded to GitHub**, and raw packet bytes have not been independently examined.
+
+**Updated assessment:** High-priority suspicious network content consistent with an obfuscated downloaded PowerShell stage. The network capture supports delivery of bytes but **does not prove Windows executed the content, reached command-and-control, or was compromised**. No external indicators have been visited.
+
 ## Immediate next investigation
 
-**Now confirmed:** HTTP frame 5071 corresponds to `.ps1` request frame 5063. Next, inspect its payload **as text only** using Wireshark's Follow TCP Stream / ASCII viewer; record redacted observations and look for evidence of what the script would do without executing it. Collect a genuine screenshot with any unsafe URLs or sensitive elements handled carefully. Afterwards inspect other related sessions and check PCAP SHA-256.
+**Now confirmed:** HTTP frame 5071 corresponds to `.ps1` request frame 5063, and the stream shows visibly obfuscated PowerShell-like text. Next, investigate the repeated `GET /1517096937` requests and associated HTTP `404` replies to establish timing/intervals, then check related sessions and calculate the PCAP's SHA-256. Never execute the script or follow its URLs.
 
 ## Investigation questions
 
