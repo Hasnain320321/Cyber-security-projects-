@@ -124,9 +124,27 @@ User's Wireshark screenshot filtering `frame.number == 5031 || frame.number == 5
 
 **Next practical step:** In Wireshark, right-click response frame 5033, choose Follow > TCP Stream and show ASCII to inspect the first response as inert text, without exporting, executing, or clicking any embedded links.
 
+### First-stage script: 417-byte Windows Script Component-style VBScript (12 October 2026)
+
+User's **read-only Wireshark Follow TCP Stream (stream 60)** screenshot shows the body of the earlier HTTP 200 response to `GET /api/file/get-file/264872` (request frame **5031**, response frame **5033**). The response declares `Content-Type: application/octet-stream` and `Content-Length: 417`, despite containing readable text with `<component>` and `<script language="VBScript">` markup.
+
+Visible behaviours in that script:
+
+- `On Error Resume Next` suppresses runtime error interruptions.
+- `CreateObject("Wscript.Shell")` enables launching shell commands.
+- `objShell.Run` launches a `cmd /c start /min powershell -NoProfile -WindowStyle Hidden -Command ...` chain, apparently intended to execute with minimal visible UI.
+- The embedded PowerShell uses a `System.Net.WebClient` `DownloadString` call to retrieve `http://5.252.153.241:80/api/file/get-file/29842.ps1`, and `iex` to run the resulting text.
+- The same line references `https://azure.microsoft.com` via `start-process` and includes `#URL: https://teams.microsoft.com`. These legitimate domains may act as decoy/camouflage; **their purpose and actual execution are not established**.
+
+**Critical correlation:** The URL embedded in the first-stage script **matches** the subsequent observed HTTP request in frame **5063**, and the HTTP 200 in frame **5071** confirms delivery of 1,512 bytes of obfuscated PowerShell-like content. Subsequent same-server polling to `/1517096937` approximately every 5.2 seconds provides additional context.
+
+**Assessment:** The first response contains script-launching and PowerShell download-and-execute *instructions*, materially strengthening the suspicion of a staged malware-loading sequence. The packet capture **does not by itself demonstrate that Windows actually executed either stage**, nor that the subsequent polling is definitely malware C2. A process-creation log or comparable endpoint evidence would be needed for execution claims.
+
+**Evidence status:** The real screenshot was supplied by the user in chat but **is not yet uploaded into the GitHub repository**. Do not paste the full executable script into public documentation or execute it.
+
 ## Immediate next investigation
 
-**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has been recorded. The initial TLS SNI slice did not visibly establish the landing-page hostname. **Next:** frame 5033 is confirmed as a 417-byte HTTP 200 response to request 5031. Inspect the response body read-only via Follow TCP Stream (ASCII), then continue timeline documentation. Do not visit captured URLs.
+**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has been recorded. The initial TLS SNI slice did not visibly establish the landing-page hostname. **Next:** The 417-byte response body has now been inspected: a VBScript component references a hidden PowerShell downloader whose URL matches the captured subsequent `.ps1` request. Continue with bounded network timeline correlation and plan evidence screenshots; avoid executing payloads. Do not visit captured URLs.
 
 ## Investigation questions
 
