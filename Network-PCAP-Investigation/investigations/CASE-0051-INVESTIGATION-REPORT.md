@@ -1,7 +1,7 @@
 # CASE-0051 — Network PCAP Investigation Report
 
 **Prepared:** 12 October 2026  
-**Status:** **DRAFT — analytical findings recorded; final screenshot upload/QA pending**  
+**Status:** **COMPLETE — scoped offline training capture investigation; 11/11 original screenshot files uploaded and exact Git blob SHA verified (12 October 2026)**  
 **Case classification:** High-confidence *suspicious staged script retrieval*, with subsequent *suspected automated HTTP polling*. **Compromise and actual code execution not proven.**  
 **Source context:** Public, historical SOC training exercise from [Malware-Traffic-Analysis.net](https://malware-traffic-analysis.net/2025/01/22/index.html), dated 22 January 2025. Not a real incident at an employer or the analyst's own network.
 
@@ -20,7 +20,7 @@ Immediately afterward, the same client made ten visible requests for a single nu
 | Local path | `/home/kali/Downloads/2025-01-22-traffic-analysis-exercise.pcap` |
 | User-run SHA-256 | `e59db1c07c6fdefafa0abdbca03248c341cdc36c09c34753204d3162802a3586` |
 | Capture volume | 39,427 packets shown; 145 IPv4 endpoints in Wireshark endpoint statistics |
-| Evidence type | User's genuine Wireshark screenshots, reviewed in chat; **binary screenshot upload to GitHub pending** |
+| Evidence type | User's genuine Wireshark screenshots, reviewed in chat; **11/11 source screenshots uploaded and hash-verified by Git blob SHA against originals supplied in chat** |
 | Time reference | All seconds below are **relative to capture start**, not wall-clock attack timestamps |
 
 SHA-256 records the bytes of the locally analysed file and is not itself a certificate of publisher authenticity or safety. The website lists the ZIP at roughly 20.5 MB; the extracted PCAP size was not separately verified. The source exercise discusses a suspected fake-software download; that initial landing page has **not** been independently established from the screenshots.
@@ -110,6 +110,6 @@ Early DNS activity included expected Windows infrastructure and Microsoft servic
 
 ## 8. Evidence register and completion gate
 
-The required screenshot names and statuses are maintained in the [evidence index](../screenshots/README.md). The analyst provided genuine screenshots during this chat, but **GitHub PNG uploads have not been verified**. Do not mark the project COMPLETE until curated images are visible in the repository and this report's references are checked.
+The [evidence index](../screenshots/README.md) contains working relative links to **all 11 verified PNG screenshots**. All file names and uploaded Git blob hashes were checked against locally computed Git object hashes of the user's original images. The report is **complete for its stated offline PCAP investigation scope**, not proof of victim compromise, endpoint code execution or full malware reverse engineering.
 
-No malware samples, raw payload files or executable code were published. The case is a third-party training analysis.
+No raw PCAP, executable samples or standalone malicious script files were published. Evidence screenshots include inert text of the script, kept for analysis only. The case is a third-party training analysis.
