@@ -74,8 +74,8 @@ The user filtered `http.request.uri == "/1517096937"`. Wireshark shows **10 outb
 | 7841 | 88.342574 | 7842 — 404 |
 | 7864 | 93.533611 | 7865 — 404 |
 | 7878 | 98.724353 | 7884 — 404 |
-| 7890 | 103.914233 | 7890 is a request, 404 response not visible in this cropped screenshot (an earlier screenshot showed a 404 near this request) |
-| 7970 | 109.104654 | 7974 — 404 |
+| 7888 | 103.914233 | 7890 — 404 |
+| 7907 | 109.104654 | 7912 — 404 (visible in earlier HTTP server-response screenshot) |
 
 Intervals between observed requests are approximately **5.17–5.24 seconds**, with mean **~5.19 seconds**. The traffic begins immediately after the HTTP delivery of the obfuscated PowerShell-like content from the **same external IP**. It is **consistent with automated HTTP polling / suspected beaconing**, but a `404 Not Found` is not evidence of delivered C2 instructions, and network packets alone do not prove script execution or host compromise. Timing pattern is reproducible from user-provided packet IDs and screenshot, not independently confirmed from the PCAP bytes.
 
