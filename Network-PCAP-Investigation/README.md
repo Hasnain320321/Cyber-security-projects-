@@ -60,9 +60,28 @@ User's local Wireshark **Follow TCP Stream (stream 61)** screenshot shows:
 
 **Updated assessment:** High-priority suspicious network content consistent with an obfuscated downloaded PowerShell stage. The network capture supports delivery of bytes but **does not prove Windows executed the content, reached command-and-control, or was compromised**. No external indicators have been visited.
 
+### Suspected periodic HTTP polling (Wireshark screenshot, 12 October 2026)
+
+The user filtered `http.request.uri == "/1517096937"`. Wireshark shows **10 outbound GET requests** from `10.1.17.215` to `5.252.153.241:80`, with successive relative packet times:
+
+| Request frame | Relative time (seconds) | Associated response (observed) |
+|---|---:|---|
+| 5073 | 62.366091 | 5075 — 404 |
+| 7279 | 67.602135 | 7299 — 404 |
+| 7602 | 72.778372 | 7604 — 404 |
+| 7688 | 77.950821 | 7690 — 404 |
+| 7696 | 83.150518 | 7700 — 404 |
+| 7841 | 88.342574 | 7842 — 404 |
+| 7864 | 93.533611 | 7865 — 404 |
+| 7878 | 98.724353 | 7884 — 404 |
+| 7890 | 103.914233 | 7890 is a request, 404 response not visible in this cropped screenshot (an earlier screenshot showed a 404 near this request) |
+| 7970 | 109.104654 | 7974 — 404 |
+
+Intervals between observed requests are approximately **5.17–5.24 seconds**, with mean **~5.19 seconds**. The traffic begins immediately after the HTTP delivery of the obfuscated PowerShell-like content from the **same external IP**. It is **consistent with automated HTTP polling / suspected beaconing**, but a `404 Not Found` is not evidence of delivered C2 instructions, and network packets alone do not prove script execution or host compromise. Timing pattern is reproducible from user-provided packet IDs and screenshot, not independently confirmed from the PCAP bytes.
+
 ## Immediate next investigation
 
-**Now confirmed:** HTTP frame 5071 corresponds to `.ps1` request frame 5063, and the stream shows visibly obfuscated PowerShell-like text. Next, investigate the repeated `GET /1517096937` requests and associated HTTP `404` replies to establish timing/intervals, then check related sessions and calculate the PCAP's SHA-256. Never execute the script or follow its URLs.
+**Now confirmed:** Frame 5071 responded successfully to the `.ps1` request in frame 5063. Follow-up repeated HTTP GETs to `/1517096937` from the same client to the same external server occur at ~5.2-second intervals, consistent with *suspected* polling/beaconing. Next, examine another external high-volume endpoint `45.125.66.32`, check whether its connections are HTTP or TLS, and gather the capture's SHA-256. Never execute the script or visit captured URLs.
 
 ## Investigation questions
 
