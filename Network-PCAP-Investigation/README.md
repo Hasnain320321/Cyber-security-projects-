@@ -29,14 +29,28 @@ The entries below come from the user's **actual Kali Wireshark screenshots**, re
   - **Frame 5031, relative time 60.297799 s:** `GET /api/file/get-file/264872 HTTP/1.1`
   - **Frame 5063, relative time 62.145732 s:** `GET /api/file/get-file/29842.ps1 HTTP/1.1`
   - **Frame 5073, relative time 62.366091 s:** `GET /1517096937 HTTP/1.1`
-- `.ps1` in a requested URL path suggests a PowerShell script retrieval attempt; it is **not proof that the server delivered a valid script, that it ran or that the client was compromised**. HTTP `Host`, server status, response body, actual file identity and subsequent execution remain unverified.
+- `.ps1` in a requested URL path suggests a PowerShell script retrieval attempt; it is **not proof that the server delivered a valid script, that it ran or that the client was compromised**. HTTP `Host`, actual response body, file identity and subsequent execution remain unverified. Selected HTTP response status codes are now visible, but exact request-response pairing awaits header correlation.
 - The same screenshot showed several SSDP `M-SEARCH` multicast requests. HTTP-like syntax in SSDP should not be mistaken for ordinary web-browsing requests.
 
 **Provisional assessment:** Suspicious outbound HTTP sequence worth further investigation in the published fake-software case; no definitive malicious verdict from requests alone.
 
+### HTTP response evidence (user Wireshark screenshot, 12 October 2026)
+
+A source-address display filter `http && ip.src == 5.252.153.241` showed HTTP traffic from the external server back to `10.1.17.215`:
+
+| Frame | Relative time (s) | Status | Observation |
+|---|---:|---|---|
+| 5033 | 60.464642 | HTTP 200 OK | Selected packet visibly includes `Content-Type: application/octet-stream` and `Content-Length: 417` (declared size) |
+| 5071 | 62.309349 | HTTP 200 OK | Response near the `.ps1` request, but linkage **not yet independently confirmed** by HTTP request-in-frame field |
+| 5075 | 62.564321 | HTTP 404 Not Found | First of several visible 404s |
+| 7299, 7604, 7690, 7700, 7842, 7865, 7884, 7890, 7912, 7974 | ~67–119 | HTTP 404 Not Found | Repeated server not-found replies (do not assume beaconing solely from repeats) |
+| 8000 | 124.958915 | HTTP 200 OK | Additional successful reply |
+
+**Interpretation:** 200 status codes support that HTTP requests reached a responding server; a generic octet-stream body is consistent with transferred bytes but does not establish that the file was malicious or executed. The response for the `.ps1` URL must be verified through the HTTP `Request in frame` link before attributing the `200` to that request. The user has not uploaded these screenshots to GitHub yet.
+
 ## Immediate next investigation
 
-Filter `ip.addr == 5.252.153.241 && http` and inspect server responses (status, content type, size) next to request frames 5031/5063. Expand request header to record HTTP `Host` and `User-Agent` if present. Do not export, launch or fetch any payload. Then correlate DNS names and timing. Capture a genuine screenshot of requests and responses for the evidence folder.
+With the HTTP response filter active, select frame **5071**, expand **Hypertext Transfer Protocol** and locate **Request in frame** plus Content-Type/Content-Length. This will establish whether frame 5071 is the response to the earlier `.ps1` request (frame 5063). Record the full request Host and User-Agent where visible. Do not export or execute payloads. Obtain a genuine screenshot with the expanded HTTP response.
 
 ## Investigation questions
 
