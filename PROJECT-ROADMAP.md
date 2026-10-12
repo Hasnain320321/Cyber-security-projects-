@@ -81,7 +81,7 @@ The separate **Phase 3 — Phishing Email Investigation** was reopened and subse
 
 ## Phase 4 — Network PCAP Investigation
 
-**Status:** **In progress (12 October 2026), setup only.** Selected a published third-party [training scenario and PCAP](https://malware-traffic-analysis.net/2025/01/22/index.html) concerning a purported fake Google Authenticator download. [Project 5 case plan](./Network-PCAP-Investigation/). Local acquisition, hashing, Wireshark investigation, screenshots and final report are **not yet complete**. No real-world incident response is claimed.
+**Status:** **In progress (12 October 2026) — practical investigation performed, draft report created; screenshot upload and final QA pending.** Analysed a published third-party [PCAP training exercise](https://malware-traffic-analysis.net/2025/01/22/index.html) in Kali Wireshark, recorded local SHA-256, connected an initial VBScript-style response to a subsequent obfuscated PowerShell HTTP download, documented ~5.19-second polling and examined a separate TLS 1.2 session. [Project 5 summary](./Network-PCAP-Investigation/) · [Case report](./Network-PCAP-Investigation/investigations/CASE-0051-INVESTIGATION-REPORT.md) · [Evidence upload checklist](./Network-PCAP-Investigation/screenshots/README.md). **No endpoint script execution, real-world compromise, or uploaded PNG evidence is claimed.**
 
 **Scenario:** Investigate suspicious network behaviour from a packet capture.
 
