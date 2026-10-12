@@ -1,6 +1,6 @@
 # Project 5 — Network PCAP Investigation
 
-**Status:** In progress — setup and source selection only (12 October 2026). **No packet findings, screenshots or completed analysis are claimed yet.**
+**Status:** In progress — initial local Wireshark triage performed 12 October 2026. Preliminary observations are documented below; HTTP responses, payload interpretation and final report are pending. Genuine user screenshots were reviewed in chat but have not yet been uploaded to this repository.
 
 ## Purpose
 
@@ -16,7 +16,27 @@ Conduct a reproducible, evidence-based Wireshark investigation of a published SO
 
 **Published lab context:** Internal subnet `10.1.17.0/24`; domain `bluemoontuesday.com`; published gateway `10.1.17.1` and domain controller `10.1.17.2`. These are **source-provided facts, not independently verified findings**.
 
-**Acquisition:** The provider offers a password-protected ZIP containing a PCAP (~20.5 MB compressed). File acquisition, local hashes and capture opening remain pending. Do not upload the raw PCAP or extracted malicious files to this repository.
+**Acquisition:** The provider offers a password-protected ZIP containing a PCAP (~20.5 MB compressed). The user downloaded/extracted the training capture and opened `2025-01-22-traffic-analysis-exercise.pcap` in Wireshark on Kali. **Capture SHA-256, extracted file size and local acquisition log are still pending.** Do not upload the raw PCAP or extracted malicious files to this repository.
+
+## Preliminary locally observed packet evidence (12 October 2026)
+
+The entries below come from the user's **actual Kali Wireshark screenshots**, reviewed during the lab, **not** from independently analysing the raw PCAP in this repository. Screenshots and PCAP are not yet committed. Frame numbers and relative times are shown as displayed.
+
+- Wireshark status bar showed **39,427 packets** loaded.
+- Statistics > Endpoints > IPv4 reported **145 IPv4 endpoints**; `10.1.17.215` appeared with 39,045 endpoint packet appearances and approximately 26 MB (endpoint totals can count packets at multiple endpoints).
+- DNS screenshot showed `10.1.17.215` querying `10.1.17.2` for internal `bluemoontuesday.com` records and expected Microsoft connectivity/telemetry domains. These visible DNS queries alone are not malicious.
+- Wireshark HTTP request display revealed traffic from `10.1.17.215` to external IP **`5.252.153.241`**:
+  - **Frame 5031, relative time 60.297799 s:** `GET /api/file/get-file/264872 HTTP/1.1`
+  - **Frame 5063, relative time 62.145732 s:** `GET /api/file/get-file/29842.ps1 HTTP/1.1`
+  - **Frame 5073, relative time 62.366091 s:** `GET /1517096937 HTTP/1.1`
+- `.ps1` in a requested URL path suggests a PowerShell script retrieval attempt; it is **not proof that the server delivered a valid script, that it ran or that the client was compromised**. HTTP `Host`, server status, response body, actual file identity and subsequent execution remain unverified.
+- The same screenshot showed several SSDP `M-SEARCH` multicast requests. HTTP-like syntax in SSDP should not be mistaken for ordinary web-browsing requests.
+
+**Provisional assessment:** Suspicious outbound HTTP sequence worth further investigation in the published fake-software case; no definitive malicious verdict from requests alone.
+
+## Immediate next investigation
+
+Filter `ip.addr == 5.252.153.241 && http` and inspect server responses (status, content type, size) next to request frames 5031/5063. Expand request header to record HTTP `Host` and `User-Agent` if present. Do not export, launch or fetch any payload. Then correlate DNS names and timing. Capture a genuine screenshot of requests and responses for the evidence folder.
 
 ## Investigation questions
 
@@ -47,7 +67,7 @@ Conduct a reproducible, evidence-based Wireshark investigation of a published SO
 
 ## Next action
 
-Open the source exercise page, obtain the training PCAP in an isolated analysis environment (Kali Linux VM recommended), check the file's SHA-256 and open it in Wireshark. Capture a real first screenshot of the loaded packet list for review.
+Inspect HTTP traffic to `5.252.153.241` for the corresponding server responses and headers, preserve a real screenshot, and record a SHA-256 for the locally held capture. Do not execute or browse to payload URLs.
 
 ---
 This portfolio documents a published training exercise, not an investigation into a user's real workplace or network.
