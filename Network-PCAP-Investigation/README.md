@@ -16,7 +16,17 @@ Conduct a reproducible, evidence-based Wireshark investigation of a published SO
 
 **Published lab context:** Internal subnet `10.1.17.0/24`; domain `bluemoontuesday.com`; published gateway `10.1.17.1` and domain controller `10.1.17.2`. These are **source-provided facts, not independently verified findings**.
 
-**Acquisition:** The provider offers a password-protected ZIP containing a PCAP (~20.5 MB compressed). The user downloaded/extracted the training capture and opened `2025-01-22-traffic-analysis-exercise.pcap` in Wireshark on Kali. **Capture SHA-256, extracted file size and local acquisition log are still pending.** Do not upload the raw PCAP or extracted malicious files to this repository.
+**Acquisition:** The provider offers a password-protected ZIP containing a PCAP (~20.5 MB compressed). The user downloaded/extracted the training capture and opened `2025-01-22-traffic-analysis-exercise.pcap` in Wireshark on Kali. A local SHA-256 has now been captured from the user's Kali screenshot (see evidence metadata below). Extracted PCAP byte count and a separate acquisition log are still pending. Do not upload the raw PCAP or extracted malicious files to this repository.
+
+## Local PCAP evidence fingerprint (12 October 2026)
+
+- **Source:** published 22 January 2025 traffic analysis exercise at Malware-Traffic-Analysis.net.
+- **Local filename:** `2025-01-22-traffic-analysis-exercise.pcap`
+- **Local path (on user's Kali VM):** `/home/kali/Downloads/2025-01-22-traffic-analysis-exercise.pcap`
+- **SHA-256 (as displayed by the user's local `sha256sum` output):** `e59db1c07c6fdefafa0abdbca03248c341cdc36c09c34753204d3162802a3586`
+- **Capture size:** Not yet independently recorded (source page listed a 20,534,228-byte *compressed ZIP*, not necessarily the extracted PCAP size).
+- **Verification scope:** Hash generated locally by user and visually checked from their terminal screenshot. It fingerprints those file bytes but is not a publisher-provided known-good checksum and does not validate that the PCAP is safe.
+- **Evidence handling:** Original PCAP stays on local Kali VM; do not publish raw capture or extracted payloads. Local screenshot of hash has been viewed in chat but not yet added to GitHub.
 
 ## Preliminary locally observed packet evidence (12 October 2026)
 
@@ -97,7 +107,7 @@ Additional screenshot of frame **19307** shows an expanded TLS 1.2 **Server Hell
 
 ## Immediate next investigation
 
-**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed. A later distinct TLS 1.2 connection from the same Windows client to `45.125.66.32:2917` was also observed; its content and relationship to the earlier traffic are unknown. Next inspect the TLS Server Certificate (frame 19307), Client Hello SNI (frame 19305), and calculate the capture's SHA-256. Never execute the script or visit captured URLs.
+**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has now been captured. **Next:** investigate whether the original fake-software site or download is visible in HTTP hostnames, TLS SNI, and redirects using read-only Wireshark display filters. Do not open URLs, download extracted payloads or run code.
 
 ## Investigation questions
 
