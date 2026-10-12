@@ -91,7 +91,9 @@ The user's next Wireshark screenshot, using display filter `ip.addr == 45.125.66
 
 TLS on destination port **2917** is a noteworthy but non-diagnostic deviation from standard HTTPS port 443. An established TLS session with encrypted application data is observable; **what the encrypted traffic contains and whether it relates to earlier PowerShell/polling activity remain unknown**. No malicious verdict, certificate identity or compromise is claimed.
 
-**Next test:** In Wireshark, select frame 19307 and expand TLS > Handshake Protocol: Certificate to inspect certificate subject/issuer if present; also inspect Client Hello SNI, being careful to distinguish a literal IP value from a DNS domain. Preserve screenshots with source packet/frame IDs.
+Additional screenshot of frame **19307** shows an expanded TLS 1.2 **Server Hello**, with negotiated cipher suite `TLS_RSA_WITH_AES_128_GCM_SHA256 (0x009c)`, zero-length Session ID, and JA3S string `771,156,65281-11`. These are handshake metadata, **not** evidence of maliciousness. The *certificate's subject, issuer and validity* are not visible in this screenshot and remain unverified.
+
+**Next test:** Certificate details remain optional; prioritize recording the locally held PCAP's SHA-256, then continue investigating timeline and additional protocol relationships. Never execute captured scripts or contact suspicious IPs.
 
 ## Immediate next investigation
 
