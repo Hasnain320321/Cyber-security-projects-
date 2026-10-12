@@ -1,6 +1,6 @@
 # Project 5 — Network PCAP Investigation
 
-**Status:** IN PROGRESS — practical traffic analysis performed on 12 October 2026; written investigation drafted; evidence PNG upload and final review outstanding.
+**Status:** **COMPLETE — scoped offline training PCAP investigation (12 October 2026).** All 11 real screenshots uploaded to GitHub, exact-match Git blob hashes verified, report reviewed.
 
 **Case:** PCAP-0051 — published SOC training exercise, *Download from Fake Software Site* (22 January 2025). This is a third-party historical training capture, **not a real-world incident personally handled by the analyst**.
 
@@ -32,20 +32,18 @@
 - **Local file:** `/home/kali/Downloads/2025-01-22-traffic-analysis-exercise.pcap` (user's Kali VM)
 - **SHA-256 (user-run command, screenshot reviewed):** `e59db1c07c6fdefafa0abdbca03248c341cdc36c09c34753204d3162802a3586`
 - **Original file:** kept locally, not distributed here; the provider page's ~20.5 MB figure is for the ZIP, **not a verified extracted PCAP size**.
-- **Evidence source:** real user Wireshark screenshots supplied during the investigation. These were visually reviewed, but **screenshots have not yet been uploaded to GitHub**.
+- **Evidence source:** real user Wireshark screenshots supplied during the investigation. All **11 original screenshots** have now been uploaded, and their Git blob hashes exactly match the chat-supplied files.
 
 ## Project documents
 
 - [Investigation report](./investigations/CASE-0051-INVESTIGATION-REPORT.md) — structured narrative, packet-level timeline, decisions and limitations.
-- [Screenshot evidence index](./screenshots/README.md) — 11 curated screenshots, **upload pending**.
-- Pending final QA: verify the evidence files, consider privacy of visible account names and dangerous URLs, and cross-check any claims against screenshots.
+- [Verified screenshot evidence index](./screenshots/README.md) — 11 genuine screenshots present, byte-for-byte exact-match QA passed.
+- Final QA: 11/11 original screenshots match GitHub files. Training account principal and dangerous-looking URLs are shown only as research evidence; no executable files were published. All conclusions remain limited to network observations.
 
 ## Safety and scope
 
 All work so far was static/read-only analysis of a third-party training PCAP in Kali Linux. No payload was executed, no suspicious destination was contacted as part of the analysis, and no production environment was investigated. **DNS/SNI queries, HTTP request intent and Kerberos principals must not be used to assert unobserved process execution or blame a particular user.**
 
-## Remaining work
+## Project close-out
 
-1. Add genuine screenshot files listed in the evidence index and verify image visibility and correspondence to reported packet numbers.
-2. Perform final report/evidence consistency checks; note if the original fake-software landing page cannot be established from this capture.
-3. Once evidence is complete, change status to Complete; then update the portfolio roadmap and prepare the interview guide, learning review and exactly 20 new flashcards (81–100) in the separate SOC study repository.
+**Completed for the stated offline scope.** Report, packet timeline, SHA-256 and 11 real evidence screenshots are verified. The fake-software landing hostname was not established from the reviewed packet subset; host-level execution and incident impact remain unverified. Additional endpoint logs or deeper malware decoding would be separate future work, **not prerequisites for this scoped case**. Interview notes and 20 Project 5 cards (81–100) are maintained in the [separate study repository](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes).
