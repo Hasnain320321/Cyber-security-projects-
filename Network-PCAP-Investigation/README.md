@@ -142,9 +142,22 @@ Visible behaviours in that script:
 
 **Evidence status:** The real screenshot was supplied by the user in chat but **is not yet uploaded into the GitHub repository**. Do not paste the full executable script into public documentation or execute it.
 
+### Windows host identity confirmed from DHCP (12 October 2026)
+
+The user's genuine Wireshark screenshot of **frame 3 (DHCP Request)** shows:
+
+- **Option 12 Host Name:** `DESKTOP-L8C5GSJ`
+- **Option 50 Requested IP Address:** `10.1.17.215`
+- **Option 54 DHCP Server Identifier:** `10.1.17.2`
+- **Client MAC:** `00:0d:b7:26:4a:74`
+- **Option 81 Client Fully Qualified Domain Name:** present, but its value is not expanded in the screenshot.
+- Related earlier client DNS traffic uses the `bluemoontuesday.com` internal domain.
+
+This corroborates the client identification in suspicious HTTP/TLS packets. The hostname is **device identity, not a verified human username**. No local/end-user account name has yet been established from packet evidence, and a DHCP hostname alone does not establish that the endpoint executed the downloaded scripts. Screenshot visually inspected in chat; evidence image still needs to be uploaded to the repository.
+
 ## Immediate next investigation
 
-**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has been recorded. The initial TLS SNI slice did not visibly establish the landing-page hostname. **Next:** The 417-byte response body has now been inspected: a VBScript component references a hidden PowerShell downloader whose URL matches the captured subsequent `.ps1` request. Continue with bounded network timeline correlation and plan evidence screenshots; avoid executing payloads. Do not visit captured URLs.
+**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has been recorded. The initial TLS SNI slice did not visibly establish the landing-page hostname. **Next:** The 417-byte first-stage VBScript and subsequent `.ps1` download are correlated; device hostname and MAC are verified by DHCP frame 3. Check for an observable domain account through Kerberos or NTLM traffic (if any) without inventing a username, then write the bounded timeline and curate authentic evidence images. Never execute captured scripts or visit suspect URLs. Do not visit captured URLs.
 
 ## Investigation questions
 
