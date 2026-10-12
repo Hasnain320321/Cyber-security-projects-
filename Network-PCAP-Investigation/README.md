@@ -79,9 +79,23 @@ The user filtered `http.request.uri == "/1517096937"`. Wireshark shows **10 outb
 
 Intervals between observed requests are approximately **5.17–5.24 seconds**, with mean **~5.19 seconds**. The traffic begins immediately after the HTTP delivery of the obfuscated PowerShell-like content from the **same external IP**. It is **consistent with automated HTTP polling / suspected beaconing**, but a `404 Not Found` is not evidence of delivered C2 instructions, and network packets alone do not prove script execution or host compromise. Timing pattern is reproducible from user-provided packet IDs and screenshot, not independently confirmed from the PCAP bytes.
 
+### Additional external TLS session to 45.125.66.32 (12 October 2026)
+
+The user's next Wireshark screenshot, using display filter `ip.addr == 45.125.66.32`, shows:
+
+- **Frame 19302, relative time 889.561525 s:** `10.1.17.215:49792 -> 45.125.66.32:2917` TCP SYN.
+- **Frames 19303–19304:** TCP SYN/ACK and ACK complete the three-way handshake.
+- **Frame 19305, time 889.755043 s:** TLS 1.2 Client Hello; Info column appears to display an SNI value referencing `45.125.66.32`. Examine the detailed Client Hello to confirm.
+- **Frame 19307, time 889.939650 s:** TLS 1.2 Server Hello, Certificate, Server Hello Done.
+- **Frames 19310–19321:** TLS 1.2 key exchange / change cipher specification and bidirectional encrypted Application Data.
+
+TLS on destination port **2917** is a noteworthy but non-diagnostic deviation from standard HTTPS port 443. An established TLS session with encrypted application data is observable; **what the encrypted traffic contains and whether it relates to earlier PowerShell/polling activity remain unknown**. No malicious verdict, certificate identity or compromise is claimed.
+
+**Next test:** In Wireshark, select frame 19307 and expand TLS > Handshake Protocol: Certificate to inspect certificate subject/issuer if present; also inspect Client Hello SNI, being careful to distinguish a literal IP value from a DNS domain. Preserve screenshots with source packet/frame IDs.
+
 ## Immediate next investigation
 
-**Now confirmed:** Frame 5071 responded successfully to the `.ps1` request in frame 5063. Follow-up repeated HTTP GETs to `/1517096937` from the same client to the same external server occur at ~5.2-second intervals, consistent with *suspected* polling/beaconing. Next, examine another external high-volume endpoint `45.125.66.32`, check whether its connections are HTTP or TLS, and gather the capture's SHA-256. Never execute the script or visit captured URLs.
+**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed. A later distinct TLS 1.2 connection from the same Windows client to `45.125.66.32:2917` was also observed; its content and relationship to the earlier traffic are unknown. Next inspect the TLS Server Certificate (frame 19307), Client Hello SNI (frame 19305), and calculate the capture's SHA-256. Never execute the script or visit captured URLs.
 
 ## Investigation questions
 
