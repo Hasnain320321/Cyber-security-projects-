@@ -16,7 +16,7 @@ I am building this repository to document practical cyber security work rather t
 
 **Project 4 — Phishing Email Investigation:** **Complete (11 October 2026) — offline email-analysis lab.** Investigated a historical redacted banking-impersonation sample, built/tested a Python indicator extractor (4/4 tests), compared against a labelled synthetic benign email, reviewed headers and message content, and verified five user-captured evidence screenshots. No live compromise or site analysis claimed.
 
-**Project 5 — Network PCAP Investigation:** **In progress (12 October 2026)** — real Wireshark analysis completed for a historical training capture. Correlated VBScript-style downloader, obfuscated PowerShell delivery, periodic HTTP polling and host identity; [draft report](./Network-PCAP-Investigation/investigations/CASE-0051-INVESTIGATION-REPORT.md) prepared. Authentic screenshot uploads and final QA remain pending.
+**Project 5 — Network PCAP Investigation:** **Complete (12 October 2026)** — offline analysis of a third-party training capture; correlated a VBScript downloader, an obfuscated PowerShell-like HTTP response and suspected ~5.2-second polling, identified the host and a Kerberos principal, documented a later TLS session, computed a PCAP SHA-256, and verified **11 genuine Wireshark screenshots**. Execution/compromise unproven.
 
 ## Portfolio Projects
 
@@ -26,7 +26,7 @@ I am building this repository to document practical cyber security work rather t
 | [Brute-Force Detection & Windows Authentication](./Windows-Authentication-Investigation/) | Rule 100101, Windows 4625/4624, validation, investigations | Complete |
 | [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) | 4732/4733, rule 100102, group SID targeting, positive/negative tests, [26 evidence screenshots](./Windows-Privilege-Escalation-Hunt/screenshots/README.md), T1098.007 | Complete |
 | [Phishing Email Investigation](./Phishing-Email-Investigation/) | Historical redacted email, Python tool, 4/4 tests, source hash, benign control, [5 screenshots](./Phishing-Email-Investigation/screenshots/README.md), [report](./Phishing-Email-Investigation/investigations/FINAL-INVESTIGATION-REPORT.md) | Complete — scoped offline investigation |
-| [Network PCAP Investigation](./Network-PCAP-Investigation/) | Wireshark, DHCP/Kerberos, staged HTTP scripts, suspected polling, TLS analysis | In progress — draft report; screenshot evidence pending |
+| [Network PCAP Investigation](./Network-PCAP-Investigation/) | Wireshark, staged-download analysis, suspected beaconing, TLS, DHCP, Kerberos, [11 screenshots](./Network-PCAP-Investigation/screenshots/), [report](./Network-PCAP-Investigation/investigations/CASE-0051-INVESTIGATION-REPORT.md) | **Complete — scoped offline training case (12 Oct 2026)** |
 | Vulnerability Assessment | Nmap, scanning, remediation | Planned |
 | Detection Engineering | KQL/Sigma, alert tuning, MITRE ATT&CK | Planned |
 
@@ -48,4 +48,4 @@ All simulations and testing are undertaken only on authorised personally control
 
 ---
 
-**Portfolio status:** Projects 1–4 complete and documented; Project 4 completed as an **offline historical-sample / synthetic-control exercise**, not a live incident. Network PCAP has documented hands-on Wireshark findings and a draft report, but genuine screenshot upload and verification are pending; vulnerability assessment and detection engineering remain planned.
+**Portfolio status:** Projects **1–5 completed and documented** (SOC Home Lab, Authentication, Privilege Escalation, Phishing Email and Network PCAP). Projects 4–5 are bounded offline analyses of historical/public training material, not live incidents. Vulnerability Assessment and Detection Engineering remain planned.
