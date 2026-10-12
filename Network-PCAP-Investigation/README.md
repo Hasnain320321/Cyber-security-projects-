@@ -105,9 +105,17 @@ Additional screenshot of frame **19307** shows an expanded TLS 1.2 **Server Hell
 
 **Next test:** Certificate details remain optional; prioritize recording the locally held PCAP's SHA-256, then continue investigating timeline and additional protocol relationships. Never execute captured scripts or contact suspicious IPs.
 
+### Initial TLS Client Hello/SNI review — first 65 seconds (12 October 2026)
+
+The user applied `tls.handshake.type == 1 && ip.src == 10.1.17.215 && frame.time_relative < 65` to the local training capture. The visible TLS Client Hello records include SNI values `azure.microsoft.com`, `www.microsoft.com`, `play.vidyard.com`, `publisher.liveperson.net`, `lpcdn.lpsnmedia.net`, `js.monitor.azure.com`, `assets.adobedtm.com`, and `browser.events.data.microsoft.com` (among others). **These are observed SNI values, not proof of deliberate browser visits or of any malicious destination.**
+
+No SNI visible **in this screenshot/time slice** unambiguously identifies the fake-software website. This negative observation is limited to the shown packets and 65-second filter; the original landing page may be outside the capture, encrypted without visible SNI, or not identifiable here. Do not infer that the original download site is known from the exercise title.
+
+**Next evidence step:** Investigate the earlier `GET /api/file/get-file/264872` (frame 5031) and matching `200 OK` response (frame 5033), read-only in Wireshark, to determine whether the first returned body provides useful context. Do not execute/export payloads.
+
 ## Immediate next investigation
 
-**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has now been captured. **Next:** investigate whether the original fake-software site or download is visible in HTTP hostnames, TLS SNI, and redirects using read-only Wireshark display filters. Do not open URLs, download extracted payloads or run code.
+**Now confirmed:** The `.ps1` HTTP response and subsequent ~5.2-second HTTP polling were observed; a later TLS 1.2 session to `45.125.66.32:2917` was observed but is not yet attributed. The local PCAP SHA-256 has been recorded. The initial TLS SNI slice did not visibly establish the landing-page hostname. **Next:** inspect frame 5033, the earlier HTTP 200 response to request 5031, without running or exporting its content; continue timeline documentation. Do not visit captured URLs.
 
 ## Investigation questions
 
