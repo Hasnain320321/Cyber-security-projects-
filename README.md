@@ -18,6 +18,8 @@ I am building this repository to document practical cyber security work rather t
 
 **Project 5 — Network PCAP Investigation:** **Complete (12 October 2026)** — offline analysis of a third-party training capture; correlated a VBScript downloader, an obfuscated PowerShell-like HTTP response and suspected ~5.2-second polling, identified the host and a Kerberos principal, documented a later TLS session, computed a PCAP SHA-256, and verified **11 genuine Wireshark screenshots**. Execution/compromise unproven.
 
+**Project 6 — Vulnerability Assessment:** **Lab investigation completed (13 October 2026); documentation added, original screenshots awaiting upload.** Assessed an authorised TryHackMe Vulnversity machine, identified six open ports and a web upload form, confirmed a `.phtml` upload restriction bypass and safely validated server-side PHP execution using a harmless echo-only test. No real-world exploitation claimed.
+
 ## Portfolio Projects
 
 | Project | Main skills | Status |
@@ -27,7 +29,7 @@ I am building this repository to document practical cyber security work rather t
 | [Windows Privilege Escalation Hunt](./Windows-Privilege-Escalation-Hunt/) | 4732/4733, rule 100102, group SID targeting, positive/negative tests, [26 evidence screenshots](./Windows-Privilege-Escalation-Hunt/screenshots/README.md), T1098.007 | Complete |
 | [Phishing Email Investigation](./Phishing-Email-Investigation/) | Historical redacted email, Python tool, 4/4 tests, source hash, benign control, [5 screenshots](./Phishing-Email-Investigation/screenshots/README.md), [report](./Phishing-Email-Investigation/investigations/FINAL-INVESTIGATION-REPORT.md) | Complete — scoped offline investigation |
 | [Network PCAP Investigation](./Network-PCAP-Investigation/) | Wireshark, staged-download analysis, suspected beaconing, TLS, DHCP, Kerberos, [11 screenshots](./Network-PCAP-Investigation/screenshots/), [report](./Network-PCAP-Investigation/investigations/CASE-0051-INVESTIGATION-REPORT.md) | **Complete — scoped offline training case (12 Oct 2026)** |
-| Vulnerability Assessment | Nmap, scanning, remediation | Planned |
+| [Vulnerability Assessment](./Vulnerability-Assessment/) | Nmap, Gobuster, inert PHP upload test, verified code execution, remediation | Lab investigation documented; original screenshot upload pending (13 Oct 2026) |
 | Detection Engineering | KQL/Sigma, alert tuning, MITRE ATT&CK | Planned |
 
 See the full plan in [PROJECT-ROADMAP.md](./PROJECT-ROADMAP.md).
@@ -48,4 +50,4 @@ All simulations and testing are undertaken only on authorised personally control
 
 ---
 
-**Portfolio status:** Projects **1–5 completed and documented** (SOC Home Lab, Authentication, Privilege Escalation, Phishing Email and Network PCAP). Projects 4–5 are bounded offline analyses of historical/public training material, not live incidents. Vulnerability Assessment and Detection Engineering remain planned.
+**Portfolio status:** Projects **1–5 complete**. **Project 6** vulnerability-assessment lab investigation and written report are documented; original screenshot upload and final portfolio review remain outstanding. **Project 7** Detection Engineering is planned. All work is on authorised labs or explicitly scoped offline training artifacts, not live incidents.
