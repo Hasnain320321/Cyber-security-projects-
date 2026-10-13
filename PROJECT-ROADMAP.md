@@ -96,7 +96,7 @@ Skills demonstrated:
 
 ## Phase 5 — Vulnerability Assessment
 
-**Status:** Project 6 lab assessment documented (13 October 2026). Authorised TryHackMe Vulnversity target tested; confirmed a harmless `.phtml` upload was server-side executed. Original screenshot upload, final review and study-material updates pending. See [Vulnerability Assessment](./Vulnerability-Assessment/).
+**Status:** **COMPLETE (13 October 2026) — scoped authorised TryHackMe Vulnversity lab.** Confirmed server-side processing of an inert `.phtml` test after an upload validation bypass. [Technical report](./Vulnerability-Assessment/investigations/VA-001-UPLOAD-VALIDATION-REPORT.md), [11 uploaded screenshots](./Vulnerability-Assessment/screenshots/README.md) hash-matched to the prepared ZIP, evidence transcriptions and separate interview/study materials complete. Native AttackBox scan files were not directly exported; no remediation retest was performed.
 
 **Scenario:** Assess a deliberately vulnerable lab machine and create a prioritised remediation report.
 
