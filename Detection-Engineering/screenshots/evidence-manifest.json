@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-16",
+  "provenance": "Original user-supplied PNGs; descriptive filenames only; no pixel edits.",
+  "files": [
+    {
+      "file": "01-baseline-alert.png",
+      "sha256": "a5b590b7a1903974e545ceac0a6ad3cb4d5a420979f9dfdaccd5a350b72cd4ee",
+      "git_blob_sha1": "b9a8c14f1eb6d8b0771ecbccd37ccb02fa8c892b",
+      "bytes": 101427
+    },
+    {
+      "file": "02-baseline-command.png",
+      "sha256": "9d80da79299919e1dbc7658800a1115e6190116415d5698edb122bf11622f52a",
+      "git_blob_sha1": "33d356c98951eaac1973017104ad936c98289f06",
+      "bytes": 124084
+    },
+    {
+      "file": "03-initial-built-in-encoded-alert.png",
+      "sha256": "98323ffba001e4e7913ffe261c6ebcdfafd06f5f62aa0f3c23a8f6f3e7fd526c",
+      "git_blob_sha1": "99327ba9ee5e01926a0b700066a0fa1d52fc2d3d",
+      "bytes": 65204
+    },
+    {
+      "file": "04-installed-parent-rule.png",
+      "sha256": "77031f96f7e16942389783bcd1a5aea01c0368771ee06115ee1c985a435340b4",
+      "git_blob_sha1": "c4d1d0f1ca8e7b733afd552eefd8307c907ca323",
+      "bytes": 118630
+    },
+    {
+      "file": "05-initial-configuration-check.png",
+      "sha256": "59632d376e279a9531a0386278a502b5508569d6002415601bb76ccd0424894b",
+      "git_blob_sha1": "4be55df9895d1c652bee8287ed91ec57dd4f6b8f",
+      "bytes": 23360
+    },
+    {
+      "file": "06-first-custom-full-switch-alert.png",
+      "sha256": "a9f6e9c1b3f92fe2b28589344f706893c2a426525bf345d60d3bd248fa273724",
+      "git_blob_sha1": "ca405b9105e6c195e5803ece91c90b5efb918609",
+      "bytes": 68422
+    },
+    {
+      "file": "07-enc-gap-command.png",
+      "sha256": "ea8a2053a00f2518f4a72be6154207d1aea2c017284cee04ec4164551a516717",
+      "git_blob_sha1": "b518cace5cf5b8733a6be53e1d4cea25aa77e45d",
+      "bytes": 103738
+    },
+    {
+      "file": "08-enc-gap-rule-92027.png",
+      "sha256": "0800795be79256f7f9997cf01e723aff31bf6534139b816dbf09ff2a16ea68e7",
+      "git_blob_sha1": "68b80d8bdb87ec13b68db410bde22d9dfe38e717",
+      "bytes": 72476
+    },
+    {
+      "file": "09-expanded-rule-configuration.png",
+      "sha256": "ba1d90d7c2f3b4918f297ce11621cd48a5aba26731d1f78db4d421005f316e31",
+      "git_blob_sha1": "26d9634b4e0c0f5274b236f940b73a7fb3bf1c74",
+      "bytes": 24780
+    },
+    {
+      "file": "10-enc-retest-command.png",
+      "sha256": "30ea2ff26725024546c2ec97ca59880ba4c536781a9a3cc9529bf1aa24074866",
+      "git_blob_sha1": "3155c7aee26155608334ffc52e92981072f1c252",
+      "bytes": 116018
+    },
+    {
+      "file": "11-enc-retest-custom-alert.png",
+      "sha256": "312052ebea79c77281c16bc807346827d3a86ab7fa463e66c60066ceba686209",
+      "git_blob_sha1": "efe442572e7cad0c4205eb7475b094e82baead8f",
+      "bytes": 61320
+    },
+    {
+      "file": "12-final-test-results.png",
+      "sha256": "f49f2cfdfbb746e76a6935f179e8238330cd884afd3227592df0f14eeb0d5288",
+      "git_blob_sha1": "517bff51955c89b3f42c406178decf4caa04dc0b",
+      "bytes": 75781
+    },
+    {
+      "file": "13-final-negative-command.png",
+      "sha256": "7224078838a81cb9bf5fd3a7f6db7de9510c9d197449654e6a3c562441930bd3",
+      "git_blob_sha1": "b3cf5564d398f657db81396f948f2f972c455c7e",
+      "bytes": 46265
+    },
+    {
+      "file": "14-final-full-switch-command.png",
+      "sha256": "f251380890c6c77a9a6546d6d18317680bafe2a3c63bbae56f983376250823b4",
+      "git_blob_sha1": "6f750a2fdb76dce1b0a3fda368bd15072be1f4f6",
+      "bytes": 43535
+    }
+  ]
+}

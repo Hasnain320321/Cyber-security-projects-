@@ -1,0 +1,13 @@
+<!-- Project 7: PowerShell encoded command detection -->
+<group name="windows,sysmon,custom_detection,">
+  <rule id="100107" level="12">
+    <if_sid>92027,92057</if_sid>
+    <field name="win.eventdata.image" type="pcre2">(?i)\\(?:powershell|pwsh)\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(?:^|\s)-(?:enc|EncodedCommand)(?:\s|$)</field>
+    <description>PowerShell launched with an encoded command - investigate intent</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+    <group>powershell,encoded_command,</group>
+  </rule>
+</group>

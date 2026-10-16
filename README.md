@@ -20,6 +20,8 @@ I am building this repository to document practical cyber security work rather t
 
 **Project 6 — Vulnerability Assessment:** **Complete (13 October 2026) — authorised Vulnversity training lab with 11 original screenshots uploaded and verified against the prepared evidence ZIP.** Assessed an authorised TryHackMe Vulnversity machine, identified six open ports and a web upload form, confirmed a `.phtml` upload restriction bypass and safely validated server-side PHP execution using a harmless echo-only test. No real-world exploitation claimed.
 
+**Project 7 — Detection Engineering:** **Complete (16 October 2026).** Built and tuned Wazuh rule `100107` for the tested PowerShell-to-PowerShell `-EncodedCommand` and `-enc` cases; documented a short-switch coverage gap, successful tuning and final positive/negative regression tests with 14 original screenshots. No production or universal PowerShell coverage claimed.
+
 ## Portfolio Projects
 
 | Project | Main skills | Status |
@@ -30,7 +32,7 @@ I am building this repository to document practical cyber security work rather t
 | [Phishing Email Investigation](./Phishing-Email-Investigation/) | Historical redacted email, Python tool, 4/4 tests, source hash, benign control, [5 screenshots](./Phishing-Email-Investigation/screenshots/README.md), [report](./Phishing-Email-Investigation/investigations/FINAL-INVESTIGATION-REPORT.md) | Complete — scoped offline investigation |
 | [Network PCAP Investigation](./Network-PCAP-Investigation/) | Wireshark, staged-download analysis, suspected beaconing, TLS, DHCP, Kerberos, [11 screenshots](./Network-PCAP-Investigation/screenshots/), [report](./Network-PCAP-Investigation/investigations/CASE-0051-INVESTIGATION-REPORT.md) | **Complete — scoped offline training case (12 Oct 2026)** |
 | [Vulnerability Assessment](./Vulnerability-Assessment/) | Nmap, Gobuster, harmless PHP execution validation, [11 screenshots](./Vulnerability-Assessment/screenshots/README.md), [report](./Vulnerability-Assessment/investigations/VA-001-UPLOAD-VALIDATION-REPORT.md), remediation | **Complete — scoped authorised TryHackMe lab (13 Oct 2026)** |
-| Detection Engineering | KQL/Sigma, alert tuning, MITRE ATT&CK | Planned |
+| [Detection Engineering](./Detection-Engineering/) | Wazuh rule 100107, Sysmon Event 1, encoded PowerShell switch tuning, positive/negative tests, [14 screenshots](./Detection-Engineering/screenshots/README.md) | **Complete — scoped authorised Windows lab (16 Oct 2026)** |
 
 See the full plan in [PROJECT-ROADMAP.md](./PROJECT-ROADMAP.md).
 
@@ -50,4 +52,4 @@ All simulations and testing are undertaken only on authorised personally control
 
 ---
 
-**Portfolio status:** Projects **1–6 complete and documented**. Project 6's 11 original screenshot PNGs were byte-for-byte verified against the prepared ZIP; original native AttackBox scan files were not directly exported. **Project 7** Detection Engineering is planned. All work is on authorised labs or explicitly scoped offline training artifacts, not live incidents.
+**Portfolio status:** Projects **1–7 complete and documented for their stated scopes**. Project 7 includes a tested Wazuh detection, tuning history, two final positive cases, a collected negative control and 14 original screenshots. All work uses authorised labs or explicitly scoped offline training artifacts, not live incidents.

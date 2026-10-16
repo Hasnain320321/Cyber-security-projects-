@@ -111,6 +111,8 @@ Skills demonstrated:
 
 ## Phase 6 — Detection Engineering
 
+**Status: COMPLETE (16 October 2026), Project 7 — scoped authorised Windows lab.** Implemented and tuned rule 100107, demonstrated the -enc gap and successful fix, and verified full-switch, abbreviated-switch and ordinary-command control outcomes. [Write-up](./Detection-Engineering/) · [Test matrix](./Detection-Engineering/tests/TEST-MATRIX.md) · [14 screenshots](./Detection-Engineering/screenshots/README.md). KQL, Sigma and production deployment remain future learning, not implemented deliverables here.
+
 **Goal:** Build simple but explainable detection logic.
 
 Example detections:
