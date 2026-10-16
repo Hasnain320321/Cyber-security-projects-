@@ -46,4 +46,4 @@ All work so far was static/read-only analysis of a third-party training PCAP in 
 
 ## Project close-out
 
-**Completed for the stated offline scope.** Report, packet timeline, SHA-256 and 11 real evidence screenshots are verified. The fake-software landing hostname was not established from the reviewed packet subset; host-level execution and incident impact remain unverified. Additional endpoint logs or deeper malware decoding would be separate future work, **not prerequisites for this scoped case**. Interview notes and 20 Project 5 cards (81–100) are maintained in the [separate study repository](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes).
+**Completed for the stated offline scope.** Report, packet timeline, SHA-256 and 11 real evidence screenshots are verified. The fake-software landing hostname was not established from the reviewed packet subset; host-level execution and incident impact remain unverified. Additional endpoint logs or deeper malware decoding would be separate future work, **not prerequisites for this scoped case**.

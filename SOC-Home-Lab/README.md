@@ -248,15 +248,6 @@ Project completion criteria:
 
 Direct Kali-to-Windows communication was verified successfully with 4/4 ICMP replies and 0% packet loss. Project 1 is complete: three controlled scenarios, three detections, three investigations, organised evidence, and documented findings and lessons learned.
 
-## Interview and revision resources
-
-Project documentation and authentic evidence are retained here. Interview explanations, revision notes and flashcards are organised separately:
-
-- [Project 1 interview guide](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-01-SOC-Home-Lab/INTERVIEW-GUIDE.md)
-- [Project 1 learning log](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-01-SOC-Home-Lab/LEARNING-LOG.md)
-- [Project 1 memorisation guide (priorities and five anchors)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-01-SOC-Home-Lab/WHAT-TO-MEMORISE.md)
-- [Cumulative SOC flashcards (Projects 1–7, 140 cards)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Flashcards/SOC-MASTER-FLASHCARDS.md)
-
 ## Safety and Scope
 
 All testing in this project is limited to systems and virtual machines that I own or control. The lab is intended for defensive learning, monitoring, detection, and incident-response practice.
