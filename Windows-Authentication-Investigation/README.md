@@ -85,7 +85,7 @@ This portfolio project contains the investigation reports, detection and origina
 
 - [Project 2 interview guide](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-02-Windows-Authentication/INTERVIEW-GUIDE.md)
 - [Project 2 key concepts and memory anchors](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-02-Windows-Authentication/WHAT-TO-MEMORISE.md)
-- [Cumulative SOC flashcards (Projects 1-3, 60 cards)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Flashcards/SOC-MASTER-FLASHCARDS.md)
+- [Cumulative SOC flashcards (Projects 1–7, 140 cards)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Flashcards/SOC-MASTER-FLASHCARDS.md)
 
 ## Analyst approach
 

@@ -255,7 +255,7 @@ Project documentation and authentic evidence are retained here. Interview explan
 - [Project 1 interview guide](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-01-SOC-Home-Lab/INTERVIEW-GUIDE.md)
 - [Project 1 learning log](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-01-SOC-Home-Lab/LEARNING-LOG.md)
 - [Project 1 memorisation guide (priorities and five anchors)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Project-01-SOC-Home-Lab/WHAT-TO-MEMORISE.md)
-- [Cumulative SOC flashcards (Projects 1-4, 80 cards)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Flashcards/SOC-MASTER-FLASHCARDS.md)
+- [Cumulative SOC flashcards (Projects 1–7, 140 cards)](https://github.com/Hasnain320321/SOC-Interview-and-Study-Notes/blob/main/Flashcards/SOC-MASTER-FLASHCARDS.md)
 
 ## Safety and Scope
 
